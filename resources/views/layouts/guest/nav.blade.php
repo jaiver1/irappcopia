@@ -52,7 +52,7 @@
                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
-                                        <i class="fa fa-sign-out ml-2"></i> Cerrar sesión
+                                        <i class="fa fa-sign-out mr-2"></i> Cerrar sesión
                                       </a>                      
                     </div>
                 </li>

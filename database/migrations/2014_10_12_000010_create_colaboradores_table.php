@@ -16,9 +16,9 @@ class CreateColaboradoresTable extends Migration
         Schema::create('colaboradores', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('persona_id');
-            $table->unsignedBigInteger('especialidad_id');
+            $table->unsignedBigInteger('categoria_id');
             $table->foreign('persona_id')->references('id')->on('personas');
-            $table->foreign('especialidad_id')->references('id')->on('especialidades');
+            $table->foreign('categoria_id')->references('id')->on('categorias');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

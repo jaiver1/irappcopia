@@ -29,12 +29,13 @@
   <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/sweet.min.js') }}"></script>
   <!-- Initializations -->
   <script type="text/javascript">
     // Animations initialization
     new WOW().init();
   </script>
-
+@include('sweetalert::alert')
   @yield('js_links')
 </body>
 </html>

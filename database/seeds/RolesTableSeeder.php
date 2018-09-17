@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Role;
+use App\Models\Root\Role;
 class RolesTableSeeder extends Seeder
 {
     /**
@@ -24,7 +24,7 @@ class RolesTableSeeder extends Seeder
         $role_administrador->save();
 
         $role_colaborador = new Role();
-        $role_colaborador->name = 'ROLE_COLABORADORr';
+        $role_colaborador->name = 'ROLE_COLABORADOR';
         $role_colaborador->display_name = 'Colaborador';
         $role_colaborador->description = 'Usuario que unicamente puede ver ordenes de servicio.';
         $role_colaborador->save();

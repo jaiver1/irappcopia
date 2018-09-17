@@ -56,9 +56,67 @@ class User extends Authenticatable
         'deleted_at',
     ];
 
+    protected $hashable = ['password'];
+
     public function restore()
 {
     $this->restoreA();
     $this->restoreB();
 }
+
+public function entrustPasswordHash() 
+    {
+        $this->password = Hash::make($this->password);
+        $this->save();
+    }
+
+    public function authorizeRoles($roles)
+    
+    {
+    
+      if (is_array($roles)) {
+    
+          return $this->hasAnyRole($roles) || 
+                 abort(401, 'No esta Autorizado.');
+    
+      }
+    
+      return $this->hasRole($roles) || 
+             abort(401, 'No esta Autorizado.');
+    
+    }
+    
+    /**
+    
+    * Check multiple roles
+    
+    * @param array $roles
+    
+    */
+    
+    public function hasAnyRole($roles)
+    
+    {
+    
+      return null !== $this->roles()->whereIn('name', $roles)->first();
+    
+    }
+    
+    /**
+    
+    * Check one role
+    
+    * @param string $role
+    
+    */
+    
+    public function hasRole($role)
+    
+    {
+    
+      return null !== $this->roles()->where('name', $role)->first();
+    
+    }
+
+
 }

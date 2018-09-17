@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Root\User;
+use App\Models\Root\Role;
+use Illuminate\Support\Facades\Validator;
+Use Alert;
 
 class UsuarioController extends Controller
 {
@@ -22,7 +26,9 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        return View::make('root.usuarios.index');
+        Auth::user()->authorizeRoles(['ROLE_ROOT']);
+        $usuarios =User::all();
+        return View::make('root.usuarios.index')->with(compact('usuarios'));
     }
 
     /**
@@ -32,8 +38,11 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        Auth::user()->authorizeRoles(['ROLE_ADMINISTRADOR', 'ROLE_COORDINADOR']);
-        return View::make('root.usuarios.create');
+        Auth::user()->authorizeRoles(['ROLE_ROOT']);
+        $usuario = new User();
+        $roles = Role::all();
+        $editar = false;
+        return View::make('root.usuarios.create')->with(compact('usuario','roles','editar'));
     }
 
     /**
@@ -41,9 +50,35 @@ class UsuarioController extends Controller
      *
      * @return Response
      */
-    public function store()
+    public function store(Request $request)
     {
-       
+        $rules = array(
+                'name'                  => 'required|max:50|unique:users',
+                'email'                 => 'required|email|max:100|unique:users',
+                'password'              => 'required|between:6,50|confirmed',
+                'password_confirmation' => 'required|same:password',
+                'rol'                   => 'required',
+        );
+
+        $validator = Validator::make($request->all(), $rules);
+
+
+        if ($validator->fails()) {
+            Alert::error('Error','Errores en el formulario.');
+            return Redirect::to('usuarios/create')
+                ->withErrors($validator);
+        } else {
+            $role = Role::findOrFail($request->rol);
+            $usuario = new User();
+            $usuario->name = $request->name;
+            $usuario->email = $request->email;
+            $usuario->password =  bcrypt($request->password);         
+            $usuario->save();
+            $usuario->roles()->attach($role);
+
+            Alert::success('Exito','El usuario "'.$usuario->name.'" ha sido registrado.');
+            return Redirect::to('usuarios');
+        }
     }
 
     /**
@@ -53,7 +88,11 @@ class UsuarioController extends Controller
      * @return Response
      */
     public function show($id)
-    {       
+    {  
+        Auth::user()->authorizeRoles(['ROLE_ROOT']);
+        $usuario = User::findOrFail($id);
+        return View::make('root.usuarios.show')->with(compact('usuario'));
+        
         }
 
     /**
@@ -64,7 +103,12 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
-      
+        Auth::user()->authorizeRoles(['ROLE_ROOT']);
+        $usuario = User::findOrFail($id);
+        $roles = Role::all();
+        $editar = true;
+        return View::make('root.usuarios.edit')->with(compact('usuario','roles','editar'));
+   
     }
 
     /**
@@ -73,7 +117,7 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update(Request $request)
     {
        
     }

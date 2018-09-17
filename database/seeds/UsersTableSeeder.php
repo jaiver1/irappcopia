@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\User;
-use App\Models\Role;
+use App\Models\Root\User;
+use App\Models\Root\Role;
 class UsersTableSeeder extends Seeder
 {
     /**
@@ -18,9 +18,9 @@ class UsersTableSeeder extends Seeder
         $role_cliente = Role::where('name', 'ROLE_CLIENTE')->first();    
     
         $root = new User();
-        $root->name = 'ROOT';
+        $root->name = 'Root';
         $root->email = 'root@example.com';
-        $root->password = bcrypt('root');
+        $root->password = bcrypt('root1234');
         $root->save();
         $root->roles()->attach($role_root);
 

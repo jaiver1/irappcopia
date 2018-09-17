@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateTipoReferenciasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('tipo_referencias', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name', 50)->unique();
-            $table->string('email', 100)->unique();
-            $table->string('password', 50);
-            $table->rememberToken();
-            $table->timestamps();
+            $table->string('nombre', 10);
+            $table->string('dimension', 2);
             $table->softDeletes();
+            $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
@@ -31,6 +30,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('tipo_referencias');
     }
 }
