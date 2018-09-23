@@ -31,7 +31,7 @@
         <!-- Grid column -->
         </div>
     <!-- Grid row -->
-@if(!$editar)
+
 <!-- Grid row -->
 <div class="form-row">
         <!-- Grid column -->
@@ -73,7 +73,7 @@
         <!-- Grid column -->
         </div>
     <!-- Grid row -->
-        @endif
+    
    
 
   <!-- Grid row -->
@@ -100,8 +100,8 @@
         <!-- Grid column -->
         <div class="col-md-6">
             <!-- Material input -->
-            <div class="form-group">
-            <label for="rol" data-error="Error" data-success="Correcto">Rol</label>
+            <div class="md-form">
+            <small for="rol">Rol</small>
     <select class="form-control" required id="rol" name="rol">
     <option value="" disabled selected>Selecciona una opción</option>
     @foreach($roles as $key => $rol)

@@ -15,8 +15,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'WelcomeController@index')->name('welcome');
-
-
+Route::resource('usuarios/deleted', 'Usuario\UsuarioSoftDeleteController');
 Route::resource('usuarios', 'Usuario\UsuarioController');
 Route::resource('clientes', 'Cliente\ClienteController');
 Route::resource('colaboradores', 'Colaborador\ColaboradorController');

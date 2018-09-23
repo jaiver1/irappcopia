@@ -27,7 +27,7 @@ class UsuarioController extends Controller
     public function index()
     {
         Auth::user()->authorizeRoles(['ROLE_ROOT']);
-        $usuarios =User::all();
+        $usuarios = User::all();
         return View::make('root.usuarios.index')->with(compact('usuarios'));
     }
 
@@ -117,9 +117,35 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request)
+    public function update($id,Request $request)
     {
-       
+        $rules = array(
+            'name'                  => 'required|max:50|unique:users',
+            'email'                 => 'required|email|max:100|unique:users',
+            'password'              => 'required|between:6,50|confirmed',
+            'password_confirmation' => 'required|same:password',
+            'rol'                   => 'required',
+    );
+
+    $validator = Validator::make($request->all(), $rules);
+
+
+    if ($validator->fails()) {
+        Alert::error('Error','Errores en el formulario.');
+        return Redirect::to('usuarios/create')
+            ->withErrors($validator);
+    } else {
+        $role = Role::findOrFail($request->rol);
+        $usuario =  User::findOrFail($request->id);
+        $usuario->name = $request->name;
+        $usuario->email = $request->email;
+        $usuario->password =  bcrypt($request->password);         
+        $usuario->save();
+        $usuario->roles()->attach($role);
+
+        Alert::success('Exito','El usuario "'.$usuario->name.'" ha sido editado.');
+        return Redirect::to('usuarios');
+    }
     }
 
     /**
@@ -130,6 +156,10 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-   
+        $usuario = User::findOrFail($id);
+    
+        $usuario->delete();
+        Alert::success('Exito','El usuario "'.$usuario->name.'" ha sido eliminado.');
+        return Redirect::to('usuarios');
 }
 }

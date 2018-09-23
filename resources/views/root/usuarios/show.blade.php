@@ -1,6 +1,9 @@
 @extends('layouts.dashboard.main')
 @section('template_title')
-Página principal | {{ config('app.name', 'Laravel') }}
+Información del usuario "{{ $usuario->name }}" | {{ config('app.name', 'Laravel') }}
+@endsection
+@section('footer_title')
+Información del usuario "{{ $usuario->name }}" | {{ config('app.name', 'Laravel') }}
 @endsection
 @section('content')
 <main class="pt-5 mx-lg-5">
@@ -13,7 +16,7 @@ Página principal | {{ config('app.name', 'Laravel') }}
                 <div class="card-body d-sm-flex justify-content-between">
 
                     <h4 class="mb-2 mb-sm-0 pt-1">
-                        <a href="{{ route('usuarios.index') }}" target="_blank">Usuarios</a>
+                        <a href="{{ route('usuarios.index') }}">Lista de usuarios</a>
                         <span>/</span>
                         <span>Información del usuario "{{ $usuario->name }}"</span>
                     </h4>
@@ -49,12 +52,12 @@ Página principal | {{ config('app.name', 'Laravel') }}
                         <div class="card-body">
 
 <div class="list-group hoverable">
-  <a class="list-group-item active white-text waves-light">
+  <a class="list-group-item active white-text waves-light hoverable">
       <i class="fa fa-user mr-2"></i><strong>Usuario #{{ $usuario->id }}</strong>
     </a>
-  <a class="list-group-item waves-effect"><strong>Nombre: </strong>{{ $usuario->name }}</a>
-  <a class="list-group-item waves-effect"><strong>Email: </strong>{{ $usuario->email }}</a>
-  <a class="list-group-item waves-effect"><strong>Rol: </strong>{{ $usuario->rol }}</a>
+  <a class="list-group-item waves-effect hoverable"><strong>Nombre: </strong>{{ $usuario->name }}</a>
+  <a class="list-group-item waves-effect hoverable"><strong>Email: </strong>{{ $usuario->email }}</a>
+  <a class="list-group-item waves-effect hoverable"><strong>Rol: </strong>{{ $usuario->rol }}</a>
 </div>
                         </div>
 
@@ -73,7 +76,7 @@ Página principal | {{ config('app.name', 'Laravel') }}
     <!--Main layout-->
 @endsection
 @section('js_links')
-<script>
+<script type="text/javascript">
   $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })

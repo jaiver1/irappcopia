@@ -1,7 +1,13 @@
 @extends('layouts.dashboard.main')
 @include('root.usuarios.form')
 @section('template_title')
-Crear usuario | {{ config('app.name', 'Laravel') }}
+Registrar usuario | {{ config('app.name', 'Laravel') }}
+@endsection
+@section('footer_title')
+Registrar usuario | {{ config('app.name', 'Laravel') }}
+@endsection
+@section('css_links')
+<link rel="stylesheet" href="{{ asset('css/addons/select2.css') }}" type="text/css"/>
 @endsection
 @section('content')
 <main class="pt-5 mx-lg-5">
@@ -14,7 +20,7 @@ Crear usuario | {{ config('app.name', 'Laravel') }}
                 <div class="card-body d-sm-flex justify-content-between">
 
                     <h4 class="mb-2 mb-sm-0 pt-1">
-                        <a href="{{ route('usuarios.index') }}" target="_blank">Usuarios</a>
+                        <a href="{{ route('usuarios.index') }}">Lista de usuarios</a>
                         <span>/</span>
                         <span>Registrar usuario</span>
                     </h4>
@@ -65,9 +71,18 @@ Crear usuario | {{ config('app.name', 'Laravel') }}
     <!--Main layout-->
 @endsection
 @section('js_links')
-<script>
+<script type="text/javascript" src="{{ asset('js/addons/select2.min.js') }}"></script>
+<script type="text/javascript">
   $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
+$(document).ready(function() {
+    $('#rol').select2({
+        placeholder: "Roles",
+        theme: "material"
+    });
+    $(".select2-selection__arrow")
+        .addClass("fa fa fa-chevron-down");
+});
 </script>
 @endsection
