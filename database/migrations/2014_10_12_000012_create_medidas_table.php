@@ -20,7 +20,7 @@ class CreateMedidasTable extends Migration
             $table->unsignedBigInteger('tipo_medida_id')->default(1);  
             $table->softDeletes();
             $table->timestamps();
-            $table->foreign('tipo_medida_id')->references('id')->on('tipo_medidas')->onUpdate('cascade')->onDelete('cascade');                         
+            $table->foreign('tipo_medida_id')->references('id')->on('tipos_medidas')->onUpdate('cascade')->onDelete('cascade');                         
         });
     }
 

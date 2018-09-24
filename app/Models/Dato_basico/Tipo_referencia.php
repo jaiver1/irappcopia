@@ -1,9 +1,9 @@
-<?php namespace App\Models\Base;
+<?php namespace App\Models\Dato_basico;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Tipo_medida extends Model
+class Tipo_referencia extends Model
 {
   use SoftDeletes;
 
@@ -13,7 +13,7 @@ class Tipo_medida extends Model
      *
      * @var string
      */
-    protected $table = 'tipo_medidas';
+    protected $table = 'tipos_referencias';
 
     /**
      * The attributes that are not mass assignable.
@@ -29,6 +29,7 @@ class Tipo_medida extends Model
      */
   protected $fillable = [
     'nombre',
+    'dimension',
   ];
 
   /**
@@ -48,8 +49,4 @@ class Tipo_medida extends Model
       'deleted_at',
   ];
 
-
-  public function medidas(){
-    return $this->hasMany('App\Models\Base\Medida');
-}
 }

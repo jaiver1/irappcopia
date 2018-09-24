@@ -1,10 +1,10 @@
 @extends('layouts.dashboard.main')
-@include('root.usuarios.form')
+@include('dato_basico.tipos_medidas.form')
 @section('template_title')
-Editar usuario "{{ $usuario->name }}" | {{ config('app.name', 'Laravel') }}
+Registrar tipo de medida | {{ config('app.name', 'Laravel') }}
 @endsection
 @section('footer_title')
-Editar usuario "{{ $usuario->name }}" | {{ config('app.name', 'Laravel') }}
+Registrar tipo de medida | {{ config('app.name', 'Laravel') }}
 @endsection
 @section('css_links')
 <link rel="stylesheet" href="{{ asset('css/addons/select2.css') }}" type="text/css"/>
@@ -20,20 +20,15 @@ Editar usuario "{{ $usuario->name }}" | {{ config('app.name', 'Laravel') }}
                 <div class="card-body d-sm-flex justify-content-between">
 
                     <h4 class="mb-2 mb-sm-0 pt-1">
-                        <a href="{{ route('usuarios.index') }}">Lista de usuarios</a>
+                        <a href="{{ route('tipos_medidas.index') }}">Lista de tipos de medidas</a>
                         <span>/</span>
-                        <span>Editar usuario "{{ $usuario->name }}"</span>
+                        <span>Registrar tipo de medida</span>
                     </h4>
 
                     <div class="d-flex justify-content-center">
-                    <a href="{{ route('usuarios.index') }}" class="btn btn-outline-secondary btn-circle waves-effect hoverable" 
-                    data-toggle="tooltip" data-placement="bottom" title="Lista de usuarios">
-                      <i class="fa fa-2x fa-users"></i>
-                            </a>
-
-                            <a href="{{ URL::to('usuarios/' . $usuario->id) }}" class="btn btn-outline-primary btn-circle waves-effect hoverable" 
-                    data-toggle="tooltip" data-placement="bottom" title='Informacion del usuario "{{ $usuario->name }}"'>
-                      <i class="fa fa-2x fa-info-circle"></i>
+                    <a href="{{ route('tipos_medidas.index') }}" class="btn btn-outline-secondary btn-circle waves-effect hoverable" 
+                    data-toggle="tooltip" data-placement="bottom" title="Lista de tipos de medidas">
+                      <i class="fa fa-2x fa-tachometer"></i>
                             </a>
                     </div>
 
@@ -76,18 +71,9 @@ Editar usuario "{{ $usuario->name }}" | {{ config('app.name', 'Laravel') }}
     <!--Main layout-->
 @endsection
 @section('js_links')
-<script type="text/javascript" src="{{ asset('js/addons/select2.min.js') }}"></script>
 <script type="text/javascript">
   $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
-$(document).ready(function() {
-    $('#rol').select2({
-        placeholder: "Roles",
-        theme: "material"
-    });
-    $(".select2-selection__arrow")
-        .addClass("fa fa fa-chevron-down");
-});
 </script>
 @endsection

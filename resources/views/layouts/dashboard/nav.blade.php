@@ -4,7 +4,7 @@
 @section('navegation')
 <header>
 <!-- Navbar -->
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark stylish-color scrolling-navbar">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark stylish-color scrolling-navbar hoverable">
             <div class="container-fluid">
 
                 <!-- Brand -->
@@ -23,13 +23,13 @@
 
                     <!-- Left -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item {{(\Request::is('home'))?'active':''}}">
+                        <li class="nav-item {{(\Request::is('home'))?'active hoverable':''}}">
                             <a class="nav-link waves-effect" href="{{ route('home') }}">
                             <i class="fa fa-home mr-2"></i>Página principal
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
-                        <li class="nav-item {{(\Request::is('usuarios') || \Request::is('usuarios/*'))?'active':''}}">
+                        <li class="nav-item  {{(\Request::is('usuarios') || \Request::is('usuarios/*'))?'active hoverable':''}}">
                             <a class="nav-link waves-effect" href="{{ route('usuarios.index') }}">
                             <i class="fa fa-users mr-2"></i>Usuarios
                             </a>
@@ -78,7 +78,7 @@
         <!-- Navbar -->
 
         <!-- Sidebar -->
-        <div class="sidebar-fixed special-color-dark position-fixed">
+        <div class="sidebar-fixed special-color-dark position-fixed hoverable">
 
             <a class="logo-wrapper waves-effect" href="{{ route('home') }}">
                 <img src="https://mdbootstrap.com/img/logo/mdb-email.png" class="img-fluid" alt="Logo">
@@ -86,25 +86,25 @@
 
             <div class="list-group list-group-flush side-group">
                 <a href="{{ route('home') }}" 
-                class=" {{(\Request::is('home'))?'active white-text':''}} list-group-item-action list-group-item waves-effect">
+                class=" {{(\Request::is('home'))?'active white-text':''}} list-group-item-action list-group-item waves-effect hoverable">
                     <i class="fa fa-home mr-2"></i>Página principal</a>
                     <a href="{{ route('usuarios.index') }}" 
-                class=" {{(\Request::is('usuarios') || \Request::is('usuarios/*'))?'active white-text':''}} list-group-item-action list-group-item waves-effect">
+                class=" {{(\Request::is('usuarios') || \Request::is('usuarios/*'))?'active white-text':''}} list-group-item-action list-group-item waves-effect hoverable">
                     <i class="fa fa-users mr-2"></i>Usuarios</a>
                 
 
 <div class="accordion" id="accordionExample2">
 
 
-<a id="headingOne" class="{{(\Request::is('clientes') || \Request::is('clientes/*') || \Request::is('colaboradores') || \Request::is('colaboradores/*') ) ? 'active white-text':''}} list-group-item-action list-group-item waves-effect" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+<a id="headingOne" class="{{(\Request::is('clientes') || \Request::is('clientes/*') || \Request::is('colaboradores') || \Request::is('colaboradores/*') ) ? 'active white-text':''}} list-group-item-action list-group-item waves-effect hoverable" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
 <i class="fa fa-address-book mr-2"></i>  Contactos
 </a>
 <div id="collapseTwo" class="collapse {{(\Request::is('clientes') || \Request::is('clientes/*') || \Request::is('colaboradores') || \Request::is('colaboradores/*') ) ? 'show':''}}" aria-labelledby="headingOne" data-parent="#accordionExample2">
 <!-- List group links -->
 <div class="list-group list-group-flush sub-side-group">
-<a href="{{ route('clientes.index') }}" class="list-group-item-action list-group-item waves-effect {{(\Request::is('clientes') || \Request::is('clientes/*')) ? 'active white-text':''}}">
+<a href="{{ route('clientes.index') }}" class="list-group-item-action list-group-item waves-effect hoverable {{(\Request::is('clientes') || \Request::is('clientes/*')) ? 'active white-text':''}}">
             <i class="fa fa-pie-chart mr-2"></i>Clientes</a>
-        <a href="{{ route('colaboradores.index') }}" class="list-group-item-action list-group-item waves-effect {{(\Request::is('colaboradores') || \Request::is('colaboradores/*')) ? 'active white-text':''}}">
+        <a href="{{ route('colaboradores.index') }}" class="list-group-item-action list-group-item waves-effect hoverable {{(\Request::is('colaboradores') || \Request::is('colaboradores/*')) ? 'active white-text':''}}">
             <i class="fa fa-user mr-2"></i>Colaboradores</a>
       
                     </div>
@@ -118,16 +118,16 @@
                     <div class="accordion" id="accordionExample1">
 
 
-<a id="headingOne" class="{{(\Request::is('clientes') || \Request::is('clientes/*') || \Request::is('colaboradores') || \Request::is('colaboradores/*') ) ? 'active white-text':''}} list-group-item-action list-group-item waves-effect" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-<i class="fa fa-money mr-2"></i>  Datos basicos
+<a id="headingOne" class="{{(\Request::is('tipos_medidas') || \Request::is('tipos_medidas/*') || \Request::is('medidas') || \Request::is('medidas/*') ) ? 'active white-text':''}} list-group-item-action list-group-item waves-effect hoverable" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+<i class="fa fa-cubes mr-2"></i>  Datos basicos
 </a>
-<div id="collapseOne" class="collapse {{(\Request::is('clientes') || \Request::is('clientes/*') || \Request::is('colaboradores') || \Request::is('colaboradores/*') ) ? 'show':''}}" aria-labelledby="headingOne" data-parent="#accordionExample1">
+<div id="collapseOne" class="collapse {{(\Request::is('tipos_medidas') || \Request::is('tipos_medidas/*') || \Request::is('medidas') || \Request::is('medidas/*') ) ? 'show':''}}" aria-labelledby="headingOne" data-parent="#accordionExample1">
 <!-- List group links -->
 <div class="list-group list-group-flush sub-side-group">
-<a href="{{ route('clientes.index') }}" class="list-group-item-action list-group-item waves-effect {{(\Request::is('clientes') || \Request::is('clientes/*')) ? 'active white-text':''}}">
-            <i class="fa fa-pie-chart mr-2"></i>Tipo medidas</a>
-        <a href="{{ route('colaboradores.index') }}" class="list-group-item-action list-group-item waves-effect {{(\Request::is('colaboradores') || \Request::is('colaboradores/*')) ? 'active white-text':''}}">
-            <i class="fa fa-user mr-2"></i>Medidas</a>
+<a href="{{ route('tipos_medidas.index') }}" class="list-group-item-action list-group-item waves-effect hoverable {{(\Request::is('tipos_medidas') || \Request::is('tipos_medidas/*')) ? 'active white-text':''}}">
+            <i class="fa fa-tachometer mr-2"></i>Tipo medidas</a>
+        <a href="{{ route('colaboradores.index') }}" class="list-group-item-action list-group-item waves-effect hoverable  {{(\Request::is('medidas') || \Request::is('medidas/*')) ? 'active white-text':''}}">
+            <i class="fa fa-sliders mr-2"></i>Medidas</a>
       
                     </div>
                     <!-- List group links -->

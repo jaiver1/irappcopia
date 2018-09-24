@@ -2,6 +2,9 @@
 @section('template_title')
 Página principal | {{ config('app.name', 'Laravel') }}
 @endsection
+@section('footer_title')
+Página principal | {{ config('app.name', 'Laravel') }}
+@endsection
 @section('content')
 <main class="pt-5 mx-lg-5">
         <div class="container-fluid mt-5">
@@ -1066,7 +1069,7 @@ Página principal | {{ config('app.name', 'Laravel') }}
 @endsection
 @section('js_links')
 <!-- Charts -->
-<script>
+<script type="text/javascript">
 
 // Line
 var ctx = document.getElementById("myChart").getContext('2d');
@@ -1218,7 +1221,7 @@ var myLineChart = new Chart(ctxD, {
 
 <!--Google Maps-->
 <script src="https://maps.google.com/maps/api/js"></script>
-<script>
+<script type="text/javascript">
 // Regular map
 function regular_map() {
     var var_location = new google.maps.LatLng(40.725118, -73.997699);

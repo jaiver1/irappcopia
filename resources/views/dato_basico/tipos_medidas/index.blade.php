@@ -1,9 +1,9 @@
 @extends('layouts.dashboard.main')
 @section('template_title')
-Lista de usuarios | {{ config('app.name', 'Laravel') }}
+Lista de tipos de medidas | {{ config('app.name', 'Laravel') }}
 @endsection
 @section('footer_title')
-Lista de usuarios | {{ config('app.name', 'Laravel') }}
+Lista de tipos de medidas | {{ config('app.name', 'Laravel') }}
 @endsection
 @section('css_links')
 <link rel="stylesheet" href="{{ asset('css/addons/datatables.min.css') }}" type="text/css">
@@ -22,23 +22,23 @@ Lista de usuarios | {{ config('app.name', 'Laravel') }}
                 <div class="card-body d-sm-flex justify-content-between">
 
                     <h4 class="mb-2 mb-sm-0 pt-1">
-                        <span> @if (count($usuarios) === 1)
-                Un usuario
-            @elseif (count($usuarios) > 1)
-                {{ count($usuarios) }} usuarios
+                        <span> @if (count($tipos_medidas) === 1)
+                Un tipo de medida
+            @elseif (count($tipos_medidas) > 1)
+                {{ count($tipos_medidas) }} tipos de medidas
             @else
-               No hay usuarios
+               No hay tipos de medidas
             @endif
             </span>
                     </h4>
 
                     <div class="d-flex justify-content-center">
-                    <a href="{{ route('usuarios.create') }}" class="btn btn-outline-success btn-circle waves-effect hoverable" 
-                    data-toggle="tooltip" data-placement="bottom" title="Registrar usuario">
+                    <a href="{{ route('tipos_medidas.create') }}" class="btn btn-outline-success btn-circle waves-effect hoverable" 
+                    data-toggle="tooltip" data-placement="bottom" title="Registrar tipo de medida">
                       <i class="fa fa-2x fa-plus"></i>
                             </a>
-                            <a href="{{ URL::to('/usuarios/deleted') }}" class="btn btn-outline-danger btn-circle waves-effect hoverable" 
-                    data-toggle="tooltip" data-placement="bottom" title="Usuarios eliminados">
+                            <a href="{{ URL::to('/tipos_medidas/deleted') }}" class="btn btn-outline-danger btn-circle waves-effect hoverable" 
+                    data-toggle="tooltip" data-placement="bottom" title="Tipos de medidas eliminados">
                       <i class="fa fa-2x fa-recycle"></i>
                             </a>
                     </div>
@@ -61,16 +61,12 @@ Lista de usuarios | {{ config('app.name', 'Laravel') }}
                         <div class="card-body">
                         <div class="table-responsive">
                             <!-- Table  -->
-                            <table id="dtusuarios" class="table table-borderless table-hover display dt-responsive nowrap" cellspacing="0" width="100%">
+                            <table id="dttipos_medidas" class="table table-borderless table-hover display dt-responsive nowrap" cellspacing="0" width="100%">
   <thead class="special-color-dark white-text">
     <tr class="z-depth-2">
       <th class="th-sm">#
       </th>
       <th class="th-sm">Nombre
-      </th>
-      <th class="th-sm">Email
-      </th>
-      <th class="th-sm">Rol
       </th>
       <th class="th-sm">Acciones
       </th>
@@ -78,29 +74,27 @@ Lista de usuarios | {{ config('app.name', 'Laravel') }}
     </tr>
   </thead>
   <tbody>
-  @foreach($usuarios as $key => $usuario)
+  @foreach($tipos_medidas as $key => $tipo_medida)
     <tr class="hoverable">
-      <td>{{$usuario->id}}</td>
-      <td>{{$usuario->name}}</td>
-      <td>{{$usuario->email}}</td>
-      <td>{{$usuario->name}}</td>
+      <td>{{$tipo_medida->id}}</td>
+      <td>{{$tipo_medida->nombre}}</td>
       <td>
 
-<a href="{{ URL::to('usuarios/' . $usuario->id) }}" class="text-primary m-1" 
-                    data-toggle="tooltip" data-placement="bottom" title='Información del usuario "{{ $usuario->name }}"'>
+<a href="{{ URL::to('tipos_medidas/' . $tipo_medida->id) }}" class="text-primary m-1" 
+                    data-toggle="tooltip" data-placement="bottom" title='Información del tipo de medida "{{ $tipo_medida->nombre }}"'>
                       <i class="fa fa-2x fa-info-circle"></i>
                             </a>
 
-      <a href="{{ URL::to('usuarios/' . $usuario->id.'/edit') }}" class="text-warning m-1" 
-                    data-toggle="tooltip" data-placement="bottom" title='Editar el usuario "{{ $usuario->name }}"'>
+      <a href="{{ URL::to('tipos_medidas/' . $tipo_medida->id.'/edit') }}" class="text-warning m-1" 
+                    data-toggle="tooltip" data-placement="bottom" title='Editar el tipo de medida "{{ $tipo_medida->nombre }}"'>
                       <i class="fa fa-2x fa-pencil"></i>
                             </a>
 
-                            <a onclick="eliminar_usuario({{ $usuario->id }},'{{ $usuario->name }}')" class="text-danger m-1" 
-                    data-toggle="tooltip" data-placement="bottom" title='Eliminar el usuario "{{ $usuario->name }}"'>
+                            <a onclick="eliminar_tipo_medida({{ $tipo_medida->id }},'{{ $tipo_medida->nombre }}')" class="text-danger m-1" 
+                    data-toggle="tooltip" data-placement="bottom" title='Eliminar el tipo de medida "{{ $tipo_medida->nombre }}"'>
                       <i class="fa fa-2x fa-trash"></i>
                             </a>
-                            <form id="eliminar{{ $usuario->id }}" method="POST" action="{{ URL::to('usuarios/' . $usuario->id) }}" accept-charset="UTF-8">
+                            <form id="eliminar{{ $tipo_medida->id }}" method="POST" action="{{ URL::to('tipos_medidas/' . $tipo_medida->id) }}" accept-charset="UTF-8">
     <input name="_method" type="hidden" value="DELETE">
     {{ csrf_field() }}
 </form>
@@ -144,10 +138,10 @@ Lista de usuarios | {{ config('app.name', 'Laravel') }}
 <script type="text/javascript" src="{{ asset('js/addons/buttons.colVis.min.js') }}"></script>
 <script type="text/javascript">
 
-function eliminar_usuario(id,nombre){
+function eliminar_tipo_medida(id,nombre){
     swal({
-  title: 'Eliminar usuario',
-  text: '¿Desea eliminar el usuario "'+nombre+'"?',
+  title: 'Eliminar tipo de medida',
+  text: '¿Desea eliminar el tipo de medida "'+nombre+'"?',
   type: 'question',
   confirmButtonText: 'Eliminar',
   cancelButtonText: 'Cancelar',
@@ -183,8 +177,8 @@ $(document).ready(function() {
     var currentdate = new Date(); 
     moment.locale('es');
 var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a'); 
-    var titulo_archivo = "Lista de usuarios ("+datetime+")";
-     $('#dtusuarios').DataTable( {
+    var titulo_archivo = "Lista de tipos de medidas ("+datetime+")";
+     $('#dttipos_medidas').DataTable( {
         dom: 'Bfrtip',
     lengthMenu: [
         [ 2, 5, 10, 20, 30, 50, 100, -1 ],
@@ -250,7 +244,7 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
                 display: $.fn.dataTable.Responsive.display.modal( {
                     header: function ( row ) {
                         var data = row.data();
-                        return 'Datos de usuario '+ data[1];
+                        return 'Datos de tipo de medida '+ data[1];
                     }
                 } ),
                 renderer: $.fn.dataTable.Responsive.renderer.tableAll( {

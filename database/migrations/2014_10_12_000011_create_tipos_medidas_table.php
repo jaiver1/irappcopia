@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTipoReferenciasTable extends Migration
+class CreateTiposMedidasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateTipoReferenciasTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_referencias', function (Blueprint $table) {
+        Schema::create('tipos_medidas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre', 10);
-            $table->string('dimension', 2);
+            $table->string('nombre', 50);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -30,6 +29,6 @@ class CreateTipoReferenciasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_referencias');
+        Schema::dropIfExists('tipos_medidas');
     }
 }

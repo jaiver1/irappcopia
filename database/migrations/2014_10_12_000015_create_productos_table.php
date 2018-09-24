@@ -18,7 +18,6 @@ class CreateProductosTable extends Migration
             $table->string('referencia', 50);
             $table->string('nombre', 50);
             $table->double('valor', 12, 2);
-            $table->boolean('vencimiento'); 
             $table->string('image', 100)->default("")->nullable();
             $table->unsignedBigInteger('medida_id')->default(1);
             $table->unsignedBigInteger('marca_id')->default(1);
@@ -27,7 +26,7 @@ class CreateProductosTable extends Migration
             $table->timestamps();
             $table->foreign('medida_id')->references('id')->on('medidas')->onUpdate('cascade')->onDelete('cascade');                         
             $table->foreign('marca_id')->references('id')->on('marcas')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('tipo_referencia_id')->references('id')->on('tipo_referencias')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('tipo_referencia_id')->references('id')->on('tipos_referencias')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

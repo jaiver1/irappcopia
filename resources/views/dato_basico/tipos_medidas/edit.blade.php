@@ -1,9 +1,13 @@
 @extends('layouts.dashboard.main')
+@include('dato_basico.tipos_medidas.form')
 @section('template_title')
-Información del usuario "{{ $usuario->name }}" | {{ config('app.name', 'Laravel') }}
+Editar tipo de medida "{{ $tipo_medida->nombre }}" | {{ config('app.name', 'Laravel') }}
 @endsection
 @section('footer_title')
-Información del usuario "{{ $usuario->name }}" | {{ config('app.name', 'Laravel') }}
+Editar tipo de medida "{{ $tipo_medida->nombre }}" | {{ config('app.name', 'Laravel') }}
+@endsection
+@section('css_links')
+<link rel="stylesheet" href="{{ asset('css/addons/select2.css') }}" type="text/css"/>
 @endsection
 @section('content')
 <main class="pt-5 mx-lg-5">
@@ -16,20 +20,20 @@ Información del usuario "{{ $usuario->name }}" | {{ config('app.name', 'Laravel
                 <div class="card-body d-sm-flex justify-content-between">
 
                     <h4 class="mb-2 mb-sm-0 pt-1">
-                        <a href="{{ route('usuarios.index') }}">Lista de usuarios</a>
+                        <a href="{{ route('tipos_medidas.index') }}">Lista de tipos de medidas</a>
                         <span>/</span>
-                        <span>Información del usuario "{{ $usuario->name }}"</span>
+                        <span>Editar tipo de medida "{{ $tipo_medida->nombre }}"</span>
                     </h4>
 
                     <div class="d-flex justify-content-center">
-                    <a href="{{ route('usuarios.index') }}" class="btn btn-outline-secondary btn-circle waves-effect hoverable" 
-                    data-toggle="tooltip" data-placement="bottom" title="Lista de usuarios">
-                      <i class="fa fa-2x fa-users"></i>
+                    <a href="{{ route('tipos_medidas.index') }}" class="btn btn-outline-secondary btn-circle waves-effect hoverable" 
+                    data-toggle="tooltip" data-placement="bottom" title="Lista de tipos de medidas">
+                      <i class="fa fa-2x fa-tachometer"></i>
                             </a>
 
-                             <a href="{{ URL::to('usuarios/' . $usuario->id.'/edit') }}" class="btn btn-outline-warning btn-circle waves-effect hoverable" 
-                    data-toggle="tooltip" data-placement="bottom" title='Editar usuario "{{ $usuario->name }}"'>
-                      <i class="fa fa-2x fa-pencil"></i>
+                            <a href="{{ URL::to('tipos_medidas/' . $tipo_medida->id) }}" class="btn btn-outline-primary btn-circle waves-effect hoverable" 
+                    data-toggle="tooltip" data-placement="bottom" title='Informacion del tipo de medida "{{ $tipo_medida->nombre }}"'>
+                      <i class="fa fa-2x fa-info-circle"></i>
                             </a>
                     </div>
 
@@ -51,14 +55,10 @@ Información del usuario "{{ $usuario->name }}" | {{ config('app.name', 'Laravel
                         <!--Card content-->
                         <div class="card-body">
 
-<div class="list-group hoverable">
-  <a class="list-group-item active white-text waves-light hoverable">
-      <i class="fa fa-user mr-2"></i><strong>Usuario #{{ $usuario->id }}</strong>
-    </a>
-  <a class="list-group-item waves-effect hoverable"><strong>Nombre: </strong>{{ $usuario->name }}</a>
-  <a class="list-group-item waves-effect hoverable"><strong>Email: </strong>{{ $usuario->email }}</a>
-  <a class="list-group-item waves-effect hoverable"><strong>Rol: </strong>{{ $usuario->rol }}</a>
-</div>
+                          <!-- Extended material form grid -->
+@yield('crud_form')
+<!-- Extended material form grid -->
+
                         </div>
 
                     </div>

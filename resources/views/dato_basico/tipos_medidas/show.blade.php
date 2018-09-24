@@ -1,9 +1,9 @@
 @extends('layouts.dashboard.main')
 @section('template_title')
-Información del usuario "{{ $usuario->name }}" | {{ config('app.name', 'Laravel') }}
+Información del usuario "{{ $usuario->nombre }}" | {{ config('app.name', 'Laravel') }}
 @endsection
 @section('footer_title')
-Información del usuario "{{ $usuario->name }}" | {{ config('app.name', 'Laravel') }}
+Información del usuario "{{ $usuario->nombre }}" | {{ config('app.name', 'Laravel') }}
 @endsection
 @section('content')
 <main class="pt-5 mx-lg-5">
@@ -18,17 +18,17 @@ Información del usuario "{{ $usuario->name }}" | {{ config('app.name', 'Laravel
                     <h4 class="mb-2 mb-sm-0 pt-1">
                         <a href="{{ route('usuarios.index') }}">Lista de usuarios</a>
                         <span>/</span>
-                        <span>Información del usuario "{{ $usuario->name }}"</span>
+                        <span>Información del usuario "{{ $usuario->nombre }}"</span>
                     </h4>
 
                     <div class="d-flex justify-content-center">
                     <a href="{{ route('usuarios.index') }}" class="btn btn-outline-secondary btn-circle waves-effect hoverable" 
                     data-toggle="tooltip" data-placement="bottom" title="Lista de usuarios">
-                      <i class="fa fa-2x fa-users"></i>
+                      <i class="fa fa-2x fa-tachometer"></i>
                             </a>
 
                              <a href="{{ URL::to('usuarios/' . $usuario->id.'/edit') }}" class="btn btn-outline-warning btn-circle waves-effect hoverable" 
-                    data-toggle="tooltip" data-placement="bottom" title='Editar usuario "{{ $usuario->name }}"'>
+                    data-toggle="tooltip" data-placement="bottom" title='Editar usuario "{{ $usuario->nombre }}"'>
                       <i class="fa fa-2x fa-pencil"></i>
                             </a>
                     </div>
@@ -55,7 +55,7 @@ Información del usuario "{{ $usuario->name }}" | {{ config('app.name', 'Laravel
   <a class="list-group-item active white-text waves-light hoverable">
       <i class="fa fa-user mr-2"></i><strong>Usuario #{{ $usuario->id }}</strong>
     </a>
-  <a class="list-group-item waves-effect hoverable"><strong>Nombre: </strong>{{ $usuario->name }}</a>
+  <a class="list-group-item waves-effect hoverable"><strong>Nombre: </strong>{{ $usuario->nombre }}</a>
   <a class="list-group-item waves-effect hoverable"><strong>Email: </strong>{{ $usuario->email }}</a>
   <a class="list-group-item waves-effect hoverable"><strong>Rol: </strong>{{ $usuario->rol }}</a>
 </div>
