@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Usuario;
+namespace App\Http\Controllers\Root\Usuario;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Redirect;
@@ -52,6 +52,7 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
+        Auth::user()->authorizeRoles(['ROLE_ROOT']);
         $rules = array(
                 'name'                  => 'required|max:50|unique:users',
                 'email'                 => 'required|email|max:100|unique:users',
@@ -119,6 +120,7 @@ class UsuarioController extends Controller
      */
     public function update($id,Request $request)
     {
+        Auth::user()->authorizeRoles(['ROLE_ROOT']);
         $rules = array(
             'name'                  => 'required|max:50|unique:users',
             'email'                 => 'required|email|max:100|unique:users',
@@ -132,7 +134,7 @@ class UsuarioController extends Controller
 
     if ($validator->fails()) {
         Alert::error('Error','Errores en el formulario.');
-        return Redirect::to('usuarios/create')
+        return Redirect::to('usuarios/'+$id+'/edit')
             ->withErrors($validator);
     } else {
         $role = Role::findOrFail($request->rol);
@@ -156,6 +158,7 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
+        Auth::user()->authorizeRoles(['ROLE_ROOT']);
         $usuario = User::findOrFail($id);
     
         $usuario->delete();

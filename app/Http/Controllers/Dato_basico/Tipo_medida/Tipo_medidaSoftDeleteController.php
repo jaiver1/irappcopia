@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Usuario;
+namespace App\Http\Controllers\Root\Usuario;
 use App\Http\Controllers\Controller;
 use App\Models\Root\User;
 Use Alert;

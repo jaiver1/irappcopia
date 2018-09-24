@@ -1,18 +1,19 @@
-<?php namespace App\Models\Base;
+<?php namespace App\Models\Dato_basico;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Medida extends Model
+class Tipo_medida extends Model
 {
   use SoftDeletes;
+
 
   /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'medidas';
+    protected $table = 'tipos_medidas';
 
     /**
      * The attributes that are not mass assignable.
@@ -28,11 +29,9 @@ class Medida extends Model
      */
   protected $fillable = [
     'nombre',
-    'etiqueta',
-    'tipo_medida_id'
   ];
 
-   /**
+  /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
@@ -50,8 +49,7 @@ class Medida extends Model
   ];
 
 
-public function tipo_medida()
-{
-    return $this->belongsTo('App\Models\Base\Tipo_medida');
+  public function medidas(){
+    return $this->hasMany('App\Models\Dato_basico\Medida');
 }
 }

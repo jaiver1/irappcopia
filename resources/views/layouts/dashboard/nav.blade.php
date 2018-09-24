@@ -118,16 +118,16 @@
                     <div class="accordion" id="accordionExample1">
 
 
-<a id="headingOne" class="{{(\Request::is('clientes') || \Request::is('clientes/*') || \Request::is('colaboradores') || \Request::is('colaboradores/*') ) ? 'active white-text':''}} list-group-item-action list-group-item waves-effect hoverable" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-<i class="fa fa-money mr-2"></i>  Datos basicos
+<a id="headingOne" class="{{(\Request::is('tipos_medidas') || \Request::is('tipos_medidas/*') || \Request::is('medidas') || \Request::is('medidas/*') ) ? 'active white-text':''}} list-group-item-action list-group-item waves-effect hoverable" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+<i class="fa fa-cubes mr-2"></i>  Datos basicos
 </a>
-<div id="collapseOne" class="collapse {{(\Request::is('clientes') || \Request::is('clientes/*') || \Request::is('colaboradores') || \Request::is('colaboradores/*') ) ? 'show':''}}" aria-labelledby="headingOne" data-parent="#accordionExample1">
+<div id="collapseOne" class="collapse {{(\Request::is('tipos_medidas') || \Request::is('tipos_medidas/*') || \Request::is('medidas') || \Request::is('medidas/*') ) ? 'show':''}}" aria-labelledby="headingOne" data-parent="#accordionExample1">
 <!-- List group links -->
 <div class="list-group list-group-flush sub-side-group">
-<a href="{{ route('clientes.index') }}" class="list-group-item-action list-group-item waves-effect hoverable {{(\Request::is('clientes') || \Request::is('clientes/*')) ? 'active white-text':''}}">
-            <i class="fa fa-pie-chart mr-2"></i>Tipo medidas</a>
-        <a href="{{ route('colaboradores.index') }}" class="list-group-item-action list-group-item waves-effect hoverable  {{(\Request::is('colaboradores') || \Request::is('colaboradores/*')) ? 'active white-text':''}}">
-            <i class="fa fa-user mr-2"></i>Medidas</a>
+<a href="{{ route('tipos_medidas.index') }}" class="list-group-item-action list-group-item waves-effect hoverable {{(\Request::is('tipos_medidas') || \Request::is('tipos_medidas/*')) ? 'active white-text':''}}">
+            <i class="fa fa-tachometer mr-2"></i>Tipo medidas</a>
+        <a href="{{ route('colaboradores.index') }}" class="list-group-item-action list-group-item waves-effect hoverable  {{(\Request::is('medidas') || \Request::is('medidas/*')) ? 'active white-text':''}}">
+            <i class="fa fa-sliders mr-2"></i>Medidas</a>
       
                     </div>
                     <!-- List group links -->
