@@ -1,145 +1,324 @@
 @section('css_auth')
-<link rel="stylesheet" href="{{ asset('css/dashboard/style.css') }}" type="text/css">
+<link rel="stylesheet" href="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.min.css" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/dashboard/navbar-custom.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/dashboard/navbar-custom-themes.css') }}" type="text/css">
+@endsection
+@section('js_auth')
+<script type="text/javascript" src="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<script type="text/javascript" src="{{ asset('js/dashboard/navbar-custom.js') }}"></script>
 @endsection
 @section('navegation')
 <header>
+
 <!-- Navbar -->
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark stylish-color scrolling-navbar hoverable">
-            <div class="container-fluid">
-
-                <!-- Brand -->
-                <a class="navbar-brand waves-effect" href="{{ route('home') }}">
-                    <strong class="blue-text">{{ config('app.name', 'Laravel') }}</strong>
-                </a>
-
-                <!-- Collapse -->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <!-- Links -->
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                    <!-- Left -->
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item {{(\Request::is('home'))?'active hoverable':''}}">
-                            <a class="nav-link waves-effect" href="{{ route('home') }}">
-                            <i class="fa fa-home mr-2"></i>Página principal
-                                <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  {{(\Request::is('usuarios') || \Request::is('usuarios/*'))?'active hoverable':''}}">
-                            <a class="nav-link waves-effect" href="{{ route('usuarios.index') }}">
-                            <i class="fa fa-users mr-2"></i>Usuarios
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect" href="https://mdbootstrap.com/getting-started/" target="_blank">Free download</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect" href="https://mdbootstrap.com/bootstrap-tutorial/" target="_blank">Free tutorials</a>
-                        </li>
-                        <li class="nav-item dropdown active">
-                    <a class="nav-link dropdown-toggle waves-effect" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right menu-sup" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item hoverable waves-effect" href="#">Action</a>
-                        <a class="dropdown-item hoverable waves-effect" href="#">Another action</a>
-                        <a class="dropdown-item hoverable waves-effect" href="#">Something else here</a>
+<nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-content">
+        <div class="sidebar-brand">
+            <a href="#">pro sidebar</a>
+            <div id="close-sidebar">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="sidebar-header">
+            <div class="user-pic">
+                <img class="img-responsive img-rounded" src="assets/img/user.jpg" alt="User picture">
+            </div>
+            <div class="user-info">
+                <span class="user-name">Jhon
+                    <strong>Smith</strong>
+                </span>
+                <span class="user-role">Administrator</span>
+                <span class="user-status">
+                    <i class="fa fa-circle"></i>
+                    <span>Online</span>
+                </span>
+            </div>
+        </div>
+        <!-- sidebar-header  -->
+        <div class="sidebar-search">
+            <div>
+                <div class="input-group">
+                    <input type="text" class="form-control search-menu" placeholder="Search...">
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </span>
                     </div>
-                </li>
-                    </ul>
-
-                    <!-- Right -->
-                    <ul class="navbar-nav nav-flex-icons">
-                        
-                    <li class="nav-item dropdown active">
-                    <a class="nav-link border border-light rounded dropdown-toggle hoverable waves-effect" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-user-circle mr-2"></i>{{ Auth::user()->name }}
-                    </a>
-                    <div class="user-name-sup dropdown-menu dropdown-menu-right menu-sup" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item hoverable waves-effect" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                        <i class="fa fa-sign-out mr-2"></i> Cerrar sesión
-                                      </a>                      
-                    </div>
-                </li>
-                    </ul>
-
                 </div>
+            </div>
+        </div>
+        <!-- sidebar-search  -->
+        <div class="sidebar-menu">
+            <ul>
+                <li class="header-menu">
+                    <span>General</span>
+                </li>
+                <li class="sidebar-dropdown">
+                    <a href="#">
+                        <i class="fa fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                        <span class="badge badge-pill badge-danger">New</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+                            <li>
+                                <a href="#">Dashboard 1
+                                    <span class="badge badge-pill badge-success">Pro</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">Dashboard 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Dashboard 3</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="sidebar-dropdown">
+                    <a href="#">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span>E-commerce</span>
+                        <span class="badge badge-pill badge-primary">3</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+                            <li>
+                                <a href="#">Products
+
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">Orders</a>
+                            </li>
+                            <li>
+                                <a href="#">Credit cart</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="sidebar-dropdown">
+                    <a href="#">
+                        <i class="far fa-gem"></i>
+                        <span>Components</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+                            <li>
+                                <a href="#">General</a>
+                            </li>
+                            <li>
+                                <a href="#">Panels</a>
+                            </li>
+                            <li>
+                                <a href="#">Tables</a>
+                            </li>
+                            <li>
+                                <a href="#">Icons</a>
+                            </li>
+                            <li>
+                                <a href="#">Forms</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="sidebar-dropdown">
+                    <a href="#">
+                        <i class="fa fa-chart-line"></i>
+                        <span>Charts</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+                            <li>
+                                <a href="#">Pie chart</a>
+                            </li>
+                            <li>
+                                <a href="#">Line chart</a>
+                            </li>
+                            <li>
+                                <a href="#">Bar chart</a>
+                            </li>
+                            <li>
+                                <a href="#">Histogram</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="sidebar-dropdown">
+                    <a href="#">
+                        <i class="fa fa-globe"></i>
+                        <span>Maps</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+                            <li>
+                                <a href="#">Google maps</a>
+                            </li>
+                            <li>
+                                <a href="#">Open street map</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="header-menu">
+                    <span>Extra</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-calendar"></i>
+                        <span>Calendar</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-folder"></i>
+                        <span>Examples</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-book"></i>
+                        <span>Documentation</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- sidebar-menu  -->
+    </div>
+    <!-- sidebar-content  -->
+    <div class="sidebar-footer">
+        <div class="dropdown">
+
+            <a href="#" class="" id="dropdownMenuNotification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-bell"></i>
+                <span class="badge badge-pill badge-warning notification">3</span>
+            </a>
+            <div class="dropdown-menu notifications" aria-labelledby="dropdownMenuMessage">
+                <div class="notifications-header">
+                    <i class="fa fa-bell"></i>
+                    Notifications
+                </div>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">
+                    <div class="notification-content">
+                        <div class="icon">
+                            <i class="fas fa-check text-success border border-success"></i>
+                        </div>
+                        <div class="content">
+                            <div class="notification-detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. In totam explicabo</div>
+                            <div class="notification-time">
+                                6 minutes ago
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a class="dropdown-item" href="#">
+                    <div class="notification-content">
+                        <div class="icon">
+                            <i class="fas fa-exclamation text-info border border-info"></i>
+                        </div>
+                        <div class="content">
+                            <div class="notification-detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. In totam explicabo</div>
+                            <div class="notification-time">
+                                Today
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a class="dropdown-item" href="#">
+                    <div class="notification-content">
+                        <div class="icon">
+                            <i class="fas fa-exclamation-triangle text-warning border border-warning"></i>
+                        </div>
+                        <div class="content">
+                            <div class="notification-detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. In totam explicabo</div>
+                            <div class="notification-time">
+                                Yesterday
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-center" href="#">View all notifications</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="#" class="" id="dropdownMenuMessage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-envelope"></i>
+                <span class="badge badge-pill badge-success notification">7</span>
+            </a>
+            <div class="dropdown-menu messages" aria-labelledby="dropdownMenuMessage">
+                <div class="messages-header">
+                    <i class="fa fa-envelope"></i>
+                    Messages
+                </div>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">
+                    <div class="message-content">
+                        <div class="pic">
+                            <img src="assets/img/user.jpg" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="message-title">
+                                <strong> Jhon doe</strong>
+                            </div>
+                            <div class="message-detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. In totam explicabo</div>
+                        </div>
+                    </div>
+
+                </a>
+                <a class="dropdown-item" href="#">
+                    <div class="message-content">
+                        <div class="pic">
+                            <img src="assets/img/user.jpg" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="message-title">
+                                <strong> Jhon doe</strong>
+                            </div>
+                            <div class="message-detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. In totam explicabo</div>
+                        </div>
+                    </div>
+
+                </a>
+                <a class="dropdown-item" href="#">
+                    <div class="message-content">
+                        <div class="pic">
+                            <img src="assets/img/user.jpg" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="message-title">
+                                <strong> Jhon doe</strong>
+                            </div>
+                            <div class="message-detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. In totam explicabo</div>
+                        </div>
+                    </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-center" href="#">View all messages</a>
 
             </div>
-        </nav>
-        <!-- Navbar -->
-
-        <!-- Sidebar -->
-        <div class="sidebar-fixed special-color-dark position-fixed hoverable">
-
-            <a class="logo-wrapper waves-effect" href="{{ route('home') }}">
-                <img src="https://mdbootstrap.com/img/logo/mdb-email.png" class="img-fluid" alt="Logo">
-            </a>
-
-            <div class="list-group list-group-flush side-group">
-                <a href="{{ route('home') }}" 
-                class=" {{(\Request::is('home'))?'active white-text':''}} list-group-item-action list-group-item waves-effect hoverable">
-                    <i class="fa fa-home mr-2"></i>Página principal</a>
-                    <a href="{{ route('usuarios.index') }}" 
-                class=" {{(\Request::is('usuarios') || \Request::is('usuarios/*'))?'active white-text':''}} list-group-item-action list-group-item waves-effect hoverable">
-                    <i class="fa fa-users mr-2"></i>Usuarios</a>
-                
-
-<div class="accordion" id="accordionExample2">
-
-
-<a id="headingOne" class="{{(\Request::is('clientes') || \Request::is('clientes/*') || \Request::is('colaboradores') || \Request::is('colaboradores/*') ) ? 'active white-text':''}} list-group-item-action list-group-item waves-effect hoverable" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-<i class="fa fa-address-book mr-2"></i>  Contactos
-</a>
-<div id="collapseTwo" class="collapse {{(\Request::is('clientes') || \Request::is('clientes/*') || \Request::is('colaboradores') || \Request::is('colaboradores/*') ) ? 'show':''}}" aria-labelledby="headingOne" data-parent="#accordionExample2">
-<!-- List group links -->
-<div class="list-group list-group-flush sub-side-group">
-<a href="{{ route('clientes.index') }}" class="list-group-item-action list-group-item waves-effect hoverable {{(\Request::is('clientes') || \Request::is('clientes/*')) ? 'active white-text':''}}">
-            <i class="fa fa-pie-chart mr-2"></i>Clientes</a>
-        <a href="{{ route('colaboradores.index') }}" class="list-group-item-action list-group-item waves-effect hoverable {{(\Request::is('colaboradores') || \Request::is('colaboradores/*')) ? 'active white-text':''}}">
-            <i class="fa fa-user mr-2"></i>Colaboradores</a>
-      
-                    </div>
-                    <!-- List group links -->
-</div>
-
-    </div>
-
-
-
-                    <div class="accordion" id="accordionExample1">
-
-
-<a id="headingOne" class="{{(\Request::is('tipos_medidas') || \Request::is('tipos_medidas/*') || \Request::is('medidas') || \Request::is('medidas/*') ) ? 'active white-text':''}} list-group-item-action list-group-item waves-effect hoverable" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-<i class="fa fa-cubes mr-2"></i>  Datos basicos
-</a>
-<div id="collapseOne" class="collapse {{(\Request::is('tipos_medidas') || \Request::is('tipos_medidas/*') || \Request::is('medidas') || \Request::is('medidas/*') ) ? 'show':''}}" aria-labelledby="headingOne" data-parent="#accordionExample1">
-<!-- List group links -->
-<div class="list-group list-group-flush sub-side-group">
-<a href="{{ route('tipos_medidas.index') }}" class="list-group-item-action list-group-item waves-effect hoverable {{(\Request::is('tipos_medidas') || \Request::is('tipos_medidas/*')) ? 'active white-text':''}}">
-            <i class="fa fa-tachometer mr-2"></i>Tipo medidas</a>
-        <a href="{{ route('colaboradores.index') }}" class="list-group-item-action list-group-item waves-effect hoverable  {{(\Request::is('medidas') || \Request::is('medidas/*')) ? 'active white-text':''}}">
-            <i class="fa fa-sliders mr-2"></i>Medidas</a>
-      
-                    </div>
-                    <!-- List group links -->
-</div>
-
-    </div>
-
-                  
-            
-
         </div>
-        <!-- Sidebar -->
+        <div class="dropdown">
+            <a href="#" class="" id="dropdownMenuMessage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-cog"></i>
+                <span class="badge-sonar"></span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuMessage">
+                <a class="dropdown-item" href="#">My profile</a>
+                <a class="dropdown-item" href="#">Help</a>
+                <a class="dropdown-item" href="#">Setting</a>
+            </div>
+        </div>
+        <div>
+            <a href="#">
+                <i class="fa fa-power-off"></i>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- sidebar-wrapper  -->
 
 </header>
 @endsection

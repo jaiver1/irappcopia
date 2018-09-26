@@ -2,7 +2,13 @@
 @section('main')
 @include('layouts.dashboard.nav')
 @include('layouts.dashboard.footer')
+<div class="page-wrapper chiller-theme sidebar-bg bg1 toggled">
+        <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+            <i class="fas fa-bars"></i>
+        </a>
 @yield('navegation')
-@yield('content')
-@yield('footer')
+<main class="page-content">
+asd
+</main>
+    </div>
 @endsection

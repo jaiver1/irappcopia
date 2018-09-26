@@ -36,6 +36,7 @@
     new WOW().init();
   </script>
 @include('sweetalert::alert')
+@yield('js_auth')
   @yield('js_links')
 </body>
 </html>
