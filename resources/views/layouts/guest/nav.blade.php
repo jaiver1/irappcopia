@@ -32,7 +32,7 @@
           <li class="nav-item {{(\Request::is('login'))?'active':''}}">
             <a href="{{ route('login') }}" class="nav-link border border-light rounded hoverable hoverable waves-light"
               >
-              <i class="fa fa-sign-in mr-2"></i>Iniciar sesión
+              <i class="fa fa-sign-in-alt mr-2"></i>Iniciar sesión
             </a>
           </li>
           <li class="nav-item {{(\Request::is('register'))?'active':''}}">
@@ -52,7 +52,7 @@
                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
-                                        <i class="fa fa-sign-out mr-2"></i> Cerrar sesión
+                                        <i class="fa fa-power-off mr-2"></i> Cerrar sesión
                                       </a>                      
                     </div>
                 </li>

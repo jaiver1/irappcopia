@@ -25,7 +25,7 @@ Iniciar sesión | {{ config('app.name', 'Laravel') }}
                                         <div class="card-body">
                                             <!--Header-->
                                             <div class="text-center">
-                                                <h3 class="white-text"><i class="fa fa-sign-in mr-2"></i>Iniciar sesión</h3>
+                                                <h3 class="white-text"><i class="fa fa-sign-in-alt mr-2"></i>Iniciar sesión</h3>
                                                 <hr class="hr-light">
                                             </div>
                                             <form method="POST" action="{{ route('login') }}">
@@ -61,7 +61,7 @@ Iniciar sesión | {{ config('app.name', 'Laravel') }}
 @endif
 
                                             <div class="text-center">
-                                                <button class="btn btn-indigo"><i class="fa fa-sign-in mr-2"></i>Iniciar sesión</button>
+                                                <button class="btn btn-indigo"><i class="fa fa-sign-in-alt mr-2"></i>Iniciar sesión</button>
                                                    
                                             </div>
                                             </form>
