@@ -2,6 +2,16 @@
 <link rel="stylesheet" href="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.min.css" type="text/css">
 <link rel="stylesheet" href="{{ asset('css/dashboard/navbar-custom.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('css/dashboard/navbar-custom-themes.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/dashboard/style.css') }}" type="text/css">
+<style type="text/css">
+.intro-2 {
+    background: url("{{ asset('img/guest/login/background.jpg') }}")no-repeat center center;
+    background-size: cover;
+}
+.sidebar-bg.bg1 .sidebar-wrapper{
+    background-image: url("{{ asset('img/bg1.jpg')}}");
+}
+</style>
 @endsection
 @section('js_auth')
 <script type="text/javascript" src="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
@@ -16,12 +26,12 @@
         <div class="sidebar-brand">
             <a href="#">pro sidebar</a>
             <div id="close-sidebar">
-                <i class="fas fa-times"></i>
+                <i class="fas fa-times-circle"></i>
             </div>
         </div>
         <div class="sidebar-header">
             <div class="user-pic">
-                <img class="img-responsive img-rounded" src="assets/img/user.jpg" alt="User picture">
+                <img class="img-responsive img-rounded" src="{{ asset('img/user.jpg') }}" alt="User picture">
             </div>
             <div class="user-info">
                 <span class="user-name">Jhon

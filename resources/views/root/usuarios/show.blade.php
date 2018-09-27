@@ -29,7 +29,7 @@ Información del usuario "{{ $usuario->name }}" | {{ config('app.name', 'Laravel
 
                              <a href="{{ URL::to('usuarios/' . $usuario->id.'/edit') }}" class="btn btn-outline-warning btn-circle waves-effect hoverable" 
                     data-toggle="tooltip" data-placement="bottom" title='Editar usuario "{{ $usuario->name }}"'>
-                      <i class="fa fa-2x fa-pencil"></i>
+                      <i class="fa fa-2x fa-pencil-alt"></i>
                             </a>
                     </div>
 

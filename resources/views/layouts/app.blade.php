@@ -11,7 +11,7 @@
     <title>@yield('template_title')</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome.all.css') }}" rel="stylesheet">
   <!-- Bootstrap core CSS -->
   <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
   <!-- Material Design Bootstrap -->

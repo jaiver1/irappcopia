@@ -145,8 +145,8 @@ function eliminar_usuario(id,nombre){
   title: 'Eliminar usuario',
   text: '¿Desea eliminar definitivamente el usuario "'+nombre+'"?',
   type: 'warning',
-  confirmButtonText: 'Eliminar',
-  cancelButtonText: 'Cancelar',
+  confirmButtonText: '<i class="fa fa-trash"></i> Eliminar',
+  cancelButtonText: '<i class="fa fa-times"></i> Cancelar',
   showCancelButton: true,
   showCloseButton: true,
   confirmButtonClass: 'btn btn-success',
@@ -177,8 +177,8 @@ function restaurar_usuario(id,nombre){
   title: 'Restaurar usuario',
   text: '¿Desea restaurar el usuario "'+nombre+'"?',
   type: 'question',
-  confirmButtonText: 'Restaurar',
-  cancelButtonText: 'Cancelar',
+  confirmButtonText: '<i class="fa fa-undo"></i> Restaurar',
+  cancelButtonText: '<i class="fa fa-times"></i> Cancelar',
   showCancelButton: true,
   showCloseButton: true,
   confirmButtonClass: 'btn btn-success',
@@ -226,7 +226,7 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
                 buttons: [
                     {
                 extend:    'copyHtml5',
-                text:      '<i class="fa fa-files-o"></i> Copiar',
+                text:      '<i class="fa fa-copy"></i> Copiar',
                 titleAttr: 'Copiar',
                 title: titulo_archivo
             },
@@ -238,24 +238,24 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
             },
             {
                 extend: 'collection',
-                text:      '<i class="fa fa-cloud-download"></i> Exportar',
+                text:      '<i class="fa fa-cloud-download-alt"></i> Exportar',
                 titleAttr: 'Exportar',
                 buttons: [         
             {
                 extend:    'csvHtml5',
-                text:      '<i class="fa fa-file-text-o"></i> Csv',
+                text:      '<i class="fa fa-file-alt"></i> Csv',
                 titleAttr: 'Csv',
                 title: titulo_archivo
             }, 
             {
                 extend:    'excelHtml5',
-                text:      '<i class="fa fa-file-excel-o"></i> Excel',
+                text:      '<i class="fa fa-file-excel"></i> Excel',
                 titleAttr: 'Excel',
                 title: titulo_archivo
             },
             {
                 extend:    'pdfHtml5',
-                text:      '<i class="fa fa-file-pdf-o"></i> Pdf',
+                text:      '<i class="fa fa-file-pdf"></i> Pdf',
                 titleAttr: 'Pdf',
                 title: titulo_archivo
             }

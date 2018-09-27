@@ -33,7 +33,7 @@ Editar usuario "{{ $usuario->name }}" | {{ config('app.name', 'Laravel') }}
 
                             <a href="{{ URL::to('usuarios/' . $usuario->id) }}" class="btn btn-outline-primary btn-circle waves-effect hoverable" 
                     data-toggle="tooltip" data-placement="bottom" title='Informacion del usuario "{{ $usuario->name }}"'>
-                      <i class="fa fa-2x fa-info-circle"></i>
+                      <i class="fa fa-2x fa-info"></i>
                             </a>
                     </div>
 

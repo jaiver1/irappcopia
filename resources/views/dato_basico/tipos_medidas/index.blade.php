@@ -87,12 +87,12 @@ Lista de tipos de medidas | {{ config('app.name', 'Laravel') }}
 
       <a href="{{ URL::to('tipos_medidas/' . $tipo_medida->id.'/edit') }}" class="text-warning m-1" 
                     data-toggle="tooltip" data-placement="bottom" title='Editar el tipo de medida "{{ $tipo_medida->nombre }}"'>
-                      <i class="fa fa-2x fa-pencil"></i>
+                      <i class="fa fa-2x fa-pencil-alt"></i>
                             </a>
 
                             <a onclick="eliminar_tipo_medida({{ $tipo_medida->id }},'{{ $tipo_medida->nombre }}')" class="text-danger m-1" 
                     data-toggle="tooltip" data-placement="bottom" title='Eliminar el tipo de medida "{{ $tipo_medida->nombre }}"'>
-                      <i class="fa fa-2x fa-trash"></i>
+                      <i class="fa fa-2x fa-trash-alt"></i>
                             </a>
                             <form id="eliminar{{ $tipo_medida->id }}" method="POST" action="{{ URL::to('tipos_medidas/' . $tipo_medida->id) }}" accept-charset="UTF-8">
     <input name="_method" type="hidden" value="DELETE">
@@ -143,8 +143,8 @@ function eliminar_tipo_medida(id,nombre){
   title: 'Eliminar tipo de medida',
   text: '¿Desea eliminar el tipo de medida "'+nombre+'"?',
   type: 'question',
-  confirmButtonText: 'Eliminar',
-  cancelButtonText: 'Cancelar',
+  confirmButtonText: '<i class="fa fa-trash-alt"></i> Eliminar',
+  cancelButtonText: '<i class="fa fa-times"></i> Cancelar',
   showCancelButton: true,
   showCloseButton: true,
   confirmButtonClass: 'btn btn-success',
@@ -193,7 +193,7 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
                 buttons: [
                     {
                 extend:    'copyHtml5',
-                text:      '<i class="fa fa-files-o"></i> Copiar',
+                text:      '<i class="fa fa-copy"></i> Copiar',
                 titleAttr: 'Copiar',
                 title: titulo_archivo
             },
@@ -205,24 +205,24 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
             },
             {
                 extend: 'collection',
-                text:      '<i class="fa fa-cloud-download"></i> Exportar',
+                text:      '<i class="fa fa-cloud-download-alt"></i> Exportar',
                 titleAttr: 'Exportar',
                 buttons: [         
             {
                 extend:    'csvHtml5',
-                text:      '<i class="fa fa-file-text-o"></i> Csv',
+                text:      '<i class="fa fa-file-alt"></i> Csv',
                 titleAttr: 'Csv',
                 title: titulo_archivo
             }, 
             {
                 extend:    'excelHtml5',
-                text:      '<i class="fa fa-file-excel-o"></i> Excel',
+                text:      '<i class="fa fa-file-excel"></i> Excel',
                 titleAttr: 'Excel',
                 title: titulo_archivo
             },
             {
                 extend:    'pdfHtml5',
-                text:      '<i class="fa fa-file-pdf-o"></i> Pdf',
+                text:      '<i class="fa fa-file-pdf"></i> Pdf',
                 titleAttr: 'Pdf',
                 title: titulo_archivo
             }

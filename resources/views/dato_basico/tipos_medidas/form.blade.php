@@ -16,7 +16,7 @@
             <div class="md-form">
     <i class="fa fa-tachometer prefix"></i>
     <input type="text" required id="nombre" value="{{ $tipo_medida->nombre}}" name="nombre" class="form-control validate">
-    <label for="nombre" data-error="Error" data-success="Correcto">Usuario</label>
+    <label for="nombre" data-error="Error" data-success="Correcto">Nombre</label>
 </div>
 @if ($errors->has('nombre'))
                                             <div class="hoverable waves-light alert alert-danger alert-dismissible fade show" role="alert">
@@ -34,7 +34,7 @@
 
 
     <button type="submit" class="waves-effect btn {{($editar) ? 'btn-warning' : 'btn-success'}} btn-md hoverable">
-    <i class="fa fa-2x {{($editar) ? 'fa-pencil' : 'fa-plus'}}"></i> {{($editar) ? 'Editar' : 'Registrar'}}
+    <i class="fa fa-2x {{($editar) ? 'fa-pencil-alt' : 'fa-plus'}}"></i> {{($editar) ? 'Editar' : 'Registrar'}}
     </button>
 </form>
 @endsection
