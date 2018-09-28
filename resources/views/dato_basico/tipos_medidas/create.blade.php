@@ -3,14 +3,11 @@
 @section('template_title')
 Registrar tipo de medida | {{ config('app.name', 'Laravel') }}
 @endsection
-@section('footer_title')
-Registrar tipo de medida | {{ config('app.name', 'Laravel') }}
-@endsection
 @section('css_links')
 <link rel="stylesheet" href="{{ asset('css/addons/select2.css') }}" type="text/css"/>
 @endsection
 @section('content')
-<main class="pt-5 mx-lg-5">
+
         <div class="container-fluid mt-5">
 
             <!-- Heading -->
@@ -67,8 +64,7 @@ Registrar tipo de medida | {{ config('app.name', 'Laravel') }}
 
           
         </div>
-    </main>
-    <!--Main layout-->
+
 @endsection
 @section('js_links')
 <script type="text/javascript">

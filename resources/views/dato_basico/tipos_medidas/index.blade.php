@@ -2,9 +2,6 @@
 @section('template_title')
 Lista de tipos de medidas | {{ config('app.name', 'Laravel') }}
 @endsection
-@section('footer_title')
-Lista de tipos de medidas | {{ config('app.name', 'Laravel') }}
-@endsection
 @section('css_links')
 <link rel="stylesheet" href="{{ asset('css/addons/datatables.min.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('css/addons/bt4-datatables.min.css') }}" type="text/css">
@@ -12,7 +9,6 @@ Lista de tipos de medidas | {{ config('app.name', 'Laravel') }}
 <link rel="stylesheet" href="{{ asset('css/addons/bt4-buttons-datatables.min.css') }}" type="text/css">
 @endsection
 @section('content')
-<main class="pt-5 mx-lg-5">
         <div class="container-fluid mt-5">
 
             <!-- Heading -->
@@ -118,8 +114,7 @@ Lista de tipos de medidas | {{ config('app.name', 'Laravel') }}
 
           
         </div>
-    </main>
-    <!--Main layout-->
+
 @endsection
 @section('js_links')
 <!-- DataTables core JavaScript -->

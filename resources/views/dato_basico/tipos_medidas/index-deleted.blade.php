@@ -2,9 +2,6 @@
 @section('template_title')
 Tipos de medidas eliminadas | {{ config('app.name', 'Laravel') }}
 @endsection
-@section('footer_title')
-Tipos de medidas eliminadas | {{ config('app.name', 'Laravel') }}
-@endsection
 @section('css_links')
 <link rel="stylesheet" href="{{ asset('css/addons/datatables.min.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('css/addons/bt4-datatables.min.css') }}" type="text/css">
@@ -12,7 +9,7 @@ Tipos de medidas eliminadas | {{ config('app.name', 'Laravel') }}
 <link rel="stylesheet" href="{{ asset('css/addons/bt4-buttons-datatables.min.css') }}" type="text/css">
 @endsection
 @section('content')
-<main class="pt-5 mx-lg-5">
+
         <div class="container-fluid mt-5">
 
             <!-- Heading -->
@@ -36,7 +33,7 @@ Tipos de medidas eliminadas | {{ config('app.name', 'Laravel') }}
                     <div class="d-flex justify-content-center">
                     <a href="{{ route('tipos_medidas.index') }}" class="btn btn-outline-secondary btn-circle waves-effect hoverable" 
                     data-toggle="tooltip" data-placement="bottom" title="Lista de tipos_medidas">
-                      <i class="fa fa-2x fa-tachometer"></i>
+                      <i class="fa fa-2x fa-tachometer-alt"></i>
                             </a>
                     </div>
 
@@ -65,7 +62,8 @@ Tipos de medidas eliminadas | {{ config('app.name', 'Laravel') }}
       </th>
       <th class="th-sm">Nombre
       </th>
-   
+      <th class="th-sm">Acciones
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -82,7 +80,7 @@ Tipos de medidas eliminadas | {{ config('app.name', 'Laravel') }}
                 
                             <a onclick="eliminar_tipos_medida({{ $tipo_medida->id }},'{{ $tipo_medida->nombre }}')" class="text-danger m-1" 
                     data-toggle="tooltip" data-placement="bottom" title='Eliminar definitivamente el tipos_medida "{{ $tipo_medida->nombre }}"'>
-                      <i class="fa fa-2x fa-trash-alt"></i>
+                      <i class="fa fa-2x fa-trash"></i>
                             </a>
                             <form id="restaurar{{ $tipo_medida->id }}" method="POST" action="{{ URL::to('tipos_medidas/deleted/' . $tipo_medida->id) }}" accept-charset="UTF-8">
     <input name="_method" type="hidden" value="PUT">
@@ -112,8 +110,7 @@ Tipos de medidas eliminadas | {{ config('app.name', 'Laravel') }}
 
           
         </div>
-    </main>
-    <!--Main layout-->
+
 @endsection
 @section('js_links')
 <!-- DataTables core JavaScript -->
@@ -134,8 +131,8 @@ Tipos de medidas eliminadas | {{ config('app.name', 'Laravel') }}
 
 function eliminar_tipos_medida(id,nombre){
     swal({
-  title: 'Eliminar tipos_medida',
-  text: '¿Desea eliminar definitivamente el tipos_medida "'+nombre+'"?',
+  title: 'Eliminar tipo de medida',
+  text: '¿Desea eliminar definitivamente el tipo de medida "'+nombre+'"?',
   type: 'warning',
   confirmButtonText: '<i class="fa fa-trash"></i> Eliminar',
   cancelButtonText: '<i class="fa fa-times"></i> Cancelar',
@@ -153,7 +150,7 @@ function eliminar_tipos_medida(id,nombre){
     swal({
   position: 'top-end',
   type: 'error',
-  title: 'Operación cancelada por el tipos_medida',
+  title: 'Operación cancelada por el usuario',
   showConfirmButton: false,
   toast: true,
   animation: false,
@@ -166,8 +163,8 @@ function eliminar_tipos_medida(id,nombre){
 
 function restaurar_tipos_medida(id,nombre){
     swal({
-  title: 'Restaurar tipos_medida',
-  text: '¿Desea restaurar el tipos_medida "'+nombre+'"?',
+  title: 'Restaurar tipo de medida',
+  text: '¿Desea restaurar el tipo de medida "'+nombre+'"?',
   type: 'question',
   confirmButtonText: '<i class="fa fa-undo"></i> Restaurar',
   cancelButtonText: '<i class="fa fa-times"></i> Cancelar',
@@ -185,7 +182,7 @@ function restaurar_tipos_medida(id,nombre){
     swal({
   position: 'top-end',
   type: 'error',
-  title: 'Operación cancelada por el tipos_medida',
+  title: 'Operación cancelada por el usuario',
   showConfirmButton: false,
   toast: true,
   animation: false,
@@ -202,7 +199,7 @@ function restaurar_tipos_medida(id,nombre){
 $(document).ready(function() {
     moment.locale('es');
 var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a'); 
-    var titulo_archivo = "Lista de tipos_medidas eliminados ("+datetime+")";
+    var titulo_archivo = "Lista de tipos de medidas eliminados ("+datetime+")";
      $('#dttipos_medidas').DataTable( {
         dom: 'Bfrtip',
     lengthMenu: [
@@ -269,7 +266,7 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
                 display: $.fn.dataTable.Responsive.display.modal( {
                     header: function ( row ) {
                         var data = row.data();
-                        return 'Datos de tipos_medida eliminado '+ data[1];
+                        return 'Datos de tipo de medida eliminado '+ data[1];
                     }
                 } ),
                 renderer: $.fn.dataTable.Responsive.renderer.tableAll( {

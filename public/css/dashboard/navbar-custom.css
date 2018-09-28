@@ -145,6 +145,7 @@ body {
     border-radius: 0 4px 4px 0px;
     width: 35px;
     transition-delay: .3s;
+    z-index: 3;
 }
 
 .page-wrapper.toggled #show-sidebar {

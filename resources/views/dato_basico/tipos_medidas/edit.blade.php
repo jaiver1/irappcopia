@@ -3,14 +3,11 @@
 @section('template_title')
 Editar tipo de medida "{{ $tipo_medida->nombre }}" | {{ config('app.name', 'Laravel') }}
 @endsection
-@section('footer_title')
-Editar tipo de medida "{{ $tipo_medida->nombre }}" | {{ config('app.name', 'Laravel') }}
-@endsection
 @section('css_links')
 <link rel="stylesheet" href="{{ asset('css/addons/select2.css') }}" type="text/css"/>
 @endsection
 @section('content')
-<main class="pt-5 mx-lg-5">
+
         <div class="container-fluid mt-5">
 
             <!-- Heading -->
@@ -28,7 +25,7 @@ Editar tipo de medida "{{ $tipo_medida->nombre }}" | {{ config('app.name', 'Lara
                     <div class="d-flex justify-content-center">
                     <a href="{{ route('tipos_medidas.index') }}" class="btn btn-outline-secondary btn-circle waves-effect hoverable" 
                     data-toggle="tooltip" data-placement="bottom" title="Lista de tipos de medidas">
-                      <i class="fa fa-2x fa-tachometer"></i>
+                      <i class="fa fa-2x fa-tachometer-alt"></i>
                             </a>
 
                             <a href="{{ URL::to('tipos_medidas/' . $tipo_medida->id) }}" class="btn btn-outline-primary btn-circle waves-effect hoverable" 
@@ -72,8 +69,7 @@ Editar tipo de medida "{{ $tipo_medida->nombre }}" | {{ config('app.name', 'Lara
 
           
         </div>
-    </main>
-    <!--Main layout-->
+
 @endsection
 @section('js_links')
 <script type="text/javascript">

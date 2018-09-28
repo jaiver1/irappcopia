@@ -139,6 +139,7 @@ class Tipo_medidaController extends Controller
      */
     public function destroy($id)
     {
+        Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
         $tipo_medida = Tipo_medida::findOrFail($id);
     
         $tipo_medida->delete();

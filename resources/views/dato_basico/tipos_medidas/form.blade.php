@@ -14,7 +14,7 @@
         <div class="col-md-12">
             <!-- Material input -->
             <div class="md-form">
-    <i class="fa fa-tachometer prefix"></i>
+    <i class="fa fa-tachometer-alt prefix"></i>
     <input type="text" required id="nombre" value="{{ $tipo_medida->nombre}}" name="nombre" class="form-control validate">
     <label for="nombre" data-error="Error" data-success="Correcto">Nombre</label>
 </div>

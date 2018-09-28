@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Root\Usuario;
+namespace App\Http\Controllers\Dato_basico\Tipo_medida;
 use App\Http\Controllers\Controller;
-use App\Models\Root\User;
+use App\Models\Dato_basico\Tipo_medida;
 Use Alert;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class UsuarioSoftDeleteController extends Controller
+class Tipo_medidaSoftDeleteController extends Controller
 {
     protected $redirectTo = '/login';
     
@@ -24,16 +24,16 @@ class UsuarioSoftDeleteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    private static function getDeletedUsuario($id)
+    private static function getDeletedTipo_medida($id)
     {
-        $usuario = User::onlyTrashed()->where('id', $id)->get();
+        $tipo_medida = Tipo_medida::onlyTrashed()->where('id', $id)->get();
         
-        if (count($usuario) != 1) {
-            Alert::error('Error','El usuario no existe.');
-            return redirect('/usuarios/deleted');
+        if (count($tipo_medida) != 1) {
+            Alert::error('Error','El tipo de medida no existe.');
+            return redirect('/tipos_medidas/deleted');
         }
 
-        return $usuario[0];
+        return $tipo_medida[0];
     }
 
     /**
@@ -43,9 +43,9 @@ class UsuarioSoftDeleteController extends Controller
      */
     public function index()
     {
-    Auth::user()->authorizeRoles(['ROLE_ROOT']);
-        $usuarios = User::onlyTrashed()->get();
-        return View('root.usuarios.index-deleted', compact('usuarios'));
+        Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
+        $tipos_medidas = Tipo_medida::onlyTrashed()->get();
+        return View('dato_basico.tipos_medidas.index-deleted', compact('tipos_medidas'));
     }
 
 
@@ -59,11 +59,11 @@ class UsuarioSoftDeleteController extends Controller
      */
     public function update($id)
     {
-        Auth::user()->authorizeRoles(['ROLE_ROOT']);
-        $usuario = self::getDeletedUsuario($id);
-        $usuario->restore();
-        Alert::success('Exito','El usuario "'.$usuario->name.'" ha sido restaurado.');
-        return Redirect::to('usuarios/deleted');
+        Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
+        $tipo_medida = self::getDeletedTipo_medida($id);
+        $tipo_medida->restore();
+        Alert::success('Exito','El tipo de medida "'.$tipo_medida->nombre.'" ha sido restaurado.');
+        return Redirect::to('tipos_medidas/deleted');
     }
 
     /**
@@ -75,10 +75,10 @@ class UsuarioSoftDeleteController extends Controller
      */
     public function destroy($id)
     {
-        Auth::user()->authorizeRoles(['ROLE_ROOT']);
-        $usuario = self::getDeletedUsuario($id);
-        $usuario->forceDelete();
-        Alert::success('Exito','El usuario "'.$usuario->name.'" ha sido eliminado permanentemente.');
-        return Redirect::to('usuarios/deleted');
+        Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
+        $tipo_medida = self::getDeletedTipo_medida($id);
+        $tipo_medida->forceDelete();
+        Alert::success('Exito','El tipo de medida "'.$tipo_medida->nombre.'" ha sido eliminado permanentemente.');
+        return Redirect::to('tipos_medidas/deleted');
     }
 }

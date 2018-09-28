@@ -52,7 +52,7 @@ Información del usuario "{{ $usuario->name }}" | {{ config('app.name', 'Laravel
                         <div class="card-body">
 
 <div class="list-group hoverable">
-  <a class="list-group-item active white-text waves-light hoverable">
+  <a class="list-group-item active z-depth-2 white-text waves-light hoverable">
       <i class="fa fa-user mr-2"></i><strong>Usuario #{{ $usuario->id }}</strong>
     </a>
   <a class="list-group-item waves-effect hoverable"><strong>Nombre: </strong>{{ $usuario->name }}</a>

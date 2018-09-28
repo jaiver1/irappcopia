@@ -27,8 +27,8 @@ Bienvenido | {{ config('app.name', 'Laravel') }}
             <i class="fa fa-home mr-2"></i>Página principal
             </a>
 
-            <a class="btn btn-outline-white hoverable waves-light wow fadeInDown" data-wow-delay="0.4s" role="button"  href="{{ route('logout') }}"
-                           onclick="event.preventDefault();document.getElementById('logout-form2').submit();">
+            <a class="btn btn-outline-white hoverable waves-light wow fadeInDown" data-wow-delay="0.4s" role="button" 
+            onclick="salir();">
                            <form id="logout-form2" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>

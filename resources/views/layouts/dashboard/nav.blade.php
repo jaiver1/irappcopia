@@ -1,12 +1,11 @@
 @section('css_auth')
-<link rel="stylesheet" href="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.min.css" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/dashboard/scroll.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('css/dashboard/navbar-custom.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('css/dashboard/navbar-custom-themes.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('css/dashboard/style.css') }}" type="text/css">
 <style type="text/css">
-.intro-2 {
-    background: url("{{ asset('img/guest/login/background.jpg') }}")no-repeat center center;
-    background-size: cover;
+    body{
+background-color: #eceff1;
 }
 .sidebar-bg.bg1 .sidebar-wrapper{
     background-image: url("{{ asset('img/bg1.jpg')}}");
@@ -14,8 +13,42 @@
 </style>
 @endsection
 @section('js_auth')
-<script type="text/javascript" src="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<script type="text/javascript" src="{{ asset('js/dashboard/scroll.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/dashboard/navbar-custom.js') }}"></script>
+<script type="text/javascript">
+function salir(){
+    event.preventDefault();
+    swal({
+  title: 'Salir',
+  text: '¿Desea cerrar la sesion"?',
+  type: 'question',
+  confirmButtonText: '<i class="fa fa-check"></i> Si',
+  cancelButtonText: '<i class="fa fa-times"></i> No',
+  showCancelButton: true,
+  showCloseButton: true,
+  confirmButtonClass: 'btn btn-success',
+  cancelButtonClass: 'btn btn-danger',
+  buttonsStyling: false,
+  animation: false,
+  customClass: 'animated zoomIn',
+}).then((result) => {
+  if (result.value) {
+    $("#logout-form").submit();
+  }else{
+    swal({
+  position: 'top-end',
+  type: 'error',
+  title: 'Operación cancelada por el usuario',
+  showConfirmButton: false,
+  toast: true,
+  animation: false,
+  customClass: 'animated lightSpeedIn',
+  timer: 3000
+})
+  }
+})
+}
+</script>
 @endsection
 @section('navegation')
 <header>
@@ -23,8 +56,8 @@
 <!-- Navbar -->
 <nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-content">
-        <div class="sidebar-brand">
-            <a href="#">pro sidebar</a>
+        <div class="sidebar-brand waves-light">
+            <a href="{{route('home')}}">pro sidebar</a>
             <div id="close-sidebar">
                 <i class="fas fa-times-circle"></i>
             </div>
@@ -60,6 +93,46 @@
         <!-- sidebar-search  -->
         <div class="sidebar-menu">
             <ul>
+            <li class="header-menu">
+                    <span>Menu</span>
+                </li>
+                <li class="hoverable waves-light {{ \Request::is('home') ? 'default' : 'simple' }}">
+                    <a href="{{route('home')}}">
+                        <i class="fa fa-home"></i>
+                        <span>Página principal</span>
+                    </a>
+                </li>
+                <li class="header-menu">
+                    <span>SuperUser</span>
+                </li>
+                <li class="hoverable waves-light {{ (\Request::is('usuarios') || \Request::is('usuarios/*')) ? 'default' : 'simple' }}">
+                    <a href="{{route('usuarios.index')}}">
+                        <i class="fa fa-users"></i>
+                        <span>Usuarios</span>
+                    </a>
+                </li>
+
+     <li class="header-menu">
+                    <span>Administrador</span>
+                </li>
+
+    <li class="sidebar-dropdown {{ (\Request::is('tipos_medidas') || \Request::is('tipos_medidas/*')) ? 'active default' : 'simple' }}">
+                    <a href="#">
+                        <i class="fa fa-cubes"></i>
+                        <span>Datos basicos</span>
+                    </a>
+                    <div class="sidebar-submenu" style="{{ (\Request::is('tipos_medidas') || \Request::is('tipos_medidas/*')) ? 'display: block;' : '' }} ">
+                        <ul>
+                            <li class="hoverable waves-light {{ (\Request::is('tipos_medidas') || \Request::is('tipos_medidas/*')) ? 'default' : 'simple' }}">
+                                <a href="{{route('tipos_medidas.index')}}">Tipos de medidas</a>
+                            </li>
+                            <li class="hoverable waves-light {{ (\Request::is('medidas') || \Request::is('medidas/*')) ? 'default' : 'simple' }}">
+                                <a href="#">Medidas</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
                 <li class="header-menu">
                     <span>General</span>
                 </li>
@@ -321,7 +394,10 @@
             </div>
         </div>
         <div>
-            <a href="#">
+            <a onclick="salir();">
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
                 <i class="fa fa-power-off"></i>
             </a>
         </div>

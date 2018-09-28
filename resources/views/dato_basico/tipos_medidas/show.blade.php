@@ -2,11 +2,7 @@
 @section('template_title')
 Información del tipo de medida "{{ $tipo_medida->nombre }}" | {{ config('app.name', 'Laravel') }}
 @endsection
-@section('footer_title')
-Información del tipo de medida "{{ $tipo_medida->nombre }}" | {{ config('app.name', 'Laravel') }}
-@endsection
 @section('content')
-<main class="pt-5 mx-lg-5">
         <div class="container-fluid mt-5">
 
             <!-- Heading -->
@@ -23,13 +19,13 @@ Información del tipo de medida "{{ $tipo_medida->nombre }}" | {{ config('app.na
 
                     <div class="d-flex justify-content-center">
                     <a href="{{ route('tipos_medidas.index') }}" class="btn btn-outline-secondary btn-circle waves-effect hoverable" 
-                    data-toggle="tooltip" data-placement="bottom" title="Lista de tipos_medidas">
-                      <i class="fa fa-2x fa-tachometer"></i>
+                    data-toggle="tooltip" data-placement="bottom" title="Lista de tipos de medidas">
+                      <i class="fa fa-2x fa-tachometer-alt"></i>
                             </a>
 
                              <a href="{{ URL::to('tipos_medidas/' . $tipo_medida->id.'/edit') }}" class="btn btn-outline-warning btn-circle waves-effect hoverable" 
-                    data-toggle="tooltip" data-placement="bottom" title='Editar tipo_medida "{{ $tipo_medida->nombre }}"'>
-                      <i class="fa fa-2x fa-edit"></i>
+                    data-toggle="tooltip" data-placement="bottom" title='Editar tipo de medida "{{ $tipo_medida->nombre }}"'>
+                      <i class="fa fa-2x fa-pencil-alt"></i>
                             </a>
                     </div>
 
@@ -52,8 +48,8 @@ Información del tipo de medida "{{ $tipo_medida->nombre }}" | {{ config('app.na
                         <div class="card-body">
 
 <div class="list-group hoverable">
-  <a class="list-group-item active white-text waves-light hoverable">
-      <i class="fa fa-user mr-2"></i><strong>Tipo de medida #{{ $tipo_medida->id }}</strong>
+  <a class="list-group-item active z-depth-2 white-text waves-light hoverable">
+      <i class="fa fa-tachometer-alt mr-2"></i><strong>Tipo de medida #{{ $tipo_medida->id }}</strong>
     </a>
   <a class="list-group-item waves-effect hoverable"><strong>Nombre: </strong>{{ $tipo_medida->nombre }}</a>
 </div>
@@ -70,8 +66,7 @@ Información del tipo de medida "{{ $tipo_medida->nombre }}" | {{ config('app.na
 
           
         </div>
-    </main>
-    <!--Main layout-->
+
 @endsection
 @section('js_links')
 <script type="text/javascript">

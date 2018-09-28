@@ -1,7 +1,4 @@
 
-  body{
-background-color: #eceff1;
-  }
 
 .dataTables_filter > label > input{
   -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
@@ -24,3 +21,46 @@ background-color: #eceff1;
       -webkit-box-shadow: 0 1px 0 0 #4285f4;
       box-shadow: 0 1px 0 0 #4285f4;
       border-bottom: 1px solid #4285f4; }
+
+        .sidebar-menu > ul > li.default,
+        .sidebar-submenu > ul > li.default{
+        background-color: rgb(0,0,0,0.6);
+      }
+      .sidebar-menu > ul > li.default,
+      .sidebar-submenu > ul > li.default,
+      .sidebar-menu > ul > li.simple,
+      .sidebar-menu > ul > li.sidebar-dropdown,
+      .sidebar-submenu > ul > li.simple{
+      -webkit-transition: all .3s ease;
+      -moz-transition: all .3s ease;
+      -ms-transition: all .3s ease;
+      -o-transition: all .3s ease;
+      transition: all .3s ease;
+ }
+      .sidebar-menu > ul > li.default:hover,
+      .sidebar-menu > ul > li.default:active,
+      .sidebar-menu > ul > li.default:focus,
+      .sidebar-submenu > ul > li.default:hover,
+      .sidebar-submenu > ul > li.default:active,
+      .sidebar-submenu > ul > li.default:focus{
+        background-color: rgb(0,0,0,0.8);
+      }
+      
+
+      .sidebar-menu > ul > li.simple:hover,
+      .sidebar-menu > ul > li.simple:active,
+      .sidebar-menu > ul > li.simple:focus,
+      .sidebar-menu > ul > li.sidebar-dropdown:hover,
+      .sidebar-menu > ul > li.sidebar-dropdown:active,
+      .sidebar-menu > ul > li.sidebar-dropdown:focus,
+      .sidebar-submenu > ul > li.simple:hover,
+      .sidebar-submenu > ul > li.simple:active,
+      .sidebar-submenu > ul > li.simple:focus{
+        background-color: rgb(0,0,0,0.3);
+      }
+      
+
+      #show-sidebar{
+        background-color: #2B3A42 !important; 
+        color: #bdd4de !important; 
+      }
