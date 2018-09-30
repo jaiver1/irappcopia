@@ -3,12 +3,9 @@
 @section('template_title')
 Editar tipo de medida "{{ $tipo_medida->nombre }}" | {{ config('app.name', 'Laravel') }}
 @endsection
-@section('css_links')
-<link rel="stylesheet" href="{{ asset('css/addons/select2.css') }}" type="text/css"/>
-@endsection
 @section('content')
 
-        <div class="container-fluid mt-5">
+        <div class="container-fluid">
 
             <!-- Heading -->
             <div class="card mb-4 wow fadeIn hoverable">
@@ -17,6 +14,7 @@ Editar tipo de medida "{{ $tipo_medida->nombre }}" | {{ config('app.name', 'Lara
                 <div class="card-body d-sm-flex justify-content-between">
 
                     <h4 class="mb-2 mb-sm-0 pt-1">
+                    <span><i class="fa fa-balance-scale mr-1"></i></span>
                         <a href="{{ route('tipos_medidas.index') }}">Lista de tipos de medidas</a>
                         <span>/</span>
                         <span>Editar tipo de medida "{{ $tipo_medida->nombre }}"</span>
@@ -25,7 +23,7 @@ Editar tipo de medida "{{ $tipo_medida->nombre }}" | {{ config('app.name', 'Lara
                     <div class="d-flex justify-content-center">
                     <a href="{{ route('tipos_medidas.index') }}" class="btn btn-outline-secondary btn-circle waves-effect hoverable" 
                     data-toggle="tooltip" data-placement="bottom" title="Lista de tipos de medidas">
-                      <i class="fa fa-2x fa-tachometer-alt"></i>
+                      <i class="fa fa-2x fa-balance-scale"></i>
                             </a>
 
                             <a href="{{ URL::to('tipos_medidas/' . $tipo_medida->id) }}" class="btn btn-outline-primary btn-circle waves-effect hoverable" 
@@ -71,10 +69,4 @@ Editar tipo de medida "{{ $tipo_medida->nombre }}" | {{ config('app.name', 'Lara
         </div>
 
 @endsection
-@section('js_links')
-<script type="text/javascript">
-  $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
-</script>
-@endsection
+

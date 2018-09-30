@@ -14,8 +14,8 @@
         <div class="col-md-12">
             <!-- Material input -->
             <div class="md-form">
-    <i class="fa fa-tachometer-alt prefix"></i>
-    <input type="text" required id="nombre" value="{{ $tipo_medida->nombre}}" name="nombre" class="form-control validate">
+    <i class="fa fa-balance-scale prefix"></i>
+    <input type="text" required id="nombre" value="{{ $tipo_medida->nombre}}" name="nombre" class="form-control validate" maxlength="50">
     <label for="nombre" data-error="Error" data-success="Correcto">Nombre</label>
 </div>
 @if ($errors->has('nombre'))
@@ -37,4 +37,12 @@
     <i class="fa fa-2x {{($editar) ? 'fa-pencil-alt' : 'fa-plus'}}"></i> {{($editar) ? 'Editar' : 'Registrar'}}
     </button>
 </form>
+@endsection
+
+@section('js_links')
+<script type="text/javascript">
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
 @endsection

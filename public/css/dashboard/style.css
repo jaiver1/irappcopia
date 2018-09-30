@@ -1,5 +1,7 @@
 
-
+  html,body{
+    color: #3a4d56;
+  }
 .dataTables_filter > label > input{
   -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
@@ -24,12 +26,12 @@
 
         .sidebar-menu > ul > li.default,
         .sidebar-submenu > ul > li.default{
-        background-color: rgb(0,0,0,0.6);
+        background-color: rgba(0,0,0,0.6);
       }
       .sidebar-menu > ul > li.default,
       .sidebar-submenu > ul > li.default,
       .sidebar-menu > ul > li.simple,
-      .sidebar-menu > ul > li.sidebar-dropdown,
+      .sidebar-menu > ul > li.sidebar-dropdown > a,
       .sidebar-submenu > ul > li.simple{
       -webkit-transition: all .3s ease;
       -moz-transition: all .3s ease;
@@ -40,23 +42,26 @@
       .sidebar-menu > ul > li.default:hover,
       .sidebar-menu > ul > li.default:active,
       .sidebar-menu > ul > li.default:focus,
+      .sidebar-menu > ul > li.sidebar-dropdown.default > a:hover,
+      .sidebar-menu > ul > li.sidebar-dropdown.default > a:active,
+      .sidebar-menu > ul > li.sidebar-dropdown.default > a:focus,
       .sidebar-submenu > ul > li.default:hover,
       .sidebar-submenu > ul > li.default:active,
       .sidebar-submenu > ul > li.default:focus{
-        background-color: rgb(0,0,0,0.8);
+        background-color: rgba(0,0,0,0.8);
       }
       
 
       .sidebar-menu > ul > li.simple:hover,
       .sidebar-menu > ul > li.simple:active,
       .sidebar-menu > ul > li.simple:focus,
-      .sidebar-menu > ul > li.sidebar-dropdown:hover,
-      .sidebar-menu > ul > li.sidebar-dropdown:active,
-      .sidebar-menu > ul > li.sidebar-dropdown:focus,
+      .sidebar-menu > ul > li.sidebar-dropdown > a:hover,
+      .sidebar-menu > ul > li.sidebar-dropdown > a:active,
+      .sidebar-menu > ul > li.sidebar-dropdown > a:focus,
       .sidebar-submenu > ul > li.simple:hover,
       .sidebar-submenu > ul > li.simple:active,
       .sidebar-submenu > ul > li.simple:focus{
-        background-color: rgb(0,0,0,0.3);
+        background-color: rgba(13, 71, 161, 0.3);
       }
       
 
@@ -64,3 +69,22 @@
         background-color: #2B3A42 !important; 
         color: #bdd4de !important; 
       }
+
+      .sidebar-menu > ul,.sidebar-submenu > ul  {
+        list-style:none;
+      }
+
+      a{
+       color: rgba(13, 71, 161, 0.7);
+      }
+
+      a.link-text{
+        color: rgba(13, 71, 161, 0.7) !important;
+        
+       }
+
+      a.list-group-item.active{
+        background-color: #3a4d56;
+        border-color: #3a4d56;
+      }
+      

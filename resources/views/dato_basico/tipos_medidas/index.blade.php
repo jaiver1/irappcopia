@@ -9,7 +9,7 @@ Lista de tipos de medidas | {{ config('app.name', 'Laravel') }}
 <link rel="stylesheet" href="{{ asset('css/addons/bt4-buttons-datatables.min.css') }}" type="text/css">
 @endsection
 @section('content')
-        <div class="container-fluid mt-5">
+        <div class="container-fluid">
 
             <!-- Heading -->
             <div class="card mb-4 wow fadeIn hoverable">
@@ -18,7 +18,7 @@ Lista de tipos de medidas | {{ config('app.name', 'Laravel') }}
                 <div class="card-body d-sm-flex justify-content-between">
 
                     <h4 class="mb-2 mb-sm-0 pt-1">
-                        <span> @if (count($tipos_medidas) === 1)
+                    <span><i class="fa fa-balance-scale mr-1"></i></span>   <span>@if (count($tipos_medidas) === 1)
                 Un tipo de medida
             @elseif (count($tipos_medidas) > 1)
                 {{ count($tipos_medidas) }} tipos de medidas
@@ -30,7 +30,7 @@ Lista de tipos de medidas | {{ config('app.name', 'Laravel') }}
 
                     <div class="d-flex justify-content-center">
                     <a href="{{ route('tipos_medidas.create') }}" class="btn btn-outline-success btn-circle waves-effect hoverable" 
-                    data-toggle="tooltip" data-placement="bottom" title="Registrar tipo de medida">
+                    data-toggle="tooltip" data-placement="bottom" title="Registrar un tipo de medida">
                       <i class="fa fa-2x fa-plus"></i>
                             </a>
                             <a href="{{ URL::to('/tipos_medidas/deleted') }}" class="btn btn-outline-danger btn-circle waves-effect hoverable" 
@@ -239,7 +239,7 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
                 display: $.fn.dataTable.Responsive.display.modal( {
                     header: function ( row ) {
                         var data = row.data();
-                        return 'Datos de tipo de medida '+ data[1];
+                        return 'Datos de tipo de medida "'+ data[1]+'"';
                     }
                 } ),
                 renderer: $.fn.dataTable.Responsive.renderer.tableAll( {

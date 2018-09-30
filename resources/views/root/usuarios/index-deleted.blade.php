@@ -12,8 +12,8 @@ Usuarios eliminados | {{ config('app.name', 'Laravel') }}
 <link rel="stylesheet" href="{{ asset('css/addons/bt4-buttons-datatables.min.css') }}" type="text/css">
 @endsection
 @section('content')
-<main class="pt-5 mx-lg-5">
-        <div class="container-fluid mt-5">
+
+        <div class="container-fluid">
 
             <!-- Heading -->
             <div class="card mb-4 wow fadeIn hoverable">
@@ -80,7 +80,7 @@ Usuarios eliminados | {{ config('app.name', 'Laravel') }}
       <td>{{$usuario->id}}</td>
       <td>{{$usuario->name}}</td>
       <td>{{$usuario->email}}</td>
-      <td>{{$usuario->name}}</td>
+      <td>{{$usuario->roles[0]->display_name}}</td>
       <td>
 
       <a onclick="restaurar_usuario({{ $usuario->id }},'{{ $usuario->name }}')" class="text-success m-1" 
@@ -120,8 +120,7 @@ Usuarios eliminados | {{ config('app.name', 'Laravel') }}
 
           
         </div>
-    </main>
-    <!--Main layout-->
+  
 @endsection
 @section('js_links')
 <!-- DataTables core JavaScript -->
@@ -277,7 +276,7 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
                 display: $.fn.dataTable.Responsive.display.modal( {
                     header: function ( row ) {
                         var data = row.data();
-                        return 'Datos de usuario eliminado '+ data[1];
+                        return 'Datos de usuario eliminado "'+ data[1]+'"';
                     }
                 } ),
                 renderer: $.fn.dataTable.Responsive.renderer.tableAll( {

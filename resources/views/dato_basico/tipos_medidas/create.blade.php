@@ -3,12 +3,9 @@
 @section('template_title')
 Registrar tipo de medida | {{ config('app.name', 'Laravel') }}
 @endsection
-@section('css_links')
-<link rel="stylesheet" href="{{ asset('css/addons/select2.css') }}" type="text/css"/>
-@endsection
 @section('content')
 
-        <div class="container-fluid mt-5">
+        <div class="container-fluid">
 
             <!-- Heading -->
             <div class="card mb-4 wow fadeIn hoverable">
@@ -17,15 +14,16 @@ Registrar tipo de medida | {{ config('app.name', 'Laravel') }}
                 <div class="card-body d-sm-flex justify-content-between">
 
                     <h4 class="mb-2 mb-sm-0 pt-1">
+                    <span><i class="fa fa-balance-scale mr-1"></i></span>
                         <a href="{{ route('tipos_medidas.index') }}">Lista de tipos de medidas</a>
                         <span>/</span>
-                        <span>Registrar tipo de medida</span>
+                        <span>Registrar un tipo de medida</span>
                     </h4>
 
                     <div class="d-flex justify-content-center">
                     <a href="{{ route('tipos_medidas.index') }}" class="btn btn-outline-secondary btn-circle waves-effect hoverable" 
                     data-toggle="tooltip" data-placement="bottom" title="Lista de tipos de medidas">
-                      <i class="fa fa-2x fa-tachometer"></i>
+                      <i class="fa fa-2x fa-balance-scale"></i>
                             </a>
                     </div>
 
@@ -65,11 +63,4 @@ Registrar tipo de medida | {{ config('app.name', 'Laravel') }}
           
         </div>
 
-@endsection
-@section('js_links')
-<script type="text/javascript">
-  $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
-</script>
 @endsection

@@ -6,8 +6,8 @@ Página principal | {{ config('app.name', 'Laravel') }}
 Página principal | {{ config('app.name', 'Laravel') }}
 @endsection
 @section('content')
-<main class="pt-5 mx-lg-5">
-        <div class="container-fluid mt-5">
+
+        <div class="container-fluid">
 
             <!-- Heading -->
             <div class="card mb-4 wow fadeIn">
@@ -1064,8 +1064,7 @@ Página principal | {{ config('app.name', 'Laravel') }}
             <!--Grid row-->
 
         </div>
-    </main>
-    <!--Main layout-->
+
 @endsection
 @section('js_links')
 <!-- Charts -->

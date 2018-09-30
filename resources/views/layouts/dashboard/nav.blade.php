@@ -57,7 +57,7 @@ function salir(){
 <nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-content">
         <div class="sidebar-brand waves-light">
-            <a href="{{route('home')}}">pro sidebar</a>
+            <a href="#">IRAPP</a>
             <div id="close-sidebar">
                 <i class="fas fa-times-circle"></i>
             </div>
@@ -67,10 +67,10 @@ function salir(){
                 <img class="img-responsive img-rounded" src="{{ asset('img/user.jpg') }}" alt="User picture">
             </div>
             <div class="user-info">
-                <span class="user-name">Jhon
+                <span class="user-name">{{ Auth::user()->name }}
                     <strong>Smith</strong>
                 </span>
-                <span class="user-role">Administrator</span>
+                <span class="user-role">{{ Auth::user()->roles[0]->display_name }}</span>
                 <span class="user-status">
                     <i class="fa fa-circle"></i>
                     <span>Online</span>
@@ -102,8 +102,9 @@ function salir(){
                         <span>Página principal</span>
                     </a>
                 </li>
+               
                 <li class="header-menu">
-                    <span>SuperUser</span>
+                    <span>Control de Acceso</span>
                 </li>
                 <li class="hoverable waves-light {{ (\Request::is('usuarios') || \Request::is('usuarios/*')) ? 'default' : 'simple' }}">
                     <a href="{{route('usuarios.index')}}">
@@ -111,28 +112,28 @@ function salir(){
                         <span>Usuarios</span>
                     </a>
                 </li>
-
+               
      <li class="header-menu">
-                    <span>Administrador</span>
+                    <span>Administracion</span>
                 </li>
 
-    <li class="sidebar-dropdown {{ (\Request::is('tipos_medidas') || \Request::is('tipos_medidas/*')) ? 'active default' : 'simple' }}">
+    <li class="sidebar-dropdown {{ (\Request::is('tipos_medidas') || \Request::is('tipos_medidas/*') || \Request::is('medidas') || \Request::is('medidas/*')) ? 'active default' : 'simple' }}">
                     <a href="#">
                         <i class="fa fa-cubes"></i>
                         <span>Datos basicos</span>
                     </a>
-                    <div class="sidebar-submenu" style="{{ (\Request::is('tipos_medidas') || \Request::is('tipos_medidas/*')) ? 'display: block;' : '' }} ">
+                    <div class="sidebar-submenu" style="{{ (\Request::is('tipos_medidas') || \Request::is('tipos_medidas/*') || \Request::is('medidas') || \Request::is('medidas/*')) ? 'display: block;' : '' }} ">
                         <ul>
                             <li class="hoverable waves-light {{ (\Request::is('tipos_medidas') || \Request::is('tipos_medidas/*')) ? 'default' : 'simple' }}">
-                                <a href="{{route('tipos_medidas.index')}}">Tipos de medidas</a>
+                            <a href="{{route('tipos_medidas.index')}}"> <i class="fa fa-balance-scale"></i><span>Tipos de medidas</span></a>
                             </li>
                             <li class="hoverable waves-light {{ (\Request::is('medidas') || \Request::is('medidas/*')) ? 'default' : 'simple' }}">
-                                <a href="#">Medidas</a>
+                                <a href="{{route('medidas.index')}}"><i class="fa fa-ruler"></i><span>Medidas</span></a>
                             </li>
                         </ul>
                     </div>
                 </li>
-
+          
                 <li class="header-menu">
                     <span>General</span>
                 </li>

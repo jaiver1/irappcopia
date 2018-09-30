@@ -13,7 +13,7 @@ Lista de usuarios | {{ config('app.name', 'Laravel') }}
 @endsection
 @section('content')
 
-        <div class="container-fluid mt-5">
+        <div class="container-fluid">
 
             <!-- Heading -->
             <div class="card mb-4 wow fadeIn hoverable">
@@ -22,7 +22,7 @@ Lista de usuarios | {{ config('app.name', 'Laravel') }}
                 <div class="card-body d-sm-flex justify-content-between">
 
                     <h4 class="mb-2 mb-sm-0 pt-1">
-                        <span> @if (count($usuarios) === 1)
+                    <span><i class="fa fa-users mr-1"></i></span>  <span> @if (count($usuarios) === 1)
                 Un usuario
             @elseif (count($usuarios) > 1)
                 {{ count($usuarios) }} usuarios
@@ -34,7 +34,7 @@ Lista de usuarios | {{ config('app.name', 'Laravel') }}
 
                     <div class="d-flex justify-content-center">
                     <a href="{{ route('usuarios.create') }}" class="btn btn-outline-success btn-circle waves-effect hoverable" 
-                    data-toggle="tooltip" data-placement="bottom" title="Registrar usuario">
+                    data-toggle="tooltip" data-placement="bottom" title="Registrar un usuario">
                       <i class="fa fa-2x fa-plus"></i>
                             </a>
                             <a href="{{ URL::to('/usuarios/deleted') }}" class="btn btn-outline-danger btn-circle waves-effect hoverable" 
@@ -83,7 +83,7 @@ Lista de usuarios | {{ config('app.name', 'Laravel') }}
       <td>{{$usuario->id}}</td>
       <td>{{$usuario->name}}</td>
       <td>{{$usuario->email}}</td>
-      <td>{{$usuario->name}}</td>
+      <td>{{$usuario->roles[0]->display_name}}</td>
       <td>
 
 <a href="{{ URL::to('usuarios/' . $usuario->id) }}" class="text-primary m-1" 
@@ -249,7 +249,7 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
                 display: $.fn.dataTable.Responsive.display.modal( {
                     header: function ( row ) {
                         var data = row.data();
-                        return 'Datos de usuario '+ data[1];
+                        return 'Datos de usuario "'+ data[1]+'"';
                     }
                 } ),
                 renderer: $.fn.dataTable.Responsive.renderer.tableAll( {

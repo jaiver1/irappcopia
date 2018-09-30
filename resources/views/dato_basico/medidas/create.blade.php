@@ -1,12 +1,8 @@
 @extends('layouts.dashboard.main')
-@include('root.usuarios.form')
+@include('dato_basico.medidas.form')
 @section('template_title')
-Editar usuario "{{ $usuario->name }}" | {{ config('app.name', 'Laravel') }}
+Registrar medida | {{ config('app.name', 'Laravel') }}
 @endsection
-@section('footer_title')
-Editar usuario "{{ $usuario->name }}" | {{ config('app.name', 'Laravel') }}
-@endsection
-
 @section('content')
 
         <div class="container-fluid">
@@ -18,21 +14,16 @@ Editar usuario "{{ $usuario->name }}" | {{ config('app.name', 'Laravel') }}
                 <div class="card-body d-sm-flex justify-content-between">
 
                     <h4 class="mb-2 mb-sm-0 pt-1">
-                    <span><i class="fa fa-users mr-1"></i></span>
-                        <a href="{{ route('usuarios.index') }}">Lista de usuarios</a>
+                    <span><i class="fa fa-ruler mr-1"></i></span> 
+                        <a href="{{ route('medidas.index') }}">Lista de medidas</a>
                         <span>/</span>
-                        <span>Editar usuario "{{ $usuario->name }}"</span>
+                        <span>Registrar una medida</span>
                     </h4>
 
                     <div class="d-flex justify-content-center">
-                    <a href="{{ route('usuarios.index') }}" class="btn btn-outline-secondary btn-circle waves-effect hoverable" 
-                    data-toggle="tooltip" data-placement="bottom" title="Lista de usuarios">
-                      <i class="fa fa-2x fa-users"></i>
-                            </a>
-
-                            <a href="{{ URL::to('usuarios/' . $usuario->id) }}" class="btn btn-outline-primary btn-circle waves-effect hoverable" 
-                    data-toggle="tooltip" data-placement="bottom" title='Informacion del usuario "{{ $usuario->name }}"'>
-                      <i class="fa fa-2x fa-info"></i>
+                    <a href="{{ route('medidas.index') }}" class="btn btn-outline-secondary btn-circle waves-effect hoverable" 
+                    data-toggle="tooltip" data-placement="bottom" title="Lista de medidas">
+                      <i class="fa fa-2x fa-ruler"></i>
                             </a>
                     </div>
 
@@ -73,4 +64,3 @@ Editar usuario "{{ $usuario->name }}" | {{ config('app.name', 'Laravel') }}
         </div>
 
 @endsection
-

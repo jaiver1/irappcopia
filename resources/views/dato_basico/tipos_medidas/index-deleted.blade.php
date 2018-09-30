@@ -10,7 +10,7 @@ Tipos de medidas eliminadas | {{ config('app.name', 'Laravel') }}
 @endsection
 @section('content')
 
-        <div class="container-fluid mt-5">
+        <div class="container-fluid">
 
             <!-- Heading -->
             <div class="card mb-4 wow fadeIn hoverable">
@@ -22,7 +22,7 @@ Tipos de medidas eliminadas | {{ config('app.name', 'Laravel') }}
                     <a href="{{ route('tipos_medidas.index') }}">Lista de tipos de medidas</a>
                         <span>/</span>
                         <span> @if (count($tipos_medidas) === 1)
-                Un tipos de medida eliminado
+                Un tipo de medida eliminado
             @elseif (count($tipos_medidas) > 1)
                 {{ count($tipos_medidas) }} tipos de medidas eliminados
             @else
@@ -33,7 +33,7 @@ Tipos de medidas eliminadas | {{ config('app.name', 'Laravel') }}
                     <div class="d-flex justify-content-center">
                     <a href="{{ route('tipos_medidas.index') }}" class="btn btn-outline-secondary btn-circle waves-effect hoverable" 
                     data-toggle="tooltip" data-placement="bottom" title="Lista de tipos_medidas">
-                      <i class="fa fa-2x fa-tachometer-alt"></i>
+                      <i class="fa fa-2x fa-balance-scale"></i>
                             </a>
                     </div>
 
@@ -266,7 +266,7 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
                 display: $.fn.dataTable.Responsive.display.modal( {
                     header: function ( row ) {
                         var data = row.data();
-                        return 'Datos de tipo de medida eliminado '+ data[1];
+                        return 'Datos de tipo de medida eliminado "'+ data[1]+'"';
                     }
                 } ),
                 renderer: $.fn.dataTable.Responsive.renderer.tableAll( {

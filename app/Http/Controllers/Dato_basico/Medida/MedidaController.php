@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Dato_basico\Tipo_medida;
+namespace App\Http\Controllers\Dato_basico\Medida;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Dato_basico\Medida;
 use App\Models\Dato_basico\Tipo_medida;
 use Illuminate\Support\Facades\Validator;
 Use Alert;
 
-class Tipo_medidaController extends Controller
+class MedidaController extends Controller
 {
     protected $redirectTo = '/login';
     
@@ -26,8 +27,8 @@ class Tipo_medidaController extends Controller
     public function index()
     {
         Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
-        $tipos_medidas = Tipo_medida::all();
-        return View::make('dato_basico.tipos_medidas.index')->with(compact('tipos_medidas'));
+        $medidas = Medida::all();
+        return View::make('dato_basico.medidas.index')->with(compact('medidas'));
     }
 
     /**
@@ -38,9 +39,10 @@ class Tipo_medidaController extends Controller
     public function create()
     {
         Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
-        $tipo_medida = new Tipo_medida();
+        $medida = new Medida();
+        $tipos_medidas = Tipo_medida::all();
         $editar = false;
-        return View::make('dato_basico.tipos_medidas.create')->with(compact('tipo_medida','editar'));
+        return View::make('dato_basico.medidas.create')->with(compact('tipos_medidas','medida','editar'));
     }
 
     /**
@@ -52,7 +54,9 @@ class Tipo_medidaController extends Controller
     {
         Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
         $rules = array(
-                'nombre'  => 'required|max:50',
+                'nombre'                   => 'required|max:50',
+                'etiqueta'                   => 'required|max:5',
+                'tipo_medida_id'                   => 'required',
         );
 
         $validator = Validator::make($request->all(), $rules);
@@ -60,15 +64,17 @@ class Tipo_medidaController extends Controller
 
         if ($validator->fails()) {
             Alert::error('Error','Errores en el formulario.');
-            return Redirect::to('tipos_medidas/create')
+            return Redirect::to('medidas/create')
                 ->withErrors($validator);
         } else {
-            $tipo_medida = new Tipo_medida();
-            $tipo_medida->nombre = $request->nombre;      
-            $tipo_medida->save();        
+            $medida = new Medida();
+            $medida->nombre = $request->nombre; 
+            $medida->etiqueta = $request->etiqueta; 
+            $medida->tipo_medida()->associate(Tipo_medida::findOrFail($request->tipo_medida_id));      
+            $medida->save();        
 
-            Alert::success('Exito','El tipo de medida "'.$tipo_medida->nombre.'" ha sido registrado.');
-            return Redirect::to('tipos_medidas');
+            Alert::success('Exito','La medida "'.$medida->nombre.'" ha sido registrada.');
+            return Redirect::to('medidas');
         }
     }
 
@@ -81,8 +87,8 @@ class Tipo_medidaController extends Controller
     public function show($id)
     {  
         Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
-        $tipo_medida = Tipo_medida::findOrFail($id);
-        return View::make('dato_basico.tipos_medidas.show')->with(compact('tipo_medida'));
+        $medida = Medida::findOrFail($id);
+        return View::make('dato_basico.medidas.show')->with(compact('medida'));
         
         }
 
@@ -95,9 +101,10 @@ class Tipo_medidaController extends Controller
     public function edit($id)
     {
         Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
-        $tipo_medida = Tipo_medida::findOrFail($id);
+        $medida = Medida::findOrFail($id);
+        $tipos_medidas = Tipo_medida::all();
         $editar = true;
-        return View::make('dato_basico.tipos_medidas.edit')->with(compact('tipo_medida','editar'));
+        return View::make('dato_basico.medidas.edit')->with(compact('tipos_medidas','medida','editar'));
    
     }
 
@@ -111,7 +118,9 @@ class Tipo_medidaController extends Controller
     {
         Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
         $rules = array(
-            'nombre' => 'required|max:50',
+            'nombre'                   => 'required|max:50',
+            'etiqueta'                   => 'required|max:5',
+            'tipo_medida_id'                   => 'required',
     );
 
     $validator = Validator::make($request->all(), $rules);
@@ -119,15 +128,17 @@ class Tipo_medidaController extends Controller
 
     if ($validator->fails()) {
         Alert::error('Error','Errores en el formulario.');
-        return Redirect::to('tipos_medidas/'+$id+'/edit')
+        return Redirect::to('medidas/'+$id+'/edit')
             ->withErrors($validator);
     } else {
-        $tipo_medida =  Tipo_medida::findOrFail($request->id);
-        $tipo_medida->nombre = $request->nombre;        
-        $tipo_medida->save();
+        $medida = Medida::findOrFail($request->id);
+        $medida->nombre = $request->nombre; 
+        $medida->etiqueta = $request->etiqueta; 
+        $medida->tipo_medida()->associate(Tipo_medida::findOrFail($request->tipo_medida_id)); 
+        $medida->save();
 
-        Alert::success('Exito','El tipo de medida "'.$tipo_medida->nombre.'" ha sido editado.');
-        return Redirect::to('tipos_medidas');
+        Alert::success('Exito','La medida "'.$medida->nombre.'" ha sido editada.');
+        return Redirect::to('medidas');
     }
     }
 
@@ -140,10 +151,10 @@ class Tipo_medidaController extends Controller
     public function destroy($id)
     {
         Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
-        $tipo_medida = Tipo_medida::findOrFail($id);
+        $medida = Medida::findOrFail($id);
     
-        $tipo_medida->delete();
-        Alert::success('Exito','El tipo de medida "'.$tipo_medida->nombre.'" ha sido eliminado.');
-        return Redirect::to('tipos_medidas');
+        $medida->delete();
+        Alert::success('Exito','La medida "'.$medida->nombre.'" ha sido eliminada.');
+        return Redirect::to('medidas');
 }
 }

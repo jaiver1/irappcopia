@@ -6,12 +6,9 @@ Registrar usuario | {{ config('app.name', 'Laravel') }}
 @section('footer_title')
 Registrar usuario | {{ config('app.name', 'Laravel') }}
 @endsection
-@section('css_links')
-<link rel="stylesheet" href="{{ asset('css/addons/select2.css') }}" type="text/css"/>
-@endsection
 @section('content')
 
-        <div class="container-fluid mt-5">
+        <div class="container-fluid">
 
             <!-- Heading -->
             <div class="card mb-4 wow fadeIn hoverable">
@@ -20,9 +17,10 @@ Registrar usuario | {{ config('app.name', 'Laravel') }}
                 <div class="card-body d-sm-flex justify-content-between">
 
                     <h4 class="mb-2 mb-sm-0 pt-1">
+                    <span><i class="fa fa-users mr-1"></i></span>
                         <a href="{{ route('usuarios.index') }}">Lista de usuarios</a>
                         <span>/</span>
-                        <span>Registrar usuario</span>
+                        <span>Registrar un usuario</span>
                     </h4>
 
                     <div class="d-flex justify-content-center">
@@ -68,20 +66,4 @@ Registrar usuario | {{ config('app.name', 'Laravel') }}
           
         </div>
 
-@endsection
-@section('js_links')
-<script type="text/javascript" src="{{ asset('js/addons/select2.min.js') }}"></script>
-<script type="text/javascript">
-  $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
-$(document).ready(function() {
-    $('#rol').select2({
-        placeholder: "Roles",
-        theme: "material"
-    });
-    $(".select2-selection__arrow")
-        .addClass("fa fa fa-chevron-down");
-});
-</script>
 @endsection
