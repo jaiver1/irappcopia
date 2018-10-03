@@ -82,8 +82,9 @@ Lista de medidas | {{ config('app.name', 'Laravel') }}
       <td>
       <a href="{{ URL::to('tipos_medidas/' . $medida->tipo_medida->id) }}" class="link-text"
                     data-toggle="tooltip" data-placement="bottom" title='Información del tipo de medida "{{ $medida->tipo_medida->nombre }}"'>
-                      <i class="fa fa-balance-scale"></i> {{$medida->tipo_medida->nombre}}</td>
-                            </a>    
+                      <i class="fa fa-balance-scale"></i> {{$medida->tipo_medida->nombre}}
+                     </a></td>
+                             
       <td>
 
 <a href="{{ URL::to('medidas/' . $medida->id) }}" class="text-primary m-1" 
@@ -145,8 +146,8 @@ Lista de medidas | {{ config('app.name', 'Laravel') }}
 
 function eliminar_medida(id,nombre){
     swal({
-  title: 'Eliminar medida',
-  text: '¿Desea eliminar el medida "'+nombre+'"?',
+  title: 'Eliminar la medida',
+  text: '¿Desea eliminar la medida "'+nombre+'"?',
   type: 'question',
   confirmButtonText: '<i class="fa fa-trash-alt"></i> Eliminar',
   cancelButtonText: '<i class="fa fa-times"></i> Cancelar',

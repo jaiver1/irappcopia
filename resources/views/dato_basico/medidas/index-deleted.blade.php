@@ -137,7 +137,7 @@ Medidas eliminadas | {{ config('app.name', 'Laravel') }}
 function eliminar_tipos_medida(id,nombre){
     swal({
   title: 'Eliminar medida',
-  text: '¿Desea eliminar definitivamente el medida "'+nombre+'"?',
+  text: '¿Desea eliminar definitivamente la medida "'+nombre+'"?',
   type: 'warning',
   confirmButtonText: '<i class="fa fa-trash"></i> Eliminar',
   cancelButtonText: '<i class="fa fa-times"></i> Cancelar',
@@ -169,7 +169,7 @@ function eliminar_tipos_medida(id,nombre){
 function restaurar_tipos_medida(id,nombre){
     swal({
   title: 'Restaurar medida',
-  text: '¿Desea restaurar el medida "'+nombre+'"?',
+  text: '¿Desea restaurar la medida "'+nombre+'"?',
   type: 'question',
   confirmButtonText: '<i class="fa fa-undo"></i> Restaurar',
   cancelButtonText: '<i class="fa fa-times"></i> Cancelar',

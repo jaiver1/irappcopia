@@ -1,6 +1,6 @@
 @extends('layouts.dashboard.main')
 @section('template_title')
-Tipos de medidas eliminadas | {{ config('app.name', 'Laravel') }}
+Lista de categorias | {{ config('app.name', 'Laravel') }}
 @endsection
 @section('css_links')
 <link rel="stylesheet" href="{{ asset('css/addons/datatables.min.css') }}" type="text/css">
@@ -9,7 +9,6 @@ Tipos de medidas eliminadas | {{ config('app.name', 'Laravel') }}
 <link rel="stylesheet" href="{{ asset('css/addons/bt4-buttons-datatables.min.css') }}" type="text/css">
 @endsection
 @section('content')
-
         <div class="container-fluid">
 
             <!-- Heading -->
@@ -19,25 +18,24 @@ Tipos de medidas eliminadas | {{ config('app.name', 'Laravel') }}
                 <div class="card-body d-sm-flex justify-content-between">
 
                     <h4 class="mb-2 mb-sm-0 pt-1">
-                            <span class="fa-stack">
-                                    <i class="fa fa-balance-scale fa-stack-1x"></i>
-                                    <i class="fa fa-ban fa-stack-2x text-danger"></i>
-                                  </span>
-                    <a href="{{ route('tipos_medidas.index') }}">Lista de tipos de medidas</a>
-                        <span>/</span>
-                        <span> @if (count($tipos_medidas) === 1)
-                Un tipo de medida eliminado
-            @elseif (count($tipos_medidas) > 1)
-                {{ count($tipos_medidas) }} tipos de medidas eliminados
+                    <span><i class="fa fa-sitemap mr-1"></i></span> <span> @if (count($categorias) === 1)
+                Una categoria
+            @elseif (count($categorias) > 1)
+                {{ count($categorias) }} categorias
             @else
-               No hay tipos de medidas eliminados
+               No hay categorias
             @endif
             </span>
                     </h4>
+
                     <div class="d-flex justify-content-center">
-                    <a href="{{ route('tipos_medidas.index') }}" class="btn btn-outline-secondary btn-circle waves-effect hoverable" 
-                    data-toggle="tooltip" data-placement="bottom" title="Lista de tipos_medidas">
-                      <i class="fa fa-2x fa-balance-scale"></i>
+                    <a href="{{ route('categorias.create') }}" class="btn btn-outline-success btn-circle waves-effect hoverable" 
+                    data-toggle="tooltip" data-placement="bottom" title="Registrar una categoria">
+                      <i class="fa fa-2x fa-plus"></i>
+                            </a>
+                            <a href="{{ URL::to('/categorias/deleted') }}" class="btn btn-outline-danger btn-circle waves-effect hoverable" 
+                    data-toggle="tooltip" data-placement="bottom" title="Categorias eliminadas">
+                      <i class="fa fa-2x fa-recycle"></i>
                             </a>
                     </div>
 
@@ -59,38 +57,50 @@ Tipos de medidas eliminadas | {{ config('app.name', 'Laravel') }}
                         <div class="card-body">
                         <div class="table-responsive">
                             <!-- Table  -->
-                            <table id="dttipos_medidas" class="table table-borderless table-hover display dt-responsive nowrap" cellspacing="0" width="100%">
-  <thead class="bg-danger white-text">
+                            <table id="dtcategorias" class="table table-borderless table-hover display dt-responsive nowrap" cellspacing="0" width="100%">
+  <thead class="special-color-dark white-text">
     <tr class="z-depth-2">
       <th class="th-sm">#
       </th>
       <th class="th-sm">Nombre
       </th>
+      <th class="th-sm">Etiqueta
+      </th>
+      <th class="th-sm">Tipo de categoria
+      </th>
       <th class="th-sm">Acciones
       </th>
+   
     </tr>
   </thead>
   <tbody>
-  @foreach($tipos_medidas as $key => $tipo_medida)
+  @foreach($categorias as $key => $categoria)
     <tr class="hoverable">
-      <td>{{$tipo_medida->id}}</td>
-      <td>{{$tipo_medida->nombre}}</td>
+      <td>{{$categoria->id}}</td>
+      <td>{{$categoria->nombre}}</td>
+      <td>{{$categoria->etiqueta}}</td>
+      <td>
+      <a href="{{ URL::to('tipos_categorias/' . $categoria->tipo_categoria->id) }}" class="link-text"
+                    data-toggle="tooltip" data-placement="bottom" title='Información del tipo de categoria "{{ $categoria->tipo_categoria->nombre }}"'>
+                      <i class="fa fa-balance-scale"></i> {{$categoria->tipo_categoria->nombre}}</td>
+                            </a>    
       <td>
 
-      <a onclick="restaurar_tipos_medida({{ $tipo_medida->id }},'{{ $tipo_medida->nombre }}')" class="text-success m-1" 
-                    data-toggle="tooltip" data-placement="bottom" title='Restaurar el tipos_medida "{{ $tipo_medida->nombre }}"'>
-                      <i class="fa fa-2x fa-undo"></i>
+<a href="{{ URL::to('categorias/' . $categoria->id) }}" class="text-primary m-1" 
+                    data-toggle="tooltip" data-placement="bottom" title='Información de la categoria "{{ $categoria->nombre }}"'>
+                      <i class="fa fa-2x fa-info-circle"></i>
                             </a>
-                
-                            <a onclick="eliminar_tipos_medida({{ $tipo_medida->id }},'{{ $tipo_medida->nombre }}')" class="text-danger m-1" 
-                    data-toggle="tooltip" data-placement="bottom" title='Eliminar definitivamente el tipos_medida "{{ $tipo_medida->nombre }}"'>
-                      <i class="fa fa-2x fa-trash"></i>
+
+      <a href="{{ URL::to('categorias/' . $categoria->id.'/edit') }}" class="text-warning m-1" 
+                    data-toggle="tooltip" data-placement="bottom" title='Editar la categoria "{{ $categoria->nombre }}"'>
+                      <i class="fa fa-2x fa-pencil-alt"></i>
                             </a>
-                            <form id="restaurar{{ $tipo_medida->id }}" method="POST" action="{{ URL::to('tipos_medidas/deleted/' . $tipo_medida->id) }}" accept-charset="UTF-8">
-    <input name="_method" type="hidden" value="PUT">
-    {{ csrf_field() }}
-</form>
-                            <form id="eliminar{{ $tipo_medida->id }}" method="POST" action="{{ URL::to('tipos_medidas/deleted/' . $tipo_medida->id) }}" accept-charset="UTF-8">
+
+                            <a onclick="eliminar_categoria({{ $categoria->id }},'{{ $categoria->nombre }}')" class="text-danger m-1" 
+                    data-toggle="tooltip" data-placement="bottom" title='Eliminar la categoria "{{ $categoria->nombre }}"'>
+                      <i class="fa fa-2x fa-trash-alt"></i>
+                            </a>
+                            <form id="eliminar{{ $categoria->id }}" method="POST" action="{{ URL::to('categorias/' . $categoria->id) }}" accept-charset="UTF-8">
     <input name="_method" type="hidden" value="DELETE">
     {{ csrf_field() }}
 </form>
@@ -133,12 +143,12 @@ Tipos de medidas eliminadas | {{ config('app.name', 'Laravel') }}
 <script type="text/javascript" src="{{ asset('js/addons/buttons.colVis.min.js') }}"></script>
 <script type="text/javascript">
 
-function eliminar_tipos_medida(id,nombre){
+function eliminar_categoria(id,nombre){
     swal({
-  title: 'Eliminar el tipo de medida',
-  text: '¿Desea eliminar definitivamente el tipo de medida "'+nombre+'"?',
-  type: 'warning',
-  confirmButtonText: '<i class="fa fa-trash"></i> Eliminar',
+  title: 'Eliminar categoria',
+  text: '¿Desea eliminar la categoria "'+nombre+'"?',
+  type: 'question',
+  confirmButtonText: '<i class="fa fa-trash-alt"></i> Eliminar',
   cancelButtonText: '<i class="fa fa-times"></i> Cancelar',
   showCancelButton: true,
   showCloseButton: true,
@@ -165,46 +175,15 @@ function eliminar_tipos_medida(id,nombre){
 })
 }
 
-function restaurar_tipos_medida(id,nombre){
-    swal({
-  title: 'Restaurar el tipo de medida',
-  text: '¿Desea restaurar el tipo de medida "'+nombre+'"?',
-  type: 'question',
-  confirmButtonText: '<i class="fa fa-undo"></i> Restaurar',
-  cancelButtonText: '<i class="fa fa-times"></i> Cancelar',
-  showCancelButton: true,
-  showCloseButton: true,
-  confirmButtonClass: 'btn btn-success',
-  cancelButtonClass: 'btn btn-danger',
-  buttonsStyling: false,
-  animation: false,
-  customClass: 'animated zoomIn',
-}).then((result) => {
-  if (result.value) {
-    $( "#restaurar"+id ).submit();
-  }else{
-    swal({
-  position: 'top-end',
-  type: 'error',
-  title: 'Operación cancelada por el usuario',
-  showConfirmButton: false,
-  toast: true,
-  animation: false,
-  customClass: 'animated lightSpeedIn',
-  timer: 3000
-})
-  }
-})
-}
-
   $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 $(document).ready(function() {
+    var currentdate = new Date(); 
     moment.locale('es');
 var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a'); 
-    var titulo_archivo = "Lista de tipos de medidas eliminados ("+datetime+")";
-     $('#dttipos_medidas').DataTable( {
+    var titulo_archivo = "Lista de categorias ("+datetime+")";
+     $('#dtcategorias').DataTable( {
         dom: 'Bfrtip',
     lengthMenu: [
         [ 2, 5, 10, 20, 30, 50, 100, -1 ],
@@ -270,7 +249,7 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
                 display: $.fn.dataTable.Responsive.display.modal( {
                     header: function ( row ) {
                         var data = row.data();
-                        return 'Datos de tipo de medida eliminado "'+ data[1]+'"';
+                        return 'Datos de categoria "'+ data[1]+'"';
                     }
                 } ),
                 renderer: $.fn.dataTable.Responsive.renderer.tableAll( {

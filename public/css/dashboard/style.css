@@ -75,12 +75,11 @@
       }
 
       a{
-       color: rgba(13, 71, 161, 0.7);
+        color: rgba(24, 117, 255, 0.9);
       }
 
       a.link-text{
-        color: rgba(13, 71, 161, 0.7) !important;
-        
+        color: rgba(24, 117, 255, 0.9) !important;
        }
 
       a.list-group-item.active{

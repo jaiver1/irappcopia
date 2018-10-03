@@ -22,6 +22,10 @@ Usuarios eliminados | {{ config('app.name', 'Laravel') }}
                 <div class="card-body d-sm-flex justify-content-between">
 
                     <h4 class="mb-2 mb-sm-0 pt-1">
+                            <span class="fa-stack">
+                                    <i class="fa fa-users fa-stack-1x"></i>
+                                    <i class="fa fa-ban fa-stack-2x text-danger"></i>
+                                  </span>
                     <a href="{{ route('usuarios.index') }}">Lista de usuarios</a>
                         <span>/</span>
                         <span> @if (count($usuarios) === 1)
@@ -141,7 +145,7 @@ Usuarios eliminados | {{ config('app.name', 'Laravel') }}
 
 function eliminar_usuario(id,nombre){
     swal({
-  title: 'Eliminar usuario',
+  title: 'Eliminar el usuario',
   text: '¿Desea eliminar definitivamente el usuario "'+nombre+'"?',
   type: 'warning',
   confirmButtonText: '<i class="fa fa-trash"></i> Eliminar',
@@ -173,7 +177,7 @@ function eliminar_usuario(id,nombre){
 
 function restaurar_usuario(id,nombre){
     swal({
-  title: 'Restaurar usuario',
+  title: 'Restaurar el usuario',
   text: '¿Desea restaurar el usuario "'+nombre+'"?',
   type: 'question',
   confirmButtonText: '<i class="fa fa-undo"></i> Restaurar',

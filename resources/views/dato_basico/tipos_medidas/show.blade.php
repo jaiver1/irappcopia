@@ -169,7 +169,7 @@ Información del tipo de medida "{{ $tipo_medida->nombre }}" | {{ config('app.na
 
 function eliminar_tipo_medida(id,nombre){
     swal({
-  title: 'Eliminar tipo de medida',
+  title: 'Eliminar el tipo de medida',
   text: '¿Desea eliminar el tipo de medida "'+nombre+'"?',
   type: 'question',
   confirmButtonText: '<i class="fa fa-trash-alt"></i> Eliminar',

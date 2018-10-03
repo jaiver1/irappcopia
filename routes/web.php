@@ -26,6 +26,15 @@ Route::resource('tipos_medidas', 'Dato_basico\Tipo_medida\Tipo_medidaController'
 Route::resource('medidas/deleted', 'Dato_basico\Medida\MedidaSoftDeleteController');
 Route::resource('medidas', 'Dato_basico\Medida\MedidaController');
 
+Route::resource('especialidades/deleted', 'Clasificacion\Especialidad\EspecialidadSoftDeleteController');
+Route::resource('especialidades', 'Clasificacion\Especialidad\EspecialidadController');
+
+Route::resource('categorias/deleted', 'Clasificacion\Categoria\CategoriaSoftDeleteController');
+Route::resource('categorias', 'Clasificacion\Categoria\CategoriaController');
+
+Route::resource('marcas/deleted', 'Comercio\Marca\MarcaSoftDeleteController');
+Route::resource('marcas', 'Comercio\Marca\MarcaController');
+
 Route::resource('clientes/deleted', 'Contacto\Cliente\ClienteSoftDeleteController');
 Route::resource('clientes', 'Contacto\Cliente\ClienteController');
 Route::resource('colaboradores/deleted', 'Contacto\Colaborador\ColaboradorSoftDeleteController');

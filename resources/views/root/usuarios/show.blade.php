@@ -89,7 +89,7 @@ Información del usuario "{{ $usuario->name }}" | {{ config('app.name', 'Laravel
 
 function eliminar_usuario(id,nombre){
     swal({
-  title: 'Eliminar usuario',
+  title: 'Eliminar el usuario',
   text: '¿Desea eliminar el usuario "'+nombre+'"?',
   type: 'question',
   confirmButtonText: '<i class="fa fa-trash-alt"></i> Eliminar',

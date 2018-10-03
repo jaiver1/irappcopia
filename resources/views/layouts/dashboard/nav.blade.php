@@ -114,12 +114,12 @@ function salir(){
                 </li>
                
      <li class="header-menu">
-                    <span>Administracion</span>
+                    <span>Administración</span>
                 </li>
 
-    <li class="sidebar-dropdown {{ (\Request::is('tipos_medidas') || \Request::is('tipos_medidas/*') || \Request::is('medidas') || \Request::is('medidas/*')) ? 'active default' : 'simple' }}">
+                <li class="sidebar-dropdown {{ (\Request::is('tipos_medidas') || \Request::is('tipos_medidas/*') || \Request::is('medidas') || \Request::is('medidas/*')) ? 'active default' : 'simple' }}">
                     <a href="#">
-                        <i class="fa fa-cubes"></i>
+                        <i class="fa fa-file-signature"></i>
                         <span>Datos basicos</span>
                     </a>
                     <div class="sidebar-submenu" style="{{ (\Request::is('tipos_medidas') || \Request::is('tipos_medidas/*') || \Request::is('medidas') || \Request::is('medidas/*')) ? 'display: block;' : '' }} ">
@@ -133,138 +133,41 @@ function salir(){
                         </ul>
                     </div>
                 </li>
-          
-                <li class="header-menu">
-                    <span>General</span>
-                </li>
-                <li class="sidebar-dropdown">
-                    <a href="#">
-                        <i class="fa fa-tachometer-alt"></i>
-                        <span>Dashboard</span>
-                        <span class="badge badge-pill badge-danger">New</span>
-                    </a>
-                    <div class="sidebar-submenu">
-                        <ul>
-                            <li>
-                                <a href="#">Dashboard 1
-                                    <span class="badge badge-pill badge-success">Pro</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">Dashboard 2</a>
-                            </li>
-                            <li>
-                                <a href="#">Dashboard 3</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="sidebar-dropdown">
-                    <a href="#">
-                        <i class="fa fa-shopping-cart"></i>
-                        <span>E-commerce</span>
-                        <span class="badge badge-pill badge-primary">3</span>
-                    </a>
-                    <div class="sidebar-submenu">
-                        <ul>
-                            <li>
-                                <a href="#">Products
 
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">Orders</a>
-                            </li>
-                            <li>
-                                <a href="#">Credit cart</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="sidebar-dropdown">
+                <li class="sidebar-dropdown {{ (\Request::is('especialidades') || \Request::is('especialidades/*') || \Request::is('categorias') || \Request::is('categorias/*')) ? 'active default' : 'simple' }}">
                     <a href="#">
-                        <i class="far fa-gem"></i>
-                        <span>Components</span>
+                        <i class="fa fa-project-diagram "></i>
+                        <span>Clasificación</span>
                     </a>
-                    <div class="sidebar-submenu">
+                    <div class="sidebar-submenu" style="{{ (\Request::is('especialidades') || \Request::is('especialidades/*') || \Request::is('categorias') || \Request::is('categorias/*')) ? 'display: block;' : '' }} ">
                         <ul>
-                            <li>
-                                <a href="#">General</a>
+                            <li class="hoverable waves-light {{ (\Request::is('especialidades') || \Request::is('especialidades/*')) ? 'default' : 'simple' }}">
+                            <a href="{{route('especialidades.index')}}"> <i class="fa fa-object-group"></i><span>Especialidades</span></a>
                             </li>
-                            <li>
-                                <a href="#">Panels</a>
-                            </li>
-                            <li>
-                                <a href="#">Tables</a>
-                            </li>
-                            <li>
-                                <a href="#">Icons</a>
-                            </li>
-                            <li>
-                                <a href="#">Forms</a>
+                            <li class="hoverable waves-light {{ (\Request::is('categorias') || \Request::is('categorias/*')) ? 'default' : 'simple' }}">
+                                <a href="{{route('categorias.index')}}"><i class="fa fa-sitemap"></i><span>Categorias</span></a>
                             </li>
                         </ul>
                     </div>
                 </li>
-                <li class="sidebar-dropdown">
+          
+                <li class="sidebar-dropdown {{ (\Request::is('marcas') || \Request::is('marcas/*') || \Request::is('productos') || \Request::is('productos/*')) ? 'active default' : 'simple' }}">
                     <a href="#">
-                        <i class="fa fa-chart-line"></i>
-                        <span>Charts</span>
+                        <i class="fa fa-store"></i>
+                        <span>Comercio</span>
                     </a>
-                    <div class="sidebar-submenu">
+                    <div class="sidebar-submenu" style="{{ (\Request::is('marcas') || \Request::is('marcas/*') || \Request::is('productos') || \Request::is('productos/*')) ? 'display: block;' : '' }} ">
                         <ul>
-                            <li>
-                                <a href="#">Pie chart</a>
+                            <li class="hoverable waves-light {{ (\Request::is('marcas') || \Request::is('marcas/*')) ? 'default' : 'simple' }}">
+                            <a href="{{route('marcas.index')}}"> <i class="fa fa-trademark "></i><span>Marcas</span></a>
                             </li>
-                            <li>
-                                <a href="#">Line chart</a>
-                            </li>
-                            <li>
-                                <a href="#">Bar chart</a>
-                            </li>
-                            <li>
-                                <a href="#">Histogram</a>
+                            <li class="hoverable waves-light {{ (\Request::is('productos') || \Request::is('productos/*')) ? 'default' : 'simple' }}">
+                                <a href="{{route('marcas.index')}}"><i class="fa fa-boxes"></i><span>Productos</span></a>
                             </li>
                         </ul>
                     </div>
                 </li>
-                <li class="sidebar-dropdown">
-                    <a href="#">
-                        <i class="fa fa-globe"></i>
-                        <span>Maps</span>
-                    </a>
-                    <div class="sidebar-submenu">
-                        <ul>
-                            <li>
-                                <a href="#">Google maps</a>
-                            </li>
-                            <li>
-                                <a href="#">Open street map</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="header-menu">
-                    <span>Extra</span>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-calendar"></i>
-                        <span>Calendar</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-folder"></i>
-                        <span>Examples</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-book"></i>
-                        <span>Documentation</span>
-                    </a>
-                </li>
+
             </ul>
         </div>
         <!-- sidebar-menu  -->

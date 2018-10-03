@@ -1,6 +1,6 @@
 @extends('layouts.dashboard.main')
 @section('template_title')
-Información de la medida "{{ $medida->nombre }}" | {{ config('app.name', 'Laravel') }}
+Información de la categoria "{{ $categoria->nombre }}" | {{ config('app.name', 'Laravel') }}
 @endsection
 @section('content')
         <div class="container-fluid">
@@ -12,28 +12,28 @@ Información de la medida "{{ $medida->nombre }}" | {{ config('app.name', 'Larav
                 <div class="card-body d-sm-flex justify-content-between">
 
                     <h4 class="mb-2 mb-sm-0 pt-1">
-                    <span><i class="fa fa-ruler mr-1"></i></span>
-                        <a href="{{ route('medidas.index') }}">Lista de medidas</a>
+                    <span><i class="fa fa-sitemap mr-1"></i></span>
+                        <a href="{{ route('categorias.index') }}">Lista de categorias</a>
                         <span>/</span>
-                        <span>Información de la medida "{{ $medida->nombre }}"</span>
+                        <span>Información de la categoria "{{ $categoria->nombre }}"</span>
                     </h4>
 
                     <div class="d-flex justify-content-center">
-                    <a href="{{ route('medidas.index') }}" class="btn btn-outline-secondary btn-circle waves-effect hoverable" 
-                    data-toggle="tooltip" data-placement="bottom" title="Lista de medidas">
-                      <i class="fa fa-2x fa-ruler"></i>
+                    <a href="{{ route('categorias.index') }}" class="btn btn-outline-secondary btn-circle waves-effect hoverable" 
+                    data-toggle="tooltip" data-placement="bottom" title="Lista de categorias">
+                      <i class="fa fa-2x fa-sitemap"></i>
                             </a>
 
-                             <a href="{{ URL::to('medidas/' . $medida->id.'/edit') }}" class="btn btn-outline-warning btn-circle waves-effect hoverable" 
-                    data-toggle="tooltip" data-placement="bottom" title='Editar la medida "{{ $medida->nombre }}"'>
+                             <a href="{{ URL::to('categorias/' . $categoria->id.'/edit') }}" class="btn btn-outline-warning btn-circle waves-effect hoverable" 
+                    data-toggle="tooltip" data-placement="bottom" title='Editar la categoria "{{ $categoria->nombre }}"'>
                       <i class="fa fa-2x fa-pencil-alt"></i>
                             </a>
 
-                                    <a onclick="eliminar_medida({{ $medida->id }},'{{ $medida->nombre }}')"  class="btn btn-outline-danger btn-circle waves-effect hoverable" 
-                    data-toggle="tooltip" data-placement="bottom" title='Eliminar la medida "{{ $medida->nombre }}"'>
+                                    <a onclick="eliminar_categoria({{ $categoria->id }},'{{ $categoria->nombre }}')"  class="btn btn-outline-danger btn-circle waves-effect hoverable" 
+                    data-toggle="tooltip" data-placement="bottom" title='Eliminar la categoria "{{ $categoria->nombre }}"'>
                       <i class="fa fa-2x fa-trash-alt"></i>
                             </a>
-                            <form id="eliminar{{ $medida->id }}" method="POST" action="{{ URL::to('medidas/' . $medida->id) }}" accept-charset="UTF-8">
+                            <form id="eliminar{{ $categoria->id }}" method="POST" action="{{ URL::to('categorias/' . $categoria->id) }}" accept-charset="UTF-8">
     <input name="_method" type="hidden" value="DELETE">
     {{ csrf_field() }}
 </form>
@@ -59,11 +59,11 @@ Información de la medida "{{ $medida->nombre }}" | {{ config('app.name', 'Larav
 
 <div class="list-group hoverable">
   <a class="list-group-item active z-depth-2 white-text waves-light hoverable">
-      <i class="fa fa-ruler  mr-2"></i><strong>Medida #{{ $medida->id }}</strong>
+      <i class="fa fa-sitemap  mr-2"></i><strong>Categoria #{{ $categoria->id }}</strong>
     </a>
-  <a class="list-group-item waves-effect hoverable"><strong><i class="fa mr-4"></i>Nombre: </strong>{{ $medida->nombre }}</a>
-  <a class="list-group-item waves-effect hoverable"><strong><i class="fa mr-4"></i>Etiqueta: </strong>{{ $medida->etiqueta }}</a>
-  <a href ="{{ URL::to('tipos_medidas/' . $medida->tipo_medida->id) }}" class="list-group-item waves-effect hoverable"><strong><i class="fa fa-balance-scale mr-2"></i>Tipo de medida: </strong>{{ $medida->tipo_medida->nombre }}</a>
+  <a class="list-group-item waves-effect hoverable"><strong><i class="fa mr-4"></i>Nombre: </strong>{{ $categoria->nombre }}</a>
+  <a class="list-group-item waves-effect hoverable"><strong><i class="fa mr-4"></i>Etiqueta: </strong>{{ $categoria->etiqueta }}</a>
+  <a href ="{{ URL::to('tipos_categorias/' . $categoria->tipo_categoria->id) }}" class="list-group-item waves-effect hoverable"><strong><i class="fa fa-balance-scale mr-2"></i>Tipo de categoria: </strong>{{ $categoria->tipo_categoria->nombre }}</a>
 </div>
                         </div>
 
@@ -82,10 +82,10 @@ Información de la medida "{{ $medida->nombre }}" | {{ config('app.name', 'Larav
 @endsection
 @section('js_links')
 <script type="text/javascript">
-function eliminar_medida(id,nombre){
+function eliminar_categoria(id,nombre){
     swal({
-  title: 'Eliminar la medida',
-  text: '¿Desea eliminar la medida "'+nombre+'"?',
+  title: 'Eliminar la categoria',
+  text: '¿Desea eliminar la categoria "'+nombre+'"?',
   type: 'question',
   confirmButtonText: '<i class="fa fa-trash-alt"></i> Eliminar',
   cancelButtonText: '<i class="fa fa-times"></i> Cancelar',
