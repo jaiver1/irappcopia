@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Clasificacion\Marca;
+namespace App\Http\Controllers\Comercio\Marca;
 use App\Http\Controllers\Controller;
-use App\Models\Clasificacion\Marca;
+use App\Models\Comercio\Marca;
 Use Alert;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Redirect;

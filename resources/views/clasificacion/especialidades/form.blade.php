@@ -4,10 +4,10 @@
 @section('crud_form')
 
 @if($editar)
-<form method="POST" action="{{ URL::to('especialidades/' . $especialidad->id) }}" accept-charset="UTF-8">
+<form method="POST" action="{{ route('especialidades.update', $especialidad->id) }}" accept-charset="UTF-8">
     <input name="_method" type="hidden" value="PUT">
     @else
-    <form method="POST" action="{{ URL::to('especialidades/') }}" accept-charset="UTF-8">
+    <form method="POST" action="{{ route('especialidades.store') }}" accept-charset="UTF-8">
 @endif
 
  {{ csrf_field() }}

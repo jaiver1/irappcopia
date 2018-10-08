@@ -5,7 +5,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Dato_basico\Medida;
 use App\Models\Dato_basico\Tipo_medida;
 use App\Models\Dato_basico\Tipo_referencia;
-class Dato_basicoTableSeeder extends Seeder
+class Datos_basicosTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

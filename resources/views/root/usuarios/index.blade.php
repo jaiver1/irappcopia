@@ -37,7 +37,7 @@ Lista de usuarios | {{ config('app.name', 'Laravel') }}
                     data-toggle="tooltip" data-placement="bottom" title="Registrar un usuario">
                       <i class="fa fa-2x fa-plus"></i>
                             </a>
-                            <a href="{{ URL::to('/usuarios/deleted') }}" class="btn btn-outline-danger btn-circle waves-effect hoverable" 
+                            <a href="{{ route('usuarios.deleted.index') }}" class="btn btn-outline-danger btn-circle waves-effect hoverable" 
                     data-toggle="tooltip" data-placement="bottom" title="Usuarios eliminados">
                       <i class="fa fa-2x fa-recycle"></i>
                             </a>
@@ -86,12 +86,12 @@ Lista de usuarios | {{ config('app.name', 'Laravel') }}
       <td>{{$usuario->roles[0]->display_name}}</td>
       <td>
 
-<a href="{{ URL::to('usuarios/' . $usuario->id) }}" class="text-primary m-1" 
+<a href="{{ route('usuarios.show',$usuario->id) }}" class="text-primary m-1" 
                     data-toggle="tooltip" data-placement="bottom" title='Información del usuario "{{ $usuario->name }}"'>
                       <i class="fa fa-2x fa-info-circle"></i>
                             </a>
 
-      <a href="{{ URL::to('usuarios/' . $usuario->id.'/edit') }}" class="text-warning m-1" 
+      <a href="{{ route('usuarios.edit',$usuario->id) }}" class="text-warning m-1" 
                     data-toggle="tooltip" data-placement="bottom" title='Editar el usuario "{{ $usuario->name }}"'>
                       <i class="fa fa-2x fa-pencil-alt"></i>
                             </a>
@@ -100,7 +100,7 @@ Lista de usuarios | {{ config('app.name', 'Laravel') }}
                     data-toggle="tooltip" data-placement="bottom" title='Eliminar el usuario "{{ $usuario->name }}"'>
                       <i class="fa fa-2x fa-trash-alt"></i>
                             </a>
-                            <form id="eliminar{{ $usuario->id }}" method="POST" action="{{ URL::to('usuarios/' . $usuario->id) }}" accept-charset="UTF-8">
+                            <form id="eliminar{{ $usuario->id }}" method="POST" action="{{ route('usuarios.destroy',$usuario->id) }}" accept-charset="UTF-8">
     <input name="_method" type="hidden" value="DELETE">
     {{ csrf_field() }}
 </form>

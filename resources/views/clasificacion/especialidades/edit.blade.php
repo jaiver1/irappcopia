@@ -26,7 +26,7 @@ Editar una especialidad "{{ $especialidad->nombre }}" | {{ config('app.name', 'L
                       <i class="fa fa-2x fa-object-group "></i>
                             </a>
 
-                            <a href="{{ URL::to('especialidades/' . $especialidad->id) }}" class="btn btn-outline-primary btn-circle waves-effect hoverable" 
+                            <a href="{{ route('especialidades.show', $especialidad->id) }}" class="btn btn-outline-primary btn-circle waves-effect hoverable" 
                     data-toggle="tooltip" data-placement="bottom" title='Informacion de la especialidad "{{ $especialidad->nombre }}"'>
                       <i class="fa fa-2x fa-info"></i>
                             </a>

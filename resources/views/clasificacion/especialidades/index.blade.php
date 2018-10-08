@@ -33,7 +33,7 @@ Lista de especialidades | {{ config('app.name', 'Laravel') }}
                     data-toggle="tooltip" data-placement="bottom" title="Registrar una especialidad">
                       <i class="fa fa-2x fa-plus"></i>
                             </a>
-                            <a href="{{ URL::to('/especialidades/deleted') }}" class="btn btn-outline-danger btn-circle waves-effect hoverable" 
+                            <a href="{{ route('especialidades.deleted.index') }}" class="btn btn-outline-danger btn-circle waves-effect hoverable" 
                     data-toggle="tooltip" data-placement="bottom" title="Especialidades eliminadas">
                       <i class="fa fa-2x fa-recycle"></i>
                             </a>
@@ -76,12 +76,12 @@ Lista de especialidades | {{ config('app.name', 'Laravel') }}
       <td>{{$especialidad->nombre}}</td>          
       <td>
 
-<a href="{{ URL::to('especialidades/' . $especialidad->id) }}" class="text-primary m-1" 
+<a href="{{ route('especialidades.show', $especialidad->id) }}" class="text-primary m-1" 
                     data-toggle="tooltip" data-placement="bottom" title='Información de la especialidad "{{ $especialidad->nombre }}"'>
                       <i class="fa fa-2x fa-info-circle"></i>
                             </a>
 
-      <a href="{{ URL::to('especialidades/' . $especialidad->id.'/edit') }}" class="text-warning m-1" 
+      <a href="{{ route('especialidades.edit', $especialidad->id) }}" class="text-warning m-1" 
                     data-toggle="tooltip" data-placement="bottom" title='Editar la especialidad "{{ $especialidad->nombre }}"'>
                       <i class="fa fa-2x fa-pencil-alt"></i>
                             </a>
@@ -90,7 +90,7 @@ Lista de especialidades | {{ config('app.name', 'Laravel') }}
                     data-toggle="tooltip" data-placement="bottom" title='Eliminar la especialidad "{{ $especialidad->nombre }}"'>
                       <i class="fa fa-2x fa-trash-alt"></i>
                             </a>
-                            <form id="eliminar{{ $especialidad->id }}" method="POST" action="{{ URL::to('especialidades/' . $especialidad->id) }}" accept-charset="UTF-8">
+                            <form id="eliminar{{ $especialidad->id }}" method="POST" action="{{ route('especialidades.destroy', $especialidad->id) }}" accept-charset="UTF-8">
     <input name="_method" type="hidden" value="DELETE">
     {{ csrf_field() }}
 </form>
@@ -178,7 +178,30 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
     lengthMenu: [
         [ 2, 5, 10, 20, 30, 50, 100, -1 ],
         [ '2 rows', '5 rows', '10 rows', '20 rows','30 rows', '50 rows', '100 rows', 'Show all' ]
-    ],
+    ],oLanguage:{
+	"sProcessing":     "Procesando...",
+	"sLengthMenu":     "Mostrar _MENU_ registros",
+	"sZeroRecords":    "No se encontraron resultados",
+	"sEmptyTable":     "Ningún dato disponible en esta tabla",
+	"sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+	"sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+	"sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+	"sInfoPostFix":    "",
+	"sSearch":         "Buscar:",
+	"sUrl":            "",
+	"sInfoThousands":  ",",
+	"sLoadingRecords": "Cargando...",
+	"oPaginate": {
+		"sFirst":    "Primero",
+		"sLast":     "Último",
+		"sNext":     "Siguiente",
+		"sPrevious": "Anterior"
+	},
+	"oAria": {
+		"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+		"sSortDescending": ": Activar para ordenar la columna de manera descendente"
+	}
+},
         buttons: [
 
             {

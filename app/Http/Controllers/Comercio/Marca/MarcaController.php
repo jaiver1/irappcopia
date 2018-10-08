@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Clasificacion\Marca;
+namespace App\Http\Controllers\Comercio\Marca;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Clasificacion\Marca;
+use App\Models\Comercio\Marca;
 use Illuminate\Support\Facades\Validator;
 Use Alert;
 

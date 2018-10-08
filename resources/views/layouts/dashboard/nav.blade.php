@@ -153,7 +153,7 @@ function salir(){
           
                 <li class="sidebar-dropdown {{ (\Request::is('marcas') || \Request::is('marcas/*') || \Request::is('productos') || \Request::is('productos/*')) ? 'active default' : 'simple' }}">
                     <a href="#">
-                        <i class="fa fa-store"></i>
+                        <i class="fa fa-store-alt"></i>
                         <span>Comercio</span>
                     </a>
                     <div class="sidebar-submenu" style="{{ (\Request::is('marcas') || \Request::is('marcas/*') || \Request::is('productos') || \Request::is('productos/*')) ? 'display: block;' : '' }} ">

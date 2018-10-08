@@ -28,7 +28,7 @@ Información del usuario "{{ $usuario->name }}" | {{ config('app.name', 'Laravel
                       <i class="fa fa-2x fa-users"></i>
                             </a>
 
-                             <a href="{{ URL::to('usuarios/' . $usuario->id.'/edit') }}" class="btn btn-outline-warning btn-circle waves-effect hoverable" 
+                             <a href="{{ route('usuarios.edit',$usuario->id) }}" class="btn btn-outline-warning btn-circle waves-effect hoverable" 
                     data-toggle="tooltip" data-placement="bottom" title='Editar el usuario "{{ $usuario->name }}"'>
                       <i class="fa fa-2x fa-pencil-alt"></i>
                             </a>
@@ -37,7 +37,7 @@ Información del usuario "{{ $usuario->name }}" | {{ config('app.name', 'Laravel
                     data-toggle="tooltip" data-placement="bottom" title='Eliminar el usuario "{{ $usuario->name }}"'>
                       <i class="fa fa-2x fa-trash-alt"></i>
                             </a>
-                            <form id="eliminar{{ $usuario->id }}" method="POST" action="{{ URL::to('usuarios/' . $usuario->id) }}" accept-charset="UTF-8">
+                            <form id="eliminar{{ $usuario->id }}" method="POST" action="{{ route('usuarios.destroy',$usuario->id) }}" accept-charset="UTF-8">
     <input name="_method" type="hidden" value="DELETE">
     {{ csrf_field() }}
 </form>

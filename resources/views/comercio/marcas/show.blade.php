@@ -12,7 +12,7 @@ Información de la marca "{{ $marca->nombre }}" | {{ config('app.name', 'Laravel
                 <div class="card-body d-sm-flex justify-content-between">
 
                     <h4 class="mb-2 mb-sm-0 pt-1">
-                    <span><i class="fa fa-ruler mr-1"></i></span>
+                    <span><i class="fa fa-trademark mr-1"></i></span>
                         <a href="{{ route('marcas.index') }}">Lista de marcas</a>
                         <span>/</span>
                         <span>Información de la marca "{{ $marca->nombre }}"</span>
@@ -21,7 +21,7 @@ Información de la marca "{{ $marca->nombre }}" | {{ config('app.name', 'Laravel
                     <div class="d-flex justify-content-center">
                     <a href="{{ route('marcas.index') }}" class="btn btn-outline-secondary btn-circle waves-effect hoverable" 
                     data-toggle="tooltip" data-placement="bottom" title="Lista de marcas">
-                      <i class="fa fa-2x fa-ruler"></i>
+                      <i class="fa fa-2x fa-trademark"></i>
                             </a>
 
                              <a href="{{ URL::to('marcas/' . $marca->id.'/edit') }}" class="btn btn-outline-warning btn-circle waves-effect hoverable" 
@@ -59,7 +59,7 @@ Información de la marca "{{ $marca->nombre }}" | {{ config('app.name', 'Laravel
 
 <div class="list-group hoverable">
   <a class="list-group-item active z-depth-2 white-text waves-light hoverable">
-      <i class="fa fa-ruler  mr-2"></i><strong>Marca #{{ $marca->id }}</strong>
+      <i class="fa fa-trademark  mr-2"></i><strong>Marca #{{ $marca->id }}</strong>
     </a>
   <a class="list-group-item waves-effect hoverable"><strong><i class="fa mr-4"></i>Nombre: </strong>{{ $marca->nombre }}</a>
 </div>

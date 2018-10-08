@@ -96,11 +96,11 @@ Usuarios eliminados | {{ config('app.name', 'Laravel') }}
                     data-toggle="tooltip" data-placement="bottom" title='Eliminar definitivamente el usuario "{{ $usuario->name }}"'>
                       <i class="fa fa-2x fa-trash"></i>
                             </a>
-                            <form id="restaurar{{ $usuario->id }}" method="POST" action="{{ URL::to('usuarios/deleted/' . $usuario->id) }}" accept-charset="UTF-8">
+                            <form id="restaurar{{ $usuario->id }}" method="POST" action="{{ route('usuarios.deleted.update', $especialidad->id) }}" accept-charset="UTF-8">
     <input name="_method" type="hidden" value="PUT">
     {{ csrf_field() }}
 </form>
-                            <form id="eliminar{{ $usuario->id }}" method="POST" action="{{ URL::to('usuarios/deleted/' . $usuario->id) }}" accept-charset="UTF-8">
+                            <form id="eliminar{{ $usuario->id }}" method="POST" action="{{ route('usuarios.deleted.destroy', $especialidad->id) }}" accept-charset="UTF-8">
     <input name="_method" type="hidden" value="DELETE">
     {{ csrf_field() }}
 </form>

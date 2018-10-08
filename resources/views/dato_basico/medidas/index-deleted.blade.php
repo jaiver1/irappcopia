@@ -25,10 +25,10 @@ Medidas eliminadas | {{ config('app.name', 'Laravel') }}
 </span>
                     <a href="{{ route('medidas.index') }}">Lista de medidas</a>
                         <span>/</span>
-                        <span> @if (count($medidas) === 1)
+                        <span> @if ($medidas->count() === 1)
                 Una medida eliminada
-            @elseif (count($medidas) > 1)
-                {{ count($medidas) }} medidas eliminadas
+            @elseif ($medidas->count() > 1)
+                {{ $medidas->count() }} medidas eliminadas
             @else
                No hay medidas eliminadas
             @endif
@@ -78,13 +78,13 @@ Medidas eliminadas | {{ config('app.name', 'Laravel') }}
       <td>{{$tipo_medida->nombre}}</td>
       <td>
 
-      <a onclick="restaurar_tipos_medida({{ $tipo_medida->id }},'{{ $tipo_medida->nombre }}')" class="text-success m-1" 
-                    data-toggle="tooltip" data-placement="bottom" title='Restaurar el tipos_medida "{{ $tipo_medida->nombre }}"'>
+      <a onclick="restaurar_medida({{ $tipo_medida->id }},'{{ $tipo_medida->nombre }}')" class="text-success m-1" 
+                    data-toggle="tooltip" data-placement="bottom" title='Restaurar la medida "{{ $tipo_medida->nombre }}"'>
                       <i class="fa fa-2x fa-undo"></i>
                             </a>
                 
-                            <a onclick="eliminar_tipos_medida({{ $tipo_medida->id }},'{{ $tipo_medida->nombre }}')" class="text-danger m-1" 
-                    data-toggle="tooltip" data-placement="bottom" title='Eliminar definitivamente el tipos_medida "{{ $tipo_medida->nombre }}"'>
+                            <a onclick="eliminar_medida({{ $tipo_medida->id }},'{{ $tipo_medida->nombre }}')" class="text-danger m-1" 
+                    data-toggle="tooltip" data-placement="bottom" title='Eliminar definitivamente la medida "{{ $tipo_medida->nombre }}"'>
                       <i class="fa fa-2x fa-trash"></i>
                             </a>
                             <form id="restaurar{{ $tipo_medida->id }}" method="POST" action="{{ URL::to('medidas/deleted/' . $tipo_medida->id) }}" accept-charset="UTF-8">
@@ -134,7 +134,7 @@ Medidas eliminadas | {{ config('app.name', 'Laravel') }}
 <script type="text/javascript" src="{{ asset('js/addons/buttons.colVis.min.js') }}"></script>
 <script type="text/javascript">
 
-function eliminar_tipos_medida(id,nombre){
+function eliminar_medida(id,nombre){
     swal({
   title: 'Eliminar medida',
   text: '¿Desea eliminar definitivamente la medida "'+nombre+'"?',
@@ -166,7 +166,7 @@ function eliminar_tipos_medida(id,nombre){
 })
 }
 
-function restaurar_tipos_medida(id,nombre){
+function restaurar_medida(id,nombre){
     swal({
   title: 'Restaurar medida',
   text: '¿Desea restaurar la medida "'+nombre+'"?',

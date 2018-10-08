@@ -24,9 +24,28 @@
       box-shadow: 0 1px 0 0 #4285f4;
       border-bottom: 1px solid #4285f4; }
 
-        .sidebar-menu > ul > li.default,
-        .sidebar-submenu > ul > li.default{
-        background-color: rgba(0,0,0,0.6);
+        .sidebar-menu > ul > li.default{
+        background-color: rgba(23, 69, 88, 0.5);
+      }
+
+      .sidebar-menu > ul > li.default:hover,
+      .sidebar-menu > ul > li.default:active,
+      .sidebar-menu > ul > li.default:focus,
+      .sidebar-menu > ul > li.sidebar-dropdown.default > a:hover,
+      .sidebar-menu > ul > li.sidebar-dropdown.default > a:active,
+      .sidebar-menu > ul > li.sidebar-dropdown.default > a:focus{
+        background-color: rgba(23, 69, 88, 0.8);
+      }
+      
+
+      .sidebar-submenu > ul > li.default{
+        background-color: rgba(48, 125, 158, 0.5);
+      }
+      
+      .sidebar-submenu > ul > li.default:hover,
+      .sidebar-submenu > ul > li.default:active,
+      .sidebar-submenu > ul > li.default:focus{
+        background-color: rgba(48, 125, 158, 0.8);
       }
       .sidebar-menu > ul > li.default,
       .sidebar-submenu > ul > li.default,
@@ -39,18 +58,7 @@
       -o-transition: all .3s ease;
       transition: all .3s ease;
  }
-      .sidebar-menu > ul > li.default:hover,
-      .sidebar-menu > ul > li.default:active,
-      .sidebar-menu > ul > li.default:focus,
-      .sidebar-menu > ul > li.sidebar-dropdown.default > a:hover,
-      .sidebar-menu > ul > li.sidebar-dropdown.default > a:active,
-      .sidebar-menu > ul > li.sidebar-dropdown.default > a:focus,
-      .sidebar-submenu > ul > li.default:hover,
-      .sidebar-submenu > ul > li.default:active,
-      .sidebar-submenu > ul > li.default:focus{
-        background-color: rgba(0,0,0,0.8);
-      }
-      
+     
 
       .sidebar-menu > ul > li.simple:hover,
       .sidebar-menu > ul > li.simple:active,
@@ -61,7 +69,7 @@
       .sidebar-submenu > ul > li.simple:hover,
       .sidebar-submenu > ul > li.simple:active,
       .sidebar-submenu > ul > li.simple:focus{
-        background-color: rgba(13, 71, 161, 0.3);
+        background-color: rgba(0, 0, 0, 0.5);
       }
       
 

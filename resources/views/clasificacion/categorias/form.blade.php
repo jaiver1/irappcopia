@@ -61,16 +61,16 @@
             
             <div class="md-form">
             <i class="fa fa-balance-scale"></i>
-            <small for="tipo_categoria_id">Tipo de categoria</small>   
-    <select class="form-control" required id="tipo_categoria_id" name="tipo_categoria_id">
+            <small for="especialidad_id">Especialidades</small>   
+    <select class="form-control" required id="especialidad_id" name="especialidad_id">
     <option value="" disabled selected>Selecciona una opción</option>
-    @foreach($tipos_categorias as $key => $tipo_categoria)
-    <option value="{{$tipo_categoria->id}}">{{$tipo_categoria->nombre}}</option>
+    @foreach($especialidades as $key => $especialidad)
+    <option value="{{$especialidad->id}}">{{$especialidad->nombre}}</option>
     @endforeach
 </select>
-</div> @if ($errors->has('tipo_categoria_id'))
+</div> @if ($errors->has('especialidad_id'))
                                             <div class="hoverable waves-light alert alert-danger alert-dismissible fade show" role="alert">
-                                           {{ $errors->first('tipo_categoria_id') }}
+                                           {{ $errors->first('especialidad_id') }}
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -93,8 +93,8 @@
   $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
-$('#tipo_categoria_id').select2({
-        placeholder: "Tipos de categorias",
+$('#especialidad_id').select2({
+        placeholder: "Especialidades",
         theme: "material"
     });
     $(".select2-selection__arrow")

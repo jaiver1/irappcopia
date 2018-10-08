@@ -20,7 +20,7 @@ Marcas eliminadas | {{ config('app.name', 'Laravel') }}
 
                     <h4 class="mb-2 mb-sm-0 pt-1">
                     <span class="fa-stack">
-  <i class="fa fa-ruler fa-stack-1x"></i>
+  <i class="fa fa-trademark fa-stack-1x"></i>
   <i class="fa fa-ban fa-stack-2x text-danger"></i>
 </span>
                     <a href="{{ route('marcas.index') }}">Lista de marcas</a>
@@ -37,7 +37,7 @@ Marcas eliminadas | {{ config('app.name', 'Laravel') }}
                     <div class="d-flex justify-content-center">
                     <a href="{{ route('marcas.index') }}" class="btn btn-outline-secondary btn-circle waves-effect hoverable" 
                     data-toggle="tooltip" data-placement="bottom" title="Lista de marcas">
-                      <i class="fa fa-2x fa-ruler "></i>
+                      <i class="fa fa-2x fa-trademark "></i>
                             </a>
                     </div>
 

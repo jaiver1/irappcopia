@@ -72,26 +72,26 @@ Especialidades eliminadas | {{ config('app.name', 'Laravel') }}
     </tr>
   </thead>
   <tbody>
-  @foreach($especialidades as $key => $tipo_especialidad)
+  @foreach($especialidades as $key => $especialidad)
     <tr class="hoverable">
-      <td>{{$tipo_especialidad->id}}</td>
-      <td>{{$tipo_especialidad->nombre}}</td>
+      <td>{{$especialidad->id}}</td>
+      <td>{{$especialidad->nombre}}</td>
       <td>
 
-      <a onclick="restaurar_tipos_especialidad({{ $tipo_especialidad->id }},'{{ $tipo_especialidad->nombre }}')" class="text-success m-1" 
-                    data-toggle="tooltip" data-placement="bottom" title='Restaurar el tipos_especialidad "{{ $tipo_especialidad->nombre }}"'>
+      <a onclick="restaurar_especialidad({{ $especialidad->id }},'{{ $especialidad->nombre }}')" class="text-success m-1" 
+                    data-toggle="tooltip" data-placement="bottom" title='Restaurar la especialidad "{{ $especialidad->nombre }}"'>
                       <i class="fa fa-2x fa-undo"></i>
                             </a>
                 
-                            <a onclick="eliminar_tipos_especialidad({{ $tipo_especialidad->id }},'{{ $tipo_especialidad->nombre }}')" class="text-danger m-1" 
-                    data-toggle="tooltip" data-placement="bottom" title='Eliminar definitivamente el tipos_especialidad "{{ $tipo_especialidad->nombre }}"'>
+                            <a onclick="eliminar_especialidad({{ $especialidad->id }},'{{ $especialidad->nombre }}')" class="text-danger m-1" 
+                    data-toggle="tooltip" data-placement="bottom" title='Eliminar definitivamente la especialidad "{{ $especialidad->nombre }}"'>
                       <i class="fa fa-2x fa-trash"></i>
                             </a>
-                            <form id="restaurar{{ $tipo_especialidad->id }}" method="POST" action="{{ URL::to('especialidades/deleted/' . $tipo_especialidad->id) }}" accept-charset="UTF-8">
+                            <form id="restaurar{{ $especialidad->id }}" method="POST" action="{{ route('especialidades.deleted.update', $especialidad->id) }}" accept-charset="UTF-8">
     <input name="_method" type="hidden" value="PUT">
     {{ csrf_field() }}
 </form>
-                            <form id="eliminar{{ $tipo_especialidad->id }}" method="POST" action="{{ URL::to('especialidades/deleted/' . $tipo_especialidad->id) }}" accept-charset="UTF-8">
+                            <form id="eliminar{{ $especialidad->id }}" method="POST" action="{{ route('especialidades.deleted.destroy', $especialidad->id) }}" accept-charset="UTF-8">
     <input name="_method" type="hidden" value="DELETE">
     {{ csrf_field() }}
 </form>
@@ -134,7 +134,7 @@ Especialidades eliminadas | {{ config('app.name', 'Laravel') }}
 <script type="text/javascript" src="{{ asset('js/addons/buttons.colVis.min.js') }}"></script>
 <script type="text/javascript">
 
-function eliminar_tipos_especialidad(id,nombre){
+function eliminar_especialidad(id,nombre){
     swal({
   title: 'Eliminar especialidad',
   text: '¿Desea eliminar definitivamente la especialidad "'+nombre+'"?',
@@ -166,7 +166,7 @@ function eliminar_tipos_especialidad(id,nombre){
 })
 }
 
-function restaurar_tipos_especialidad(id,nombre){
+function restaurar_especialidad(id,nombre){
     swal({
   title: 'Restaurar especialidad',
   text: '¿Desea restaurar la especialidad "'+nombre+'"?',
@@ -209,8 +209,31 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
         dom: 'Bfrtip',
     lengthMenu: [
         [ 2, 5, 10, 20, 30, 50, 100, -1 ],
-        [ '2 rows', '5 rows', '10 rows', '20 rows','30 rows', '50 rows', '100 rows', 'Show all' ]
-    ],
+        [ '2 registros', '5 registros', '10 registros', '20 registros','30 registros', '50 registros', '100 registros', 'Mostrar todo' ]
+    ],oLanguage:{
+	sProcessing:     'Procesando...',
+	sLengthMenu:     'Mostrar _MENU_ registros',
+	sZeroRecords:    'No se encontraron resultados',
+	sEmptyTable:     'Ningún dato disponible en esta tabla',
+	sInfo:           'Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros',
+	sInfoEmpty:      'Mostrando registros del 0 al 0 de un total de 0 registros',
+	sInfoFiltered:   '(filtrado de un total de _MAX_ registros)',
+	sInfoPostFix:    '',
+	sSearch:         'Buscar:',
+	sUrl:            '',
+	sInfoThousands:  ',',
+	sLoadingRecords: 'Cargando...',
+	oPaginate: {
+		sFirst:    'Primero',
+		sLast:     'Último',
+		sNext:     'Siguiente',
+		sPrevious: 'Anterior'
+	},
+	oAria: {
+		sSortAscending:  ': Activar para ordenar la columna de manera ascendente',
+		sSortDescending: ': Activar para ordenar la columna de manera descendente'
+	}
+},
         buttons: [
 
             {
@@ -266,6 +289,14 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
             },
             'pageLength'
         ],
+        language: {
+    buttons: {
+pageLength: {
+                _: 'Mostrar %d registros',
+                '-1': 'Mostrar todo'
+            }
+        }
+    },
         responsive: {
             details: {
                 display: $.fn.dataTable.Responsive.display.modal( {

@@ -64,9 +64,9 @@ Lista de categorias | {{ config('app.name', 'Laravel') }}
       </th>
       <th class="th-sm">Nombre
       </th>
-      <th class="th-sm">Etiqueta
+      <th class="th-sm">Especialidad
       </th>
-      <th class="th-sm">Tipo de categoria
+      <th class="th-sm">Categoria
       </th>
       <th class="th-sm">Acciones
       </th>
@@ -78,6 +78,8 @@ Lista de categorias | {{ config('app.name', 'Laravel') }}
     <tr class="hoverable">
       <td>{{$categoria->id}}</td>
       <td>{{$categoria->nombre}}</td>
+      <td>{{$categoria->categoria->nombre}}</td>
+      <td>{{$categoria->especialidad->nombre}}</td>
       <td>{{$categoria->etiqueta}}</td>
       <td>
       <a href="{{ URL::to('tipos_categorias/' . $categoria->tipo_categoria->id) }}" class="link-text"

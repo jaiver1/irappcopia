@@ -17,7 +17,7 @@
         <div class="col-md-6">
             <!-- Material input -->
             <div class="md-form">
-    <i class="fa fa-ruler prefix"></i>
+    <i class="fa fa-trademark prefix"></i>
     <input type="text" required id="nombre" value="{{ $marca->nombre}}" name="nombre" class="form-control validate" maxlength="50">
     <label for="nombre" data-error="Error" data-success="Correcto">Nombre</label>
 </div>

@@ -24,7 +24,7 @@ Información de la especialidad "{{ $especialidad->nombre }}" | {{ config('app.n
                       <i class="fa fa-2x fa-object-group"></i>
                             </a>
 
-                             <a href="{{ URL::to('especialidades/' . $especialidad->id.'/edit') }}" class="btn btn-outline-warning btn-circle waves-effect hoverable" 
+                             <a href="{{ route('especialidades.edit', $especialidad->id) }}" class="btn btn-outline-warning btn-circle waves-effect hoverable" 
                     data-toggle="tooltip" data-placement="bottom" title='Editar la especialidad "{{ $especialidad->nombre }}"'>
                       <i class="fa fa-2x fa-pencil-alt"></i>
                             </a>
@@ -33,7 +33,7 @@ Información de la especialidad "{{ $especialidad->nombre }}" | {{ config('app.n
                     data-toggle="tooltip" data-placement="bottom" title='Eliminar la especialidad "{{ $especialidad->nombre }}"'>
                       <i class="fa fa-2x fa-trash-alt"></i>
                             </a>
-                            <form id="eliminar{{ $especialidad->id }}" method="POST" action="{{ URL::to('especialidades/' . $especialidad->id) }}" accept-charset="UTF-8">
+                            <form id="eliminar{{ $especialidad->id }}" method="POST" action="{{ route('especialidades.destroy', $especialidad->id) }}" accept-charset="UTF-8">
     <input name="_method" type="hidden" value="DELETE">
     {{ csrf_field() }}
 </form>
@@ -120,7 +120,7 @@ Información de la especialidad "{{ $especialidad->nombre }}" | {{ config('app.n
         <td>{{$categoria->especialidad->nombre}}</td>
         <td>
   
-  <a href="{{ URL::to('categorias/' . $categoria->id) }}" class="text-primary m-1" 
+  <a href="{{ route('categorias.show', $categoria->id) }}" class="text-primary m-1" 
                       data-toggle="tooltip" data-placement="bottom" title='Información del categoria "{{ $categoria->nombre }}"'>
                         <i class="fa fa-2x fa-info-circle"></i>
                               </a>

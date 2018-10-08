@@ -18,7 +18,7 @@ Lista de marcas | {{ config('app.name', 'Laravel') }}
                 <div class="card-body d-sm-flex justify-content-between">
 
                     <h4 class="mb-2 mb-sm-0 pt-1">
-                    <span><i class="fa fa-ruler mr-1"></i></span> <span> @if (count($marcas) === 1)
+                    <span><i class="fa fa-trademark mr-1"></i></span> <span> @if (count($marcas) === 1)
                 Una marca
             @elseif (count($marcas) > 1)
                 {{ count($marcas) }} marcas
