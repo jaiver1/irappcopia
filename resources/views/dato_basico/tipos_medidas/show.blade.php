@@ -102,7 +102,7 @@ Información del tipo de medida "{{ $tipo_medida->nombre }}" | {{ config('app.na
                         <div class="table-responsive">
                             <!-- Table  -->
                             <table id="dtmedidas" class="table table-borderless table-hover display dt-responsive nowrap" cellspacing="0" width="100%">
-  <thead class="special-color-dark white-text">
+  <thead class="th-color white-text">
     <tr class="z-depth-2">
       <th class="th-sm">#
       </th>

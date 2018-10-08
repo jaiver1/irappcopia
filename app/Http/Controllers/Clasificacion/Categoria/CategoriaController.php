@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Clasificacion\Medida;
+namespace App\Http\Controllers\Clasificacion\Categoria;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Clasificacion\Medida;
-use App\Models\Clasificacion\Tipo_categoria;
+use App\Models\Clasificacion\Categoria;
+use App\Models\Clasificacion\Especialidad;
 use Illuminate\Support\Facades\Validator;
 Use Alert;
 
-class MedidaController extends Controller
+class CategoriaController extends Controller
 {
     protected $redirectTo = '/login';
     
@@ -27,7 +27,7 @@ class MedidaController extends Controller
     public function index()
     {
         Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
-        $categorias = Medida::all();
+        $categorias = Categoria::all();
         return View::make('clasificacion.categorias.index')->with(compact('categorias'));
     }
 
@@ -39,10 +39,13 @@ class MedidaController extends Controller
     public function create()
     {
         Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
-        $categoria = new Medida();
-        $tipos_categorias = Tipo_categoria::all();
+        $categoria = new Categoria();
+        $categoria->especialidad()->associate(new Especialidad);
+        $categoria->categoria()->associate(new Categoria);
+        $categoria->categoria->id = -1;
+        $especialidades = Especialidad::all(); 
         $editar = false;
-        return View::make('clasificacion.categorias.create')->with(compact('tipos_categorias','categoria','editar'));
+        return View::make('clasificacion.categorias.create')->with(compact('especialidades','categoria','editar'));
     }
 
     /**
@@ -67,7 +70,7 @@ class MedidaController extends Controller
             return Redirect::to('categorias/create')
                 ->withErrors($validator);
         } else {
-            $categoria = new Medida();
+            $categoria = new Categoria();
             $categoria->nombre = $request->nombre; 
             $categoria->etiqueta = $request->etiqueta; 
             $categoria->tipo_categoria()->associate(Tipo_categoria::findOrFail($request->tipo_categoria_id));      
@@ -87,7 +90,7 @@ class MedidaController extends Controller
     public function show($id)
     {  
         Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
-        $categoria = Medida::findOrFail($id);
+        $categoria = Categoria::findOrFail($id);
         return View::make('clasificacion.categorias.show')->with(compact('categoria'));
         
         }
@@ -101,7 +104,7 @@ class MedidaController extends Controller
     public function edit($id)
     {
         Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
-        $categoria = Medida::findOrFail($id);
+        $categoria = Categoria::findOrFail($id);
         $tipos_categorias = Tipo_categoria::all();
         $editar = true;
         return View::make('clasificacion.categorias.edit')->with(compact('tipos_categorias','categoria','editar'));
@@ -131,7 +134,7 @@ class MedidaController extends Controller
         return Redirect::to('categorias/'+$id+'/edit')
             ->withErrors($validator);
     } else {
-        $categoria = Medida::findOrFail($request->id);
+        $categoria = Categoria::findOrFail($request->id);
         $categoria->nombre = $request->nombre; 
         $categoria->etiqueta = $request->etiqueta; 
         $categoria->tipo_categoria()->associate(Tipo_categoria::findOrFail($request->tipo_categoria_id)); 
@@ -151,7 +154,7 @@ class MedidaController extends Controller
     public function destroy($id)
     {
         Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
-        $categoria = Medida::findOrFail($id);
+        $categoria = Categoria::findOrFail($id);
     
         $categoria->delete();
         Alert::success('Exito','La categoria "'.$categoria->nombre.'" ha sido eliminada.');
