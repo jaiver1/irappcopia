@@ -137,3 +137,74 @@
         border-color: #3a4d56;
         color: #fff !important;
       }
+
+      .dtr-bs-modal > .modal-dialog > .modal-content > .modal-header {
+        background-color: #2B3A42;
+        color:#bdd4de;
+        border-top-left-radius: 15px !important; 
+        border-top-right-radius: 15px !important;
+        border-color:  transparent !important;
+          -webkit-box-shadow: none;
+          box-shadow: none;
+          -webkit-transition: all 0.55s ease-in-out;
+          -o-transition: all 0.55s ease-in-out;
+          transition: all 0.55s ease-in-out; 
+          -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+          box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+        }
+        .dtr-bs-modal > .modal-dialog > .modal-content > .modal-header:hover {
+            -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-transition: all 0.55s ease-in-out;
+            -o-transition: all 0.55s ease-in-out;
+            transition: all 0.55s ease-in-out; }
+
+      .dtr-bs-modal > .modal-dialog > .modal-content > .modal-header > .close > span{
+        color:#bdd4de ;
+      }
+  
+      .card,.modal-content  {
+        border-radius: 15px !important; 
+    }
+
+    .btn,.paginate_button.page-item.active {
+      border-radius: 10px ; 
+  }
+    .btn-group>.btn  {
+      border-radius: 0px; 
+  }
+
+  .dropdown-menu{
+    border-bottom-left-radius: 15px; 
+    border-bottom-right-radius: 15px;
+}
+
+table{
+  background-color: rgba(0, 0,0,0.02) !important;
+}
+
+  .btn-circle.btn-outline-success,
+  .btn-circle.btn-outline-default,
+  .btn-circle.btn-outline-primary,
+  .btn-circle.btn-outline-secondary,
+  .btn-circle.btn-outline-warning,
+  .btn-circle.btn-outline-danger,
+  .btn-circle.btn-outline-info {
+    margin-top: 0px;
+      width: 40px;
+      height: 40px;
+      padding: 6px 0px;
+      border-radius: 20px;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.42857;
+  }
+
+  .btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 24px;
+    line-height: 1.33;
+}

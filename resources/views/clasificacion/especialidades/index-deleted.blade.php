@@ -25,10 +25,10 @@ Especialidades eliminadas | {{ config('app.name', 'Laravel') }}
 </span>
                     <a href="{{ route('especialidades.index') }}">Lista de especialidades</a>
                         <span>/</span>
-                        <span> @if (count($especialidades) === 1)
+                        <span> @if ($especialidades->count() === 1)
                 Una especialidad eliminada
-            @elseif (count($especialidades) > 1)
-                {{ count($especialidades) }} especialidades eliminadas
+            @elseif ($especialidades->count() > 1)
+                {{ $especialidades->count() }} especialidades eliminadas
             @else
                No hay especialidades eliminadas
             @endif
@@ -289,20 +289,12 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
             },
             'pageLength'
         ],
-        language: {
-    buttons: {
-pageLength: {
-                _: 'Mostrar %d registros',
-                '-1': 'Mostrar todo'
-            }
-        }
-    },
         responsive: {
             details: {
                 display: $.fn.dataTable.Responsive.display.modal( {
                     header: function ( row ) {
                         var data = row.data();
-                        return 'Datos de especialidad eliminado "'+ data[1]+'"';
+                        return '<span class="fa-stack"><i class="fa fa-object-group fa-stack-1x"></i><i class="fa fa-ban fa-stack-2x text-danger"></i></span> Datos de la especialidad eliminada "'+ data[1]+'"';
                     }
                 } ),
                 renderer: $.fn.dataTable.Responsive.renderer.tableAll( {

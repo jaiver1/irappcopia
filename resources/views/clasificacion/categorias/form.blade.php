@@ -55,6 +55,29 @@
 
   <!-- Grid row -->
   <div class="form-row">
+ <!-- Grid column -->
+ <div class="col-md-6">
+        <!-- Material input -->
+        
+        <div class="md-form">
+        <i class="fa fa-balance-scale"></i>
+        <small for="raiz">Categoria Raiz</small>   
+        <label class="bs-switch">
+                <input {{ $categoria->categoria->id == -1  ? "checked" : ""}} type="checkbox">
+                <span class="slider round"></span>
+              </label>
+</div> @if ($errors->has('raiz'))
+                                        <div class="hoverable waves-light alert alert-danger alert-dismissible fade show" role="alert">
+                                       {{ $errors->first('raiz') }}
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+                            
+                            @endif
+    </div>
+    <!-- Grid column -->
+
         <!-- Grid column -->
         <div class="col-md-6">
             <!-- Material input -->

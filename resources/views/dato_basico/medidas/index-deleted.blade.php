@@ -271,7 +271,7 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
                 display: $.fn.dataTable.Responsive.display.modal( {
                     header: function ( row ) {
                         var data = row.data();
-                        return 'Datos de medida eliminado "'+ data[1]+'"';
+                        return '<span class="fa-stack"><i class="fa fa-ruler fa-stack-1x"></i><i class="fa fa-ban fa-stack-2x text-danger"></i></span> Datos de medida eliminado "'+ data[1]+'"';
                     }
                 } ),
                 renderer: $.fn.dataTable.Responsive.renderer.tableAll( {

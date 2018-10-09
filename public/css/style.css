@@ -21,35 +21,5 @@
         color:white !important;
       }
 
-
-    .btn-circle.btn-outline-success,
-    .btn-circle.btn-outline-default,
-    .btn-circle.btn-outline-primary,
-    .btn-circle.btn-outline-secondary,
-    .btn-circle.btn-outline-warning,
-    .btn-circle.btn-outline-danger,
-    .btn-circle.btn-outline-info {
-      margin-top: 0px;
-        width: 40px;
-        height: 40px;
-        padding: 6px 0px;
-        border-radius: 20px;
-        text-align: center;
-        font-size: 12px;
-        line-height: 1.42857;
-    }
-
-    .btn-circle.btn-xl {
-      width: 70px;
-      height: 70px;
-      padding: 10px 16px;
-      border-radius: 35px;
-      font-size: 24px;
-      line-height: 1.33;
-  }
-
-    .dtr-bs-modal > .modal-dialog > .modal-content > .modal-header > .close{
-      color:rgb(112, 112, 112) !important;
-    }
     
     

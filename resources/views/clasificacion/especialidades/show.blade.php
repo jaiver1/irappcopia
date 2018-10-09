@@ -84,11 +84,11 @@ Información de la especialidad "{{ $especialidad->nombre }}" | {{ config('app.n
                       <div class="card hoverable"> 
                           <!--Card content-->
                           <div class="card-body">
-                              <h4><i class="fa fa-sitemaps mr-2"></i>
-                              @if (count($especialidad->categorias) === 1)
+                              <h4><i class="fa fa-sitemap mr-2"></i>
+                              @if ($especialidad->categorias->count() === 1)
                   Una categoria de "{{ $especialidad->nombre }}"
-              @elseif (count($especialidad->categorias) > 1)
-                  {{ count($especialidad->categorias) }} categorias de "{{ $especialidad->nombre }}"
+              @elseif ($especialidad->categorias->count() > 1)
+                  {{ $especialidad->categorias->count() }} categorias de "{{ $especialidad->nombre }}"
               @else
                  No hay categorias de "{{ $especialidad->nombre }}"
               @endif

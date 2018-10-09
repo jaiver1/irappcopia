@@ -66,7 +66,7 @@ Lista de categorias | {{ config('app.name', 'Laravel') }}
       </th>
       <th class="th-sm">Especialidad
       </th>
-      <th class="th-sm">Categoria
+      <th class="th-sm">Categoria Padre
       </th>
       <th class="th-sm">Acciones
       </th>
@@ -78,15 +78,19 @@ Lista de categorias | {{ config('app.name', 'Laravel') }}
     <tr class="hoverable">
       <td>{{$categoria->id}}</td>
       <td>{{$categoria->nombre}}</td>
-      <td>{{$categoria->categoria->nombre}}</td>
-      <td>{{$categoria->especialidad->nombre}}</td>
-      <td>{{$categoria->etiqueta}}</td>
       <td>
-      <a href="{{ URL::to('tipos_categorias/' . $categoria->tipo_categoria->id) }}" class="link-text"
-                    data-toggle="tooltip" data-placement="bottom" title='Información del tipo de categoria "{{ $categoria->tipo_categoria->nombre }}"'>
-                      <i class="fa fa-balance-scale"></i> {{$categoria->tipo_categoria->nombre}}</td>
+      <a href="{{ route('especialidades.show',$categoria->especialidad->id) }}" class="link-text"
+                    data-toggle="tooltip" data-placement="bottom" title='Información de la especialidad "{{ $categoria->especialidad->nombre }}"'>
+                      <i class="fa fa-balance-scale"></i> {{$categoria->especialidad->nombre}}</td>
                             </a>    
       <td>
+
+            <td>
+                    <a href="{{ route('categorias.show',$categoria->categoria->id) }}" class="link-text"
+                                  data-toggle="tooltip" data-placement="bottom" title='Información de la categoria padre "{{ $categoria->categoria->nombre }}"'>
+                                    <i class="fa fa-balance-scale"></i> {{$categoria->categoria->nombre}}</td>
+                                          </a>    
+                    <td>
 
 <a href="{{ URL::to('categorias/' . $categoria->id) }}" class="text-primary m-1" 
                     data-toggle="tooltip" data-placement="bottom" title='Información de la categoria "{{ $categoria->nombre }}"'>
