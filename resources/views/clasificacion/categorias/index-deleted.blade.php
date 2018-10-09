@@ -72,26 +72,26 @@ Categorias eliminadas | {{ config('app.name', 'Laravel') }}
     </tr>
   </thead>
   <tbody>
-  @foreach($categorias as $key => $tipo_categoria)
+  @foreach($categorias as $key => $categoria)
     <tr class="hoverable">
-      <td>{{$tipo_categoria->id}}</td>
-      <td>{{$tipo_categoria->nombre}}</td>
+      <td>{{$categoria->id}}</td>
+      <td>{{$categoria->nombre}}</td>
       <td>
 
-      <a onclick="restaurar_tipos_categoria({{ $tipo_categoria->id }},'{{ $tipo_categoria->nombre }}')" class="text-success m-1" 
-                    data-toggle="tooltip" data-placement="bottom" title='Restaurar el tipos_categoria "{{ $tipo_categoria->nombre }}"'>
+      <a onclick="restaurar_categoria({{ $categoria->id }},'{{ $categoria->nombre }}')" class="text-success m-1" 
+                    data-toggle="tooltip" data-placement="bottom" title='Restaurar la categoria "{{ $categoria->nombre }}"'>
                       <i class="fa fa-2x fa-undo"></i>
                             </a>
                 
-                            <a onclick="eliminar_tipos_categoria({{ $tipo_categoria->id }},'{{ $tipo_categoria->nombre }}')" class="text-danger m-1" 
-                    data-toggle="tooltip" data-placement="bottom" title='Eliminar definitivamente el tipos_categoria "{{ $tipo_categoria->nombre }}"'>
+                            <a onclick="eliminar_categoria({{ $categoria->id }},'{{ $categoria->nombre }}')" class="text-danger m-1" 
+                    data-toggle="tooltip" data-placement="bottom" title='Eliminar definitivamente la categoria "{{ $categoria->nombre }}"'>
                       <i class="fa fa-2x fa-trash"></i>
                             </a>
-                            <form id="restaurar{{ $tipo_categoria->id }}" method="POST" action="{{ URL::to('categorias/deleted/' . $tipo_categoria->id) }}" accept-charset="UTF-8">
+                            <form id="restaurar{{ $categoria->id }}" method="POST" action="{{ route('categorias.deleted.update',$categoria->id) }}" accept-charset="UTF-8">
     <input name="_method" type="hidden" value="PUT">
     {{ csrf_field() }}
 </form>
-                            <form id="eliminar{{ $tipo_categoria->id }}" method="POST" action="{{ URL::to('categorias/deleted/' . $tipo_categoria->id) }}" accept-charset="UTF-8">
+                            <form id="eliminar{{ $categoria->id }}" method="POST" action="{{ route('categorias.deleted.destroy',$categoria->id) }}" accept-charset="UTF-8">
     <input name="_method" type="hidden" value="DELETE">
     {{ csrf_field() }}
 </form>
@@ -134,7 +134,7 @@ Categorias eliminadas | {{ config('app.name', 'Laravel') }}
 <script type="text/javascript" src="{{ asset('js/addons/buttons.colVis.min.js') }}"></script>
 <script type="text/javascript">
 
-function eliminar_tipos_categoria(id,nombre){
+function eliminar_categoria(id,nombre){
     swal({
   title: 'Eliminar la categoria',
   text: '¿Desea eliminar definitivamente la categoria "'+nombre+'"?',
@@ -166,10 +166,10 @@ function eliminar_tipos_categoria(id,nombre){
 })
 }
 
-function restaurar_tipos_categoria(id,nombre){
+function restaurar_categoria(id,nombre){
     swal({
   title: 'Restaurar categoria',
-  text: '¿Desea restaurar el categoria "'+nombre+'"?',
+  text: '¿Desea restaurar la categoria "'+nombre+'"?',
   type: 'question',
   confirmButtonText: '<i class="fa fa-undo"></i> Restaurar',
   cancelButtonText: '<i class="fa fa-times"></i> Cancelar',

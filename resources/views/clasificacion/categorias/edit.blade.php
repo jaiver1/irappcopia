@@ -26,7 +26,7 @@ Editar una categoria "{{ $categoria->nombre }}" | {{ config('app.name', 'Laravel
                       <i class="fa fa-2x fa-sitemap "></i>
                             </a>
 
-                            <a href="{{ URL::to('categorias/' . $categoria->id) }}" class="btn btn-outline-primary btn-circle waves-effect hoverable" 
+                            <a href="{{ route('categorias.show', $categoria->id) }}" class="btn btn-outline-primary btn-circle waves-effect hoverable" 
                     data-toggle="tooltip" data-placement="bottom" title='Informacion de la categoria "{{ $categoria->nombre }}"'>
                       <i class="fa fa-2x fa-info"></i>
                             </a>

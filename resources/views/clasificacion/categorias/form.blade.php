@@ -4,10 +4,10 @@
 @section('crud_form')
 
 @if($editar)
-<form method="POST" action="{{ URL::to('categorias/' . $categoria->id) }}" accept-charset="UTF-8">
+<form method="POST" action="{{ route('categorias.update',$categoria->id) }}" accept-charset="UTF-8">
     <input name="_method" type="hidden" value="PUT">
     @else
-    <form method="POST" action="{{ URL::to('categorias/') }}" accept-charset="UTF-8">
+    <form method="POST" action="{{ route('categorias.store') }}" accept-charset="UTF-8">
 @endif
 
  {{ csrf_field() }}
@@ -32,56 +32,33 @@
                                 @endif
         </div>
         <!-- Grid column -->
-        <!-- Grid column -->
-        <div class="col-md-6">
-            <!-- Material input -->
-            <div class="md-form">
-    <input type="text" required id="etiqueta" value="{{ $categoria->etiqueta}}" name="etiqueta" class="form-control validate" maxlength="5">
-    <label for="etiqueta" data-error="Error" data-success="Correcto">Etiqueta</label>
+ <div class="col-md-6">
+    <!-- Material input -->
+
+    <input {{ $categoria->categoria->id == -1  ? "checked" : ""}} type="checkbox" id="raiz" name="raiz" class="switch-input">
+    <label for="raiz" class="switch-label">Categoria raiz: <span class="toggle--on">Si</span><span class="toggle--off">No</span></label>
+@if ($errors->has('raiz'))
+                                    <div class="hoverable waves-light alert alert-danger alert-dismissible fade show" role="alert">
+                                   {{ $errors->first('raiz') }}
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
 </div>
-@if ($errors->has('etiqueta'))
-                                            <div class="hoverable waves-light alert alert-danger alert-dismissible fade show" role="alert">
-                                           {{ $errors->first('etiqueta') }}
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+                        
+                        @endif
 </div>
-                                
-                                @endif
-        </div>
-        <!-- Grid column -->
+<!-- Grid column -->
         </div>
     <!-- Grid row -->
 
   <!-- Grid row -->
   <div class="form-row">
- <!-- Grid column -->
- <div class="col-md-6">
-        <!-- Material input -->
-        
-        <div class="md-form">
-        <i class="fa fa-balance-scale"></i>
-        <small for="raiz">Categoria Raiz</small>   
-        <label class="bs-switch">
-                <input {{ $categoria->categoria->id == -1  ? "checked" : ""}} type="checkbox">
-                <span class="slider round"></span>
-              </label>
-</div> @if ($errors->has('raiz'))
-                                        <div class="hoverable waves-light alert alert-danger alert-dismissible fade show" role="alert">
-                                       {{ $errors->first('raiz') }}
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-</div>
-                            
-                            @endif
-    </div>
-    <!-- Grid column -->
+
 
         <!-- Grid column -->
         <div class="col-md-6">
             <!-- Material input -->
-            
+            <div id="especialidad_div">
             <div class="md-form">
             <i class="fa fa-balance-scale"></i>
             <small for="especialidad_id">Especialidades</small>   
@@ -100,6 +77,34 @@
 </div>
                                 
                                 @endif
+                            </div>
+
+                              <!-- Material input -->
+            <div id="categoria_div">
+                <div class="md-form">
+                <i class="fa fa-sitemap"></i>
+                <small for="categoria_id">Categorias</small>   
+        <select class="form-control" required id="categoria_id" name="categoria_id">
+        <option value="" disabled selected>Selecciona una opción</option>
+        @foreach($especialidades as $key => $especialidad)
+        <optgroup label="{{ $especialidad->nombre }}">
+        @foreach($especialidad->categorias as $sub)
+        @if($sub->categoria == -1)
+        @include('clasificacion.categorias.sub_categorias', array('sub'=> $sub,'niv'=> 0))
+        @endif
+        @endforeach
+        @endforeach
+    </select>
+    </div> @if ($errors->has('categoria_id'))
+                                                <div class="hoverable waves-light alert alert-danger alert-dismissible fade show" role="alert">
+                                               {{ $errors->first('categoria_id') }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+                                    
+                                    @endif
+                                </div>
         </div>
         <!-- Grid column -->
         </div>
@@ -120,7 +125,39 @@ $('#especialidad_id').select2({
         placeholder: "Especialidades",
         theme: "material"
     });
+
+    $('#categoria_id').select2({
+        placeholder: "Categorias",
+        theme: "material"
+    });
     $(".select2-selection__arrow")
         .addClass("fa fa-chevron-down");
+
+         $(document).ready(function(){
+if($("#raiz").prop("checked") == true) {
+	$("#especialidad_div").slideDown('fast');
+		$('#especialidad_id').prop( 'required', true );
+		$("#categoria_div").slideUp('fast');
+		$('#categoria_id').prop( 'required', false );     
+    }else{
+		$("#especialidad_div").slideUp('fast');
+		$('#especialidad_id').prop( 'required', false );
+		$("#categoria_div").slideDown('fast');
+		$('#categoria_id').prop( 'required', true );  
+	}
+});
+$("#raiz").change(function() {
+    if(this.checked) {
+		$("#especialidad_div").slideDown('fast');
+		$('#especialidad_id').prop( 'required', true );
+		$("#categoria_div").slideUp('fast');
+		$('#categoria_id').prop( 'required', false );
+    }else{
+		$("#especialidad_div").slideUp('fast');
+		$('#especialidad_id').prop( 'required', false );
+		$("#categoria_div").slideDown('fast');
+		$('#categoria_id').prop( 'required', true );  
+	}
+});
 </script>
 @endsection

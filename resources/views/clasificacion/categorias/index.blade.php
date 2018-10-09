@@ -33,7 +33,7 @@ Lista de categorias | {{ config('app.name', 'Laravel') }}
                     data-toggle="tooltip" data-placement="bottom" title="Registrar una categoria">
                       <i class="fa fa-2x fa-plus"></i>
                             </a>
-                            <a href="{{ URL::to('/categorias/deleted') }}" class="btn btn-outline-danger btn-circle waves-effect hoverable" 
+                            <a href="{{ route('categorias.deleted.index') }}" class="btn btn-outline-danger btn-circle waves-effect hoverable" 
                     data-toggle="tooltip" data-placement="bottom" title="Categorias eliminadas">
                       <i class="fa fa-2x fa-recycle"></i>
                             </a>
@@ -92,12 +92,12 @@ Lista de categorias | {{ config('app.name', 'Laravel') }}
                                           </a>    
                     <td>
 
-<a href="{{ URL::to('categorias/' . $categoria->id) }}" class="text-primary m-1" 
+<a href="{{ route('categorias.show',$categoria->id) }}" class="text-primary m-1" 
                     data-toggle="tooltip" data-placement="bottom" title='Información de la categoria "{{ $categoria->nombre }}"'>
                       <i class="fa fa-2x fa-info-circle"></i>
                             </a>
 
-      <a href="{{ URL::to('categorias/' . $categoria->id.'/edit') }}" class="text-warning m-1" 
+      <a href="{{ route('categorias.edit',$categoria->id) }}" class="text-warning m-1" 
                     data-toggle="tooltip" data-placement="bottom" title='Editar la categoria "{{ $categoria->nombre }}"'>
                       <i class="fa fa-2x fa-pencil-alt"></i>
                             </a>
@@ -106,7 +106,7 @@ Lista de categorias | {{ config('app.name', 'Laravel') }}
                     data-toggle="tooltip" data-placement="bottom" title='Eliminar la categoria "{{ $categoria->nombre }}"'>
                       <i class="fa fa-2x fa-trash-alt"></i>
                             </a>
-                            <form id="eliminar{{ $categoria->id }}" method="POST" action="{{ URL::to('categorias/' . $categoria->id) }}" accept-charset="UTF-8">
+                            <form id="eliminar{{ $categoria->id }}" method="POST" action="{{ route('categorias.destroy', $categoria->id) }}" accept-charset="UTF-8">
     <input name="_method" type="hidden" value="DELETE">
     {{ csrf_field() }}
 </form>
