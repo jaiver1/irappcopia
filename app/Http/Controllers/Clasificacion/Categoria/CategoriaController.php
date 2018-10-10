@@ -105,10 +105,9 @@ class CategoriaController extends Controller
     {
         Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
         $categoria = Categoria::findOrFail($id);
-        $tipos_categorias = Tipo_categoria::all();
-        $editar = true;
-        return View::make('clasificacion.categorias.edit')->with(compact('tipos_categorias','categoria','editar'));
-   
+        $especialidades = Especialidad::all(); 
+        $editar = false;
+        return View::make('clasificacion.categorias.edit')->with(compact('especialidades','categoria','editar'));
     }
 
     /**

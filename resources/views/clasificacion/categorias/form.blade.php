@@ -89,8 +89,8 @@
         @foreach($especialidades as $key => $especialidad)
         <optgroup label="{{ $especialidad->nombre }}">
         @foreach($especialidad->categorias as $sub)
-        @if($sub->categoria == -1)
-        @include('clasificacion.categorias.sub_categorias', array('sub'=> $sub,'niv'=> 0))
+        @if($sub->categoria == NULL)
+        @include('clasificacion.categorias.sub_categorias_options', array('sub'=> $sub,'niv'=> 0))
         @endif
         @endforeach
         @endforeach

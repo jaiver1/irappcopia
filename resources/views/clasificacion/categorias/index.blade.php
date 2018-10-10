@@ -81,15 +81,19 @@ Lista de categorias | {{ config('app.name', 'Laravel') }}
       <td>
       <a href="{{ route('especialidades.show',$categoria->especialidad->id) }}" class="link-text"
                     data-toggle="tooltip" data-placement="bottom" title='Información de la especialidad "{{ $categoria->especialidad->nombre }}"'>
-                      <i class="fa fa-balance-scale"></i> {{$categoria->especialidad->nombre}}</td>
+                      <i class="fa fa-balance-scale"></i> {{$categoria->especialidad->nombre}}
                             </a>    
-      <td>
+                        </td>
 
             <td>
+                @if($categoria->categoria == NULL)
+               <h6> <span class="badge badge-secondary">Categoria raiz</span><h6>
+                @else
                     <a href="{{ route('categorias.show',$categoria->categoria->id) }}" class="link-text"
                                   data-toggle="tooltip" data-placement="bottom" title='Información de la categoria padre "{{ $categoria->categoria->nombre }}"'>
-                                    <i class="fa fa-balance-scale"></i> {{$categoria->categoria->nombre}}</td>
+                                    <i class="fa fa-sitemap"></i> {{$categoria->categoria->nombre}}</td>
                                           </a>    
+                @endif
                     <td>
 
 <a href="{{ route('categorias.show',$categoria->id) }}" class="text-primary m-1" 

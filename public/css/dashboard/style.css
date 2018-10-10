@@ -179,6 +179,24 @@
     border-bottom-right-radius: 15px;
 }
 
+.badge-secondary{
+  background-color: #3a4d56;
+  border-color: #3a4d56;
+}
+
+.dt-buttons > button, .dt-button{
+  -webkit-transition: all 0.55s ease-in-out;
+  -o-transition: all 0.55s ease-in-out;
+  transition: all 0.55s ease-in-out; 
+}
+
+.dt-buttons > button:hover, .dt-button:hover {
+  -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-transition: all 0.55s ease-in-out;
+  -o-transition: all 0.55s ease-in-out;
+  transition: all 0.55s ease-in-out; }
+
 table{
   background-color: rgba(0, 0,0,0.02) !important;
 }

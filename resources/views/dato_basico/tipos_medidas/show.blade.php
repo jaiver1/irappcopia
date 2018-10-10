@@ -99,6 +99,7 @@ Información del tipo de medida "{{ $tipo_medida->nombre }}" | {{ config('app.na
                No hay medidas de "{{ $tipo_medida->nombre }}"
             @endif
             </h4>
+            <hr/>
                         <div class="table-responsive">
                             <!-- Table  -->
                             <table id="dtmedidas" class="table table-borderless table-hover display dt-responsive nowrap" cellspacing="0" width="100%">

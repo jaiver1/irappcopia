@@ -3,8 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Models\Clasificacion\Especialidad;
 use App\Models\Clasificacion\Categoria;
-use App\Models\Comercio\Marca;
-class Clasificacion_y_ComercioTableSeeder extends Seeder
+class ClasificacionesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -42,30 +41,6 @@ class Clasificacion_y_ComercioTableSeeder extends Seeder
         $sub_categoria2->nombre = 'Televisores';
         $sub_categoria2->especialidad()->associate($especialidad);
         $sub_categoria2->categoria()->associate($sub_categoria);
-        $sub_categoria2->save();
-
-        $marca = new Marca;
-        $marca->nombre = 'Generico';
-        $marca->save();
-
-        $marca = new Marca;
-        $marca->nombre = 'Produccion Propia';
-        $marca->save();
-
-        $marca = new Marca;
-        $marca->nombre = 'Genius';
-        $marca->save();
-        
-        $marca = new Marca;
-        $marca->nombre = 'Adidas';
-        $marca->save();
-
-        $marca = new Marca;
-        $marca->nombre = 'Nestle';
-        $marca->save();
-
-        $marca = new Marca;
-        $marca->nombre = 'Faber Castle';
-        $marca->save();
+        $sub_categoria2->save(); 
     }
 }
