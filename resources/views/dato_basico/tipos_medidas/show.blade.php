@@ -29,7 +29,7 @@ Información del tipo de medida "{{ $tipo_medida->nombre }}" | {{ config('app.na
                       <i class="fa fa-2x fa-balance-scale"></i>
                             </a>
 
-                             <a href="{{ URL::to('tipos_medidas/' . $tipo_medida->id.'/edit') }}" class="btn btn-outline-warning btn-circle waves-effect hoverable" 
+                             <a href="{{ route('tipos_medidas.edit',$tipo_medida->id) }}" class="btn btn-outline-warning btn-circle waves-effect hoverable" 
                     data-toggle="tooltip" data-placement="bottom" title='Editar el tipo de medida "{{ $tipo_medida->nombre }}"'>
                       <i class="fa fa-2x fa-pencil-alt"></i>
                             </a>
@@ -38,7 +38,7 @@ Información del tipo de medida "{{ $tipo_medida->nombre }}" | {{ config('app.na
                     data-toggle="tooltip" data-placement="bottom" title='Eliminar el tipo de medida "{{ $tipo_medida->nombre }}"'>
                       <i class="fa fa-2x fa-trash-alt"></i>
                             </a>
-                            <form id="eliminar{{ $tipo_medida->id }}" method="POST" action="{{ URL::to('tipos_medidas/' . $tipo_medida->id) }}" accept-charset="UTF-8">
+                            <form id="eliminar{{ $tipo_medida->id }}" method="POST" action="{{ route('tipos_medidas.destroy',$tipo_medida->id) }}" accept-charset="UTF-8">
     <input name="_method" type="hidden" value="DELETE">
     {{ csrf_field() }}
 </form>
@@ -91,10 +91,10 @@ Información del tipo de medida "{{ $tipo_medida->nombre }}" | {{ config('app.na
                         <!--Card content-->
                         <div class="card-body">
                             <h4><i class="fa fa-ruler mr-2"></i>
-                            @if (count($tipo_medida->medidas) === 1)
+                            @if ($tipo_medida->medidas->count() === 1)
                 Una medida de "{{ $tipo_medida->nombre }}"
-            @elseif (count($tipo_medida->medidas) > 1)
-                {{ count($tipo_medida->medidas) }} medidas de "{{ $tipo_medida->nombre }}"
+            @elseif ($tipo_medida->medidas->count() > 1)
+                {{ $tipo_medida->medidas->count() }} medidas de "{{ $tipo_medida->nombre }}"
             @else
                No hay medidas de "{{ $tipo_medida->nombre }}"
             @endif
@@ -124,11 +124,11 @@ Información del tipo de medida "{{ $tipo_medida->nombre }}" | {{ config('app.na
       <td>{{$medida->id}}</td>
       <td>{{$medida->nombre}}</td>
       <td>{{$medida->etiqueta}}</td>
-      <td>{{$medida->tipo_medida->nombre}}</td>
+      <td><i class="fa fa-balance-scale"></i> {{$medida->tipo_medida->nombre}}</td>
       <td>
 
-<a href="{{ URL::to('medidas/' . $medida->id) }}" class="text-primary m-1" 
-                    data-toggle="tooltip" data-placement="bottom" title='Información del medida "{{ $medida->nombre }}"'>
+<a href="{{ route('medidas.show',$medida->id) }}" class="text-primary m-1" 
+                    data-toggle="tooltip" data-placement="bottom" title='Información de la medida "{{ $medida->nombre }}"'>
                       <i class="fa fa-2x fa-info-circle"></i>
                             </a>
       </td>
@@ -199,10 +199,10 @@ function eliminar_tipo_medida(id,nombre){
   }
 })
 }
-
-  $(function () {
+$(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
+
 $(document).ready(function() {
     var tipo_medida =  "{{$tipo_medida->nombre}}"; 
     var currentdate = new Date(); 
@@ -213,8 +213,27 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
         dom: 'Bfrtip',
     lengthMenu: [
         [ 2, 5, 10, 20, 30, 50, 100, -1 ],
-        [ '2 rows', '5 rows', '10 rows', '20 rows','30 rows', '50 rows', '100 rows', 'Show all' ]
-    ],
+        [ '2 registros', '5 registros', '10 registros', '20 registros','30 registros', '50 registros', '100 registros', 'Mostrar todo' ]
+    ],oLanguage:{
+	sProcessing:     'Procesando...',
+	sLengthMenu:     'Mostrar _MENU_ registros',
+	sZeroRecords:    'No se encontraron resultados',
+	sEmptyTable:     'Ningún dato disponible en esta tabla',
+	sInfo:           'Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros',
+	sInfoEmpty:      'Mostrando registros del 0 al 0 de un total de 0 registros',
+	sInfoFiltered:   '(filtrado de un total de _MAX_ registros)',
+	sInfoPostFix:    '',
+	sSearch:         'Buscar:',
+	sUrl:            '',
+	sInfoThousands:  ',',
+	sLoadingRecords: 'Cargando...',
+	oPaginate: {
+		sFirst:    'Primero',
+		sLast:     'Último',
+		sNext:     'Siguiente',
+		sPrevious: 'Anterior'
+	}
+    },
         buttons: [
 
             {
@@ -275,7 +294,7 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
                 display: $.fn.dataTable.Responsive.display.modal( {
                     header: function ( row ) {
                         var data = row.data();
-                        return 'Datos de medida "'+ data[1]+'"';
+                        return '<i class="fa fa-ruler"></i> Datos de medida "'+ data[1]+'"';
                     }
                 } ),
                 renderer: $.fn.dataTable.Responsive.renderer.tableAll( {

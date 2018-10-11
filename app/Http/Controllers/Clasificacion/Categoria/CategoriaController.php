@@ -42,7 +42,6 @@ class CategoriaController extends Controller
         $categoria = new Categoria();
         $categoria->especialidad()->associate(new Especialidad);
         $categoria->categoria()->associate(new Categoria);
-        $categoria->categoria->id = -1;
         $especialidades = Especialidad::all(); 
         $editar = false;
         return View::make('clasificacion.categorias.create')->with(compact('especialidades','categoria','editar'));
@@ -56,10 +55,14 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
         Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
+        if($request->raiz){
+            return Redirect::to('categorias.edit');
+        }else{
+
+        }
         $rules = array(
                 'nombre'                   => 'required|max:50',
-                'etiqueta'                   => 'required|max:5',
-                'tipo_categoria_id'                   => 'required',
+                'categoria_id'                   => 'required',
         );
 
         $validator = Validator::make($request->all(), $rules);

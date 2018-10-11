@@ -24,7 +24,7 @@ Información de la marca "{{ $marca->nombre }}" | {{ config('app.name', 'Laravel
                       <i class="fa fa-2x fa-trademark"></i>
                             </a>
 
-                             <a href="{{ URL::to('marcas/' . $marca->id.'/edit') }}" class="btn btn-outline-warning btn-circle waves-effect hoverable" 
+                             <a href="{{ route('marcas.edit',$marca->id) }}" class="btn btn-outline-warning btn-circle waves-effect hoverable" 
                     data-toggle="tooltip" data-placement="bottom" title='Editar la marca "{{ $marca->nombre }}"'>
                       <i class="fa fa-2x fa-pencil-alt"></i>
                             </a>
@@ -33,7 +33,7 @@ Información de la marca "{{ $marca->nombre }}" | {{ config('app.name', 'Laravel
                     data-toggle="tooltip" data-placement="bottom" title='Eliminar la marca "{{ $marca->nombre }}"'>
                       <i class="fa fa-2x fa-trash-alt"></i>
                             </a>
-                            <form id="eliminar{{ $marca->id }}" method="POST" action="{{ URL::to('marcas/' . $marca->id) }}" accept-charset="UTF-8">
+                            <form id="eliminar{{ $marca->id }}" method="POST" action="{{ route('marcas.destroy', $marca->id) }}" accept-charset="UTF-8">
     <input name="_method" type="hidden" value="DELETE">
     {{ csrf_field() }}
 </form>

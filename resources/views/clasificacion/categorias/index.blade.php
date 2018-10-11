@@ -18,10 +18,10 @@ Lista de categorias | {{ config('app.name', 'Laravel') }}
                 <div class="card-body d-sm-flex justify-content-between">
 
                     <h4 class="mb-2 mb-sm-0 pt-1">
-                    <span><i class="fa fa-sitemap mr-1"></i></span> <span> @if (count($categorias) === 1)
+                    <span><i class="fa fa-sitemap mr-1"></i></span> <span> @if ($categorias->count() === 1)
                 Una categoria
-            @elseif (count($categorias) > 1)
-                {{ count($categorias) }} categorias
+            @elseif ($categorias->count() > 1)
+                {{ $categorias->count() }} categorias
             @else
                No hay categorias
             @endif
@@ -81,19 +81,20 @@ Lista de categorias | {{ config('app.name', 'Laravel') }}
       <td>
       <a href="{{ route('especialidades.show',$categoria->especialidad->id) }}" class="link-text"
                     data-toggle="tooltip" data-placement="bottom" title='Información de la especialidad "{{ $categoria->especialidad->nombre }}"'>
-                      <i class="fa fa-balance-scale"></i> {{$categoria->especialidad->nombre}}
+                      <i class="fa fa-object-group"></i> {{$categoria->especialidad->nombre}}
                             </a>    
                         </td>
 
             <td>
                 @if($categoria->categoria == NULL)
-               <h6> <span class="badge badge-secondary">Categoria raiz</span><h6>
+               <h5> <span class="badge badge-secondary">Categoria raiz</span><h5>
                 @else
                     <a href="{{ route('categorias.show',$categoria->categoria->id) }}" class="link-text"
                                   data-toggle="tooltip" data-placement="bottom" title='Información de la categoria padre "{{ $categoria->categoria->nombre }}"'>
-                                    <i class="fa fa-sitemap"></i> {{$categoria->categoria->nombre}}</td>
+                                    <i class="fa fa-sitemap"></i> {{$categoria->categoria->nombre}}
                                           </a>    
                 @endif
+            </td>
                     <td>
 
 <a href="{{ route('categorias.show',$categoria->id) }}" class="text-primary m-1" 
@@ -197,8 +198,31 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
         dom: 'Bfrtip',
     lengthMenu: [
         [ 2, 5, 10, 20, 30, 50, 100, -1 ],
-        [ '2 rows', '5 rows', '10 rows', '20 rows','30 rows', '50 rows', '100 rows', 'Show all' ]
-    ],
+        [ '2 registros', '5 registros', '10 registros', '20 registros','30 registros', '50 registros', '100 registros', 'Mostrar todo' ]
+    ],oLanguage:{
+	sProcessing:     'Procesando...',
+	sLengthMenu:     'Mostrar _MENU_ registros',
+	sZeroRecords:    'No se encontraron resultados',
+	sEmptyTable:     'Ningún dato disponible en esta tabla',
+	sInfo:           'Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros',
+	sInfoEmpty:      'Mostrando registros del 0 al 0 de un total de 0 registros',
+	sInfoFiltered:   '(filtrado de un total de _MAX_ registros)',
+	sInfoPostFix:    '',
+	sSearch:         'Buscar:',
+	sUrl:            '',
+	sInfoThousands:  ',',
+	sLoadingRecords: 'Cargando...',
+	oPaginate: {
+		sFirst:    'Primero',
+		sLast:     'Último',
+		sNext:     'Siguiente',
+		sPrevious: 'Anterior'
+	},
+	oAria: {
+		sSortAscending:  ': Activar para ordenar la columna de manera ascendente',
+		sSortDescending: ': Activar para ordenar la columna de manera descendente'
+	}
+},
         buttons: [
 
             {
@@ -259,7 +283,7 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
                 display: $.fn.dataTable.Responsive.display.modal( {
                     header: function ( row ) {
                         var data = row.data();
-                        return 'Datos de categoria "'+ data[1]+'"';
+                        return '<i class="fa fa-sitemap"></i>  Datos de la categoria "'+ data[1]+'"';
                     }
                 } ),
                 renderer: $.fn.dataTable.Responsive.renderer.tableAll( {

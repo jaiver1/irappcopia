@@ -24,7 +24,7 @@ Información de la categoria "{{ $categoria->nombre }}" | {{ config('app.name', 
                       <i class="fa fa-2x fa-sitemap"></i>
                             </a>
 
-                             <a href="{{ URL::to('categorias/' . $categoria->id.'/edit') }}" class="btn btn-outline-warning btn-circle waves-effect hoverable" 
+                             <a href="{{ route('categorias.edit', $categoria->id) }}" class="btn btn-outline-warning btn-circle waves-effect hoverable" 
                     data-toggle="tooltip" data-placement="bottom" title='Editar la categoria "{{ $categoria->nombre }}"'>
                       <i class="fa fa-2x fa-pencil-alt"></i>
                             </a>
@@ -33,7 +33,7 @@ Información de la categoria "{{ $categoria->nombre }}" | {{ config('app.name', 
                     data-toggle="tooltip" data-placement="bottom" title='Eliminar la categoria "{{ $categoria->nombre }}"'>
                       <i class="fa fa-2x fa-trash-alt"></i>
                             </a>
-                            <form id="eliminar{{ $categoria->id }}" method="POST" action="{{ URL::to('categorias/' . $categoria->id) }}" accept-charset="UTF-8">
+                            <form id="eliminar{{ $categoria->id }}" method="POST" action="{{ route('categorias.destroy', $categoria->id) }}" accept-charset="UTF-8">
     <input name="_method" type="hidden" value="DELETE">
     {{ csrf_field() }}
 </form>
@@ -62,8 +62,13 @@ Información de la categoria "{{ $categoria->nombre }}" | {{ config('app.name', 
       <i class="fa fa-sitemap  mr-2"></i><strong>Categoria #{{ $categoria->id }}</strong>
     </a>
   <a class="list-group-item waves-effect hoverable"><strong><i class="fa mr-4"></i>Nombre: </strong>{{ $categoria->nombre }}</a>
-  <a class="list-group-item waves-effect hoverable"><strong><i class="fa mr-4"></i>Etiqueta: </strong>{{ $categoria->etiqueta }}</a>
-  <a href ="{{ URL::to('tipos_categorias/' . $categoria->tipo_categoria->id) }}" class="list-group-item waves-effect hoverable"><strong><i class="fa fa-balance-scale mr-2"></i>Tipo de categoria: </strong>{{ $categoria->tipo_categoria->nombre }}</a>
+  <a href ="{{ route('especialidades.show', $categoria->especialidad->id) }}" class="list-group-item waves-effect hoverable item-link"><strong><i class="fa fa-object-group mr-2"></i>Especialidad: </strong>{{ $categoria->especialidad->nombre }}</a>
+  @if($categoria->categoria == NULL)
+  <a class="list-group-item waves-effect hoverable"><strong><i class="fa fa-sitemap mr-2"></i>Categoria padre: </strong><span class="h5"><span class="badge badge-secondary">Categoria raiz</span></a>
+
+   @else
+  <a href ="{{ route('categorias.show', $categoria->categoria->id) }}" class="list-group-item waves-effect hoverable item-link"><strong><i class="fa fa-sitemap mr-2"></i>Categoria padre: </strong>{{ $categoria->categoria->nombre }}</a>
+@endif
 </div>
                         </div>
 

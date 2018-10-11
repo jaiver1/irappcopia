@@ -26,7 +26,7 @@ Editar una marca "{{ $marca->nombre }}" | {{ config('app.name', 'Laravel') }}
                       <i class="fa fa-2x fa-trademark "></i>
                             </a>
 
-                            <a href="{{ URL::to('marcas/' . $marca->id) }}" class="btn btn-outline-primary btn-circle waves-effect hoverable" 
+                            <a href="{{ route('marcas.show', $marca->id) }}" class="btn btn-outline-primary btn-circle waves-effect hoverable" 
                     data-toggle="tooltip" data-placement="bottom" title='Informacion de la marca "{{ $marca->nombre }}"'>
                       <i class="fa fa-2x fa-info"></i>
                             </a>

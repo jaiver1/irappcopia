@@ -22,10 +22,10 @@ Lista de usuarios | {{ config('app.name', 'Laravel') }}
                 <div class="card-body d-sm-flex justify-content-between">
 
                     <h4 class="mb-2 mb-sm-0 pt-1">
-                    <span><i class="fa fa-users mr-1"></i></span>  <span> @if (count($usuarios) === 1)
+                    <span><i class="fa fa-users mr-1"></i></span>  <span> @if ($usuarios->count() === 1)
                 Un usuario
-            @elseif (count($usuarios) > 1)
-                {{ count($usuarios) }} usuarios
+            @elseif ($usuarios->count() > 1)
+                {{ $usuarios->count() }} usuarios
             @else
                No hay usuarios
             @endif
@@ -187,8 +187,31 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
         dom: 'Bfrtip',
     lengthMenu: [
         [ 2, 5, 10, 20, 30, 50, 100, -1 ],
-        [ '2 rows', '5 rows', '10 rows', '20 rows','30 rows', '50 rows', '100 rows', 'Show all' ]
-    ],
+        [ '2 registros', '5 registros', '10 registros', '20 registros','30 registros', '50 registros', '100 registros', 'Mostrar todo' ]
+    ],oLanguage:{
+	sProcessing:     'Procesando...',
+	sLengthMenu:     'Mostrar _MENU_ registros',
+	sZeroRecords:    'No se encontraron resultados',
+	sEmptyTable:     'Ningún dato disponible en esta tabla',
+	sInfo:           'Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros',
+	sInfoEmpty:      'Mostrando registros del 0 al 0 de un total de 0 registros',
+	sInfoFiltered:   '(filtrado de un total de _MAX_ registros)',
+	sInfoPostFix:    '',
+	sSearch:         'Buscar:',
+	sUrl:            '',
+	sInfoThousands:  ',',
+	sLoadingRecords: 'Cargando...',
+	oPaginate: {
+		sFirst:    'Primero',
+		sLast:     'Último',
+		sNext:     'Siguiente',
+		sPrevious: 'Anterior'
+	},
+	oAria: {
+		sSortAscending:  ': Activar para ordenar la columna de manera ascendente',
+		sSortDescending: ': Activar para ordenar la columna de manera descendente'
+	}
+},
         buttons: [
 
             {

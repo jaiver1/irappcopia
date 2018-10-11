@@ -24,7 +24,7 @@ Información de la medida "{{ $medida->nombre }}" | {{ config('app.name', 'Larav
                       <i class="fa fa-2x fa-ruler"></i>
                             </a>
 
-                             <a href="{{ URL::to('medidas/' . $medida->id.'/edit') }}" class="btn btn-outline-warning btn-circle waves-effect hoverable" 
+                             <a href="{{ route('medidas.edit',$medida->id) }}" class="btn btn-outline-warning btn-circle waves-effect hoverable" 
                     data-toggle="tooltip" data-placement="bottom" title='Editar la medida "{{ $medida->nombre }}"'>
                       <i class="fa fa-2x fa-pencil-alt"></i>
                             </a>
@@ -33,7 +33,7 @@ Información de la medida "{{ $medida->nombre }}" | {{ config('app.name', 'Larav
                     data-toggle="tooltip" data-placement="bottom" title='Eliminar la medida "{{ $medida->nombre }}"'>
                       <i class="fa fa-2x fa-trash-alt"></i>
                             </a>
-                            <form id="eliminar{{ $medida->id }}" method="POST" action="{{ URL::to('medidas/' . $medida->id) }}" accept-charset="UTF-8">
+                            <form id="eliminar{{ $medida->id }}" method="POST" action="{{ route('medidas.destroy',$medida->id) }}" accept-charset="UTF-8">
     <input name="_method" type="hidden" value="DELETE">
     {{ csrf_field() }}
 </form>
@@ -63,7 +63,7 @@ Información de la medida "{{ $medida->nombre }}" | {{ config('app.name', 'Larav
     </a>
   <a class="list-group-item waves-effect hoverable"><strong><i class="fa mr-4"></i>Nombre: </strong>{{ $medida->nombre }}</a>
   <a class="list-group-item waves-effect hoverable"><strong><i class="fa mr-4"></i>Etiqueta: </strong>{{ $medida->etiqueta }}</a>
-  <a href ="{{ URL::to('tipos_medidas/' . $medida->tipo_medida->id) }}" class="list-group-item waves-effect hoverable item-link"><strong><i class="fa fa-balance-scale mr-2"></i>Tipo de medida: </strong>{{ $medida->tipo_medida->nombre }}</a>
+  <a href ="{{ route('tipos_medidas.show' , $medida->tipo_medida->id) }}" class="list-group-item waves-effect hoverable item-link"><strong><i class="fa fa-balance-scale mr-2"></i>Tipo de medida: </strong>{{ $medida->tipo_medida->nombre }}</a>
 </div>
                         </div>
 

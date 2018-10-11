@@ -35,7 +35,7 @@
  <div class="col-md-6">
     <!-- Material input -->
 
-    <input {{ $categoria->categoria->id == -1  ? "checked" : ""}} type="checkbox" id="raiz" name="raiz" class="switch-input">
+    <input {{ $categoria->categoria == NULL  ? "checked" : ""}} type="checkbox" id="raiz" name="raiz" class="switch-input">
     <label for="raiz" class="switch-label">Categoria raiz: <span class="toggle--on">Si</span><span class="toggle--off">No</span></label>
 @if ($errors->has('raiz'))
                                     <div class="hoverable waves-light alert alert-danger alert-dismissible fade show" role="alert">
@@ -65,7 +65,7 @@
     <select class="form-control" required id="especialidad_id" name="especialidad_id">
     <option value="" disabled selected>Selecciona una opción</option>
     @foreach($especialidades as $key => $especialidad)
-    <option value="{{$especialidad->id}}">{{$especialidad->nombre}}</option>
+    <option {{($categoria->especialidad->id == $especialidad->id ) ? 'selected' : '' }} value="{{$especialidad->id}}">{{$especialidad->nombre}}</option>
     @endforeach
 </select>
 </div> @if ($errors->has('especialidad_id'))

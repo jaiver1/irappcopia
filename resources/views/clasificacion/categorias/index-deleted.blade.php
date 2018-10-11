@@ -25,10 +25,10 @@ Categorias eliminadas | {{ config('app.name', 'Laravel') }}
 </span>
                     <a href="{{ route('categorias.index') }}">Lista de categorias</a>
                         <span>/</span>
-                        <span> @if (count($categorias) === 1)
+                        <span> @if ($categorias->count() === 1)
                 Una categoria eliminada
-            @elseif (count($categorias) > 1)
-                {{ count($categorias) }} categorias eliminadas
+            @elseif ($categorias->count() > 1)
+                {{ $categorias->count() }} categorias eliminadas
             @else
                No hay categorias eliminadas
             @endif
@@ -76,6 +76,23 @@ Categorias eliminadas | {{ config('app.name', 'Laravel') }}
     <tr class="hoverable">
       <td>{{$categoria->id}}</td>
       <td>{{$categoria->nombre}}</td>
+      <td>
+        <a href="{{ route('especialidades.show',$categoria->especialidad->id) }}" class="link-text"
+                      data-toggle="tooltip" data-placement="bottom" title='Información de la especialidad "{{ $categoria->especialidad->nombre }}"'>
+                        <i class="fa fa-object-group"></i> {{$categoria->especialidad->nombre}}
+                              </a>    
+                          </td>
+  
+              <td>
+                  @if($categoria->categoria == NULL)
+                 <h5> <span class="badge badge-secondary">Categoria raiz</span><h5>
+                  @else
+                      <a href="{{ route('categorias.show',$categoria->categoria->id) }}" class="link-text"
+                                    data-toggle="tooltip" data-placement="bottom" title='Información de la categoria padre "{{ $categoria->categoria->nombre }}"'>
+                                      <i class="fa fa-sitemap"></i> {{$categoria->categoria->nombre}}
+                                            </a>    
+                  @endif
+              </td>
       <td>
 
       <a onclick="restaurar_categoria({{ $categoria->id }},'{{ $categoria->nombre }}')" class="text-success m-1" 
@@ -209,8 +226,31 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
         dom: 'Bfrtip',
     lengthMenu: [
         [ 2, 5, 10, 20, 30, 50, 100, -1 ],
-        [ '2 rows', '5 rows', '10 rows', '20 rows','30 rows', '50 rows', '100 rows', 'Show all' ]
-    ],
+        [ '2 registros', '5 registros', '10 registros', '20 registros','30 registros', '50 registros', '100 registros', 'Mostrar todo' ]
+    ],oLanguage:{
+	sProcessing:     'Procesando...',
+	sLengthMenu:     'Mostrar _MENU_ registros',
+	sZeroRecords:    'No se encontraron resultados',
+	sEmptyTable:     'Ningún dato disponible en esta tabla',
+	sInfo:           'Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros',
+	sInfoEmpty:      'Mostrando registros del 0 al 0 de un total de 0 registros',
+	sInfoFiltered:   '(filtrado de un total de _MAX_ registros)',
+	sInfoPostFix:    '',
+	sSearch:         'Buscar:',
+	sUrl:            '',
+	sInfoThousands:  ',',
+	sLoadingRecords: 'Cargando...',
+	oPaginate: {
+		sFirst:    'Primero',
+		sLast:     'Último',
+		sNext:     'Siguiente',
+		sPrevious: 'Anterior'
+	},
+	oAria: {
+		sSortAscending:  ': Activar para ordenar la columna de manera ascendente',
+		sSortDescending: ': Activar para ordenar la columna de manera descendente'
+	}
+},
         buttons: [
 
             {
@@ -271,7 +311,7 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
                 display: $.fn.dataTable.Responsive.display.modal( {
                     header: function ( row ) {
                         var data = row.data();
-                        return 'Datos de categoria eliminado "'+ data[1]+'"';
+                        return '<span class="fa-stack"><i class="fa fa-sitemap fa-stack-1x"></i> <i class="fa fa-ban fa-stack-2x text-danger"></i></span> Datos de la categoria eliminada"'+ data[1]+'"';
                     }
                 } ),
                 renderer: $.fn.dataTable.Responsive.renderer.tableAll( {

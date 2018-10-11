@@ -87,11 +87,11 @@ Medidas eliminadas | {{ config('app.name', 'Laravel') }}
                     data-toggle="tooltip" data-placement="bottom" title='Eliminar definitivamente la medida "{{ $tipo_medida->nombre }}"'>
                       <i class="fa fa-2x fa-trash"></i>
                             </a>
-                            <form id="restaurar{{ $tipo_medida->id }}" method="POST" action="{{ URL::to('medidas/deleted/' . $tipo_medida->id) }}" accept-charset="UTF-8">
+                            <form id="restaurar{{ $tipo_medida->id }}" method="POST" action="{{ route('medidas.deleted.update', $tipo_medida->id) }}" accept-charset="UTF-8">
     <input name="_method" type="hidden" value="PUT">
     {{ csrf_field() }}
 </form>
-                            <form id="eliminar{{ $tipo_medida->id }}" method="POST" action="{{ URL::to('medidas/deleted/' . $tipo_medida->id) }}" accept-charset="UTF-8">
+                            <form id="eliminar{{ $tipo_medida->id }}" method="POST" action="{{ route('medidas.deleted.destroy', $tipo_medida->id) }}" accept-charset="UTF-8">
     <input name="_method" type="hidden" value="DELETE">
     {{ csrf_field() }}
 </form>
@@ -209,8 +209,31 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
         dom: 'Bfrtip',
     lengthMenu: [
         [ 2, 5, 10, 20, 30, 50, 100, -1 ],
-        [ '2 rows', '5 rows', '10 rows', '20 rows','30 rows', '50 rows', '100 rows', 'Show all' ]
-    ],
+        [ '2 registros', '5 registros', '10 registros', '20 registros','30 registros', '50 registros', '100 registros', 'Mostrar todo' ]
+    ],oLanguage:{
+	sProcessing:     'Procesando...',
+	sLengthMenu:     'Mostrar _MENU_ registros',
+	sZeroRecords:    'No se encontraron resultados',
+	sEmptyTable:     'Ningún dato disponible en esta tabla',
+	sInfo:           'Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros',
+	sInfoEmpty:      'Mostrando registros del 0 al 0 de un total de 0 registros',
+	sInfoFiltered:   '(filtrado de un total de _MAX_ registros)',
+	sInfoPostFix:    '',
+	sSearch:         'Buscar:',
+	sUrl:            '',
+	sInfoThousands:  ',',
+	sLoadingRecords: 'Cargando...',
+	oPaginate: {
+		sFirst:    'Primero',
+		sLast:     'Último',
+		sNext:     'Siguiente',
+		sPrevious: 'Anterior'
+	},
+	oAria: {
+		sSortAscending:  ': Activar para ordenar la columna de manera ascendente',
+		sSortDescending: ': Activar para ordenar la columna de manera descendente'
+	}
+},
         buttons: [
 
             {

@@ -26,7 +26,7 @@ Editar tipo de medida "{{ $tipo_medida->nombre }}" | {{ config('app.name', 'Lara
                       <i class="fa fa-2x fa-balance-scale"></i>
                             </a>
 
-                            <a href="{{ URL::to('tipos_medidas/' . $tipo_medida->id) }}" class="btn btn-outline-primary btn-circle waves-effect hoverable" 
+                            <a href="{{ route('tipos_medidas.show', $tipo_medida->id) }}" class="btn btn-outline-primary btn-circle waves-effect hoverable" 
                     data-toggle="tooltip" data-placement="bottom" title='Informacion del tipo de medida "{{ $tipo_medida->nombre }}"'>
                       <i class="fa fa-2x fa-info"></i>
                             </a>

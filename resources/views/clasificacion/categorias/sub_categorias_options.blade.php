@@ -8,7 +8,7 @@
 </option>
 @if($sub->categorias->count())
         @foreach($sub->categorias as $sub2)
-        @include('clasificacion.categorias.sub_categorias', array('sub'=> $sub2,'niv'=> $niv+1))
+        @include('clasificacion.categorias.sub_categorias_options', array('sub'=> $sub2,'niv'=> $niv+1))
         @endforeach
         @endif
 
