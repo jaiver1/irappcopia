@@ -17,7 +17,6 @@ background-color: #eceff1;
 <script type="text/javascript" src="{{ asset('js/dashboard/navbar-custom.js') }}"></script>
 <script type="text/javascript">
 function salir(){
-    event.preventDefault();
     swal({
   title: 'Salir',
   text: '¿Desea cerrar la sesion"?',
@@ -93,6 +92,7 @@ function salir(){
         <!-- sidebar-search  -->
         <div class="sidebar-menu">
             <ul>
+                    @role(['ROLE_ROOT','ROLE_ADMINISTRADOR','ROLE_COLABORADOR'])
             <li class="header-menu">
                     <span>Inicio</span>
                 </li>
@@ -102,7 +102,8 @@ function salir(){
                         <span>Página principal</span>
                     </a>
                 </li>
-               
+               @endrole
+               @role(['ROLE_ROOT'])
                 <li class="header-menu">
                     <span>Control de Acceso</span>
                 </li>
@@ -112,7 +113,8 @@ function salir(){
                         <span>Usuarios</span>
                     </a>
                 </li>
-               
+                @endrole
+                @role(['ROLE_ROOT','ROLE_ADMINISTRADOR'])
      <li class="header-menu">
                     <span>Administración</span>
                 </li>
@@ -205,7 +207,7 @@ function salir(){
                         </ul>
                     </div>
                 </li>
-
+                @endrole
             </ul>
         </div>
         <!-- sidebar-menu  -->
@@ -222,10 +224,10 @@ function salir(){
                             Tienda
                         </div>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{ route('store.productos') }}">
                             <div class="message-content">
                                 <div class="pic">
-                                        <i class="fa fa-boxes"></i>
+                                        <i class="fa fa-2x fa-boxes indigo-text"></i>
                                 </div>
                                 <div class="content">
                                     <div class="message-title">
@@ -236,10 +238,10 @@ function salir(){
                             </div>
         
                         </a>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{ route('store.servicios') }}">
                             <div class="message-content">
                                 <div class="pic">
-                                        <i class="fa fa-cogs"></i>
+                                        <i class="fa fa-2x fa-cogs indigo-text"></i>
                                 </div>
                                 <div class="content">
                                     <div class="message-title">
@@ -323,7 +325,7 @@ function salir(){
             </div>
         </div>
         <div>
-            <a onclick="salir();">
+            <a onclick="salir()">
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>

@@ -1,6 +1,6 @@
 @extends('layouts.dashboard.main')
 @section('template_title')
-Lista de categorias | {{ config('app.name', 'Laravel') }}
+Información de la especialidad "{{ $especialidad->nombre }}" | {{ config('app.name', 'Laravel') }}
 @endsection
 @section('css_links')
 <link rel="stylesheet" href="{{ asset('css/addons/datatables.min.css') }}" type="text/css">
@@ -18,25 +18,31 @@ Lista de categorias | {{ config('app.name', 'Laravel') }}
                 <div class="card-body d-sm-flex justify-content-between">
 
                     <h4 class="mb-2 mb-sm-0 pt-1">
-                    <span><i class="fa fa-sitemap mr-1"></i></span> <span> @if ($categorias->count() === 1)
-                Una categoria
-            @elseif ($categorias->count() > 1)
-                {{ $categorias->count() }} categorias
-            @else
-               No hay categorias
-            @endif
-            </span>
+                    <span><i class="fa fa-object-group mr-1"></i></span>
+                        <a href="{{ route('especialidades.index') }}">Lista de especialidades</a>
+                        <span>/</span>
+                        <span>Información de la especialidad "{{ $especialidad->nombre }}"</span>
                     </h4>
 
                     <div class="d-flex justify-content-center">
-                    <a href="{{ route('categorias.create') }}" class="btn btn-outline-success btn-circle waves-effect hoverable" 
-                    data-toggle="tooltip" data-placement="bottom" title="Registrar una categoria">
-                      <i class="fa fa-2x fa-plus"></i>
+                    <a href="{{ route('especialidades.index') }}" class="btn btn-outline-secondary btn-circle waves-effect hoverable" 
+                    data-toggle="tooltip" data-placement="bottom" title="Lista de especialidades">
+                      <i class="fa fa-2x fa-object-group"></i>
                             </a>
-                            <a href="{{ route('categorias.deleted.index') }}" class="btn btn-outline-danger btn-circle waves-effect hoverable" 
-                    data-toggle="tooltip" data-placement="bottom" title="Categorias eliminadas">
-                      <i class="fa fa-2x fa-recycle"></i>
+
+                             <a href="{{ route('especialidades.edit', $especialidad->id) }}" class="btn btn-outline-warning btn-circle waves-effect hoverable" 
+                    data-toggle="tooltip" data-placement="bottom" title='Editar la especialidad "{{ $especialidad->nombre }}"'>
+                      <i class="fa fa-2x fa-pencil-alt"></i>
                             </a>
+
+                                    <a onclick="eliminar_especialidad({{ $especialidad->id }},'{{ $especialidad->nombre }}')"  class="btn btn-outline-danger btn-circle waves-effect hoverable" 
+                    data-toggle="tooltip" data-placement="bottom" title='Eliminar la especialidad "{{ $especialidad->nombre }}"'>
+                      <i class="fa fa-2x fa-trash-alt"></i>
+                            </a>
+                            <form id="eliminar{{ $especialidad->id }}" method="POST" action="{{ route('especialidades.destroy', $especialidad->id) }}" accept-charset="UTF-8">
+    <input name="_method" type="hidden" value="DELETE">
+    {{ csrf_field() }}
+</form>
                     </div>
 
                 </div>
@@ -46,82 +52,23 @@ Lista de categorias | {{ config('app.name', 'Laravel') }}
 
          
             <!--Grid row-->
-            <div class="row">
+            <div class="row wow fadeIn">
 
                 <!--Grid column-->
                 <div class="col-12">
 
                     <!--Card-->
-                    <div class="card hoverable"> 
+                    <div class="card wow fadeIn hoverable">
+
                         <!--Card content-->
                         <div class="card-body">
-                        <div class="table-responsive">
-                            <!-- Table  -->
-                            <table id="dtcategorias" class="table table-borderless table-hover display dt-responsive nowrap" cellspacing="0" width="100%">
-  <thead class="th-color white-text">
-    <tr class="z-depth-2">
-      <th class="th-sm">#
-      </th>
-      <th class="th-sm">Nombre
-      </th>
-      <th class="th-sm">Especialidad
-      </th>
-      <th class="th-sm">Categoria Padre
-      </th>
-      <th class="th-sm">Acciones
-      </th>
-   
-    </tr>
-  </thead>
-  <tbody>
-  @foreach($categorias as $key => $categoria)
-    <tr class="hoverable">
-      <td>{{$categoria->id}}</td>
-      <td>{{$categoria->nombre}}</td>
-      <td>
-      <a href="{{ route('especialidades.show',$categoria->especialidad->id) }}" class="link-text"
-                    data-toggle="tooltip" data-placement="bottom" title='Información de la especialidad "{{ $categoria->especialidad->nombre }}"'>
-                      <i class="fa fa-object-group"></i> {{$categoria->especialidad->nombre}}
-                            </a>    
-                        </td>
 
-            <td>
-                @if($categoria->categoria == NULL)
-               <h5> <span class="badge badge-secondary"><i class="fa fa-network-wired mr-1"></i>Categoria raiz</span><h5>
-                @else
-                    <a href="{{ route('categorias.show',$categoria->categoria->id) }}" class="link-text"
-                                  data-toggle="tooltip" data-placement="bottom" title='Información de la categoria padre "{{ $categoria->categoria->nombre }}"'>
-                                    <i class="fa fa-sitemap"></i> {{$categoria->categoria->nombre}}
-                                          </a>    
-                @endif
-            </td>
-                    <td>
-
-<a href="{{ route('categorias.show',$categoria->id) }}" class="text-primary m-1" 
-                    data-toggle="tooltip" data-placement="bottom" title='Información de la categoria "{{ $categoria->nombre }}"'>
-                      <i class="fa fa-2x fa-info-circle"></i>
-                            </a>
-
-      <a href="{{ route('categorias.edit',$categoria->id) }}" class="text-warning m-1" 
-                    data-toggle="tooltip" data-placement="bottom" title='Editar la categoria "{{ $categoria->nombre }}"'>
-                      <i class="fa fa-2x fa-pencil-alt"></i>
-                            </a>
-
-                            <a onclick="eliminar_categoria({{ $categoria->id }},'{{ $categoria->nombre }}')" class="text-danger m-1" 
-                    data-toggle="tooltip" data-placement="bottom" title='Eliminar la categoria "{{ $categoria->nombre }}"'>
-                      <i class="fa fa-2x fa-trash-alt"></i>
-                            </a>
-                            <form id="eliminar{{ $categoria->id }}" method="POST" action="{{ route('categorias.destroy', $categoria->id) }}" accept-charset="UTF-8">
-    <input name="_method" type="hidden" value="DELETE">
-    {{ csrf_field() }}
-</form>
-      </td>
-    </tr>
-    @endforeach
-  </tbody>
-</table>
-                            <!-- Table  -->
-                            </div>
+<div class="list-group hoverable">
+  <a class="list-group-item active z-depth-2 white-text waves-light hoverable">
+      <i class="fa fa-object-group  mr-2"></i><strong>Especialidad #{{ $especialidad->id }}</strong>
+    </a>
+  <a class="list-group-item waves-effect hoverable"><strong><i class="fa mr-4"></i>Nombre: </strong>{{ $especialidad->nombre }}</a>
+</div>
                         </div>
 
                     </div>
@@ -133,12 +80,88 @@ Lista de categorias | {{ config('app.name', 'Laravel') }}
             </div>
             <!--Grid row-->
 
+               <!--Grid row-->
+               <div class="row mt-5">
+
+                  <!--Grid column-->
+                  <div class="col-12">
+  
+                      <!--Card-->
+                      <div class="card hoverable"> 
+                          <!--Card content-->
+                          <div class="card-body">
+                              <h4><i class="fa fa-sitemap mr-2"></i>
+                              @if ($especialidad->categorias->count() === 1)
+                  Una categoria de "{{ $especialidad->nombre }}"
+              @elseif ($especialidad->categorias->count() > 1)
+                  {{ $especialidad->categorias->count() }} categorias de "{{ $especialidad->nombre }}"
+              @else
+                 No hay categorias de "{{ $especialidad->nombre }}"
+              @endif
+              </h4>
+              <hr/>
+                          <div class="table-responsive">
+                              <!-- Table  -->
+                              <table id="dtcategorias" class="table table-borderless table-hover display dt-responsive nowrap" cellspacing="0" width="100%">
+    <thead class="th-color white-text">
+      <tr class="z-depth-2">
+        <th class="th-sm">#
+        </th>
+        <th class="th-sm">Nombre
+        </th>
+        <th class="th-sm">Especialidad
+        </th>
+        <th class="th-sm">Categoria padre
+        </th>
+        <th class="th-sm">Acciones
+        </th>
+     
+      </tr>
+    </thead>
+    <tbody>
+    @foreach($especialidad->categorias as $key => $categoria)
+      <tr class="hoverable">
+        <td>{{$categoria->id}}</td>
+        <td>{{$categoria->nombre}}</td>
+        <td><i class="fa fa-object-group"></i> {{$categoria->especialidad->nombre}}</td>
+        <td>
+          @if($categoria->categoria == NULL)
+         <h5> <span class="badge badge-secondary"><i class="fa fa-sitemap"></i> Categoria raiz</span><h5>
+          @else
+              <a href="{{ route('categorias.show',$categoria->categoria->id) }}" class="link-text"
+                            data-toggle="tooltip" data-placement="bottom" title='Información de la categoria padre "{{ $categoria->categoria->nombre }}"'>
+                              <i class="fa fa-sitemap"></i> {{$categoria->categoria->nombre}}
+                                    </a>    
+          @endif
+      </td>
+      <td>
+
+        <a href="{{ route('categorias.show',$categoria->id) }}" class="text-primary m-1" 
+                            data-toggle="tooltip" data-placement="bottom" title='Información de la categoria "{{ $categoria->nombre }}"'>
+                              <i class="fa fa-2x fa-info-circle"></i>
+                                    </a>
+              </td>
+      </tr>
+      @endforeach
+    </tbody>
+  </table>
+                              <!-- Table  -->
+                              </div>
+                          </div>
+  
+                      </div>
+                      <!--/.Card-->
+  
+                  </div>
+                  <!--Grid column-->
+  
+              </div>
+              <!--Grid row-->
           
         </div>
 
 @endsection
 @section('js_links')
-<!-- DataTables core JavaScript -->
 <script type="text/javascript" src="{{ asset('js/addons/moment.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/addons/datatables.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/addons/bt4-datatables.min.js') }}"></script>
@@ -153,11 +176,10 @@ Lista de categorias | {{ config('app.name', 'Laravel') }}
 <script type="text/javascript" src="{{ asset('js/addons/buttons.print.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/addons/buttons.colVis.min.js') }}"></script>
 <script type="text/javascript">
-
-function eliminar_categoria(id,nombre){
+function eliminar_especialidad(id,nombre){
     swal({
-  title: 'Eliminar la categoria',
-  text: '¿Desea eliminar la categoria "'+nombre+'"?',
+  title: 'Eliminar la especialidad',
+  text: '¿Desea eliminar la especialidad "'+nombre+'"?',
   type: 'question',
   confirmButtonText: '<i class="fa fa-trash-alt"></i> Eliminar',
   cancelButtonText: '<i class="fa fa-times"></i> Cancelar',
@@ -186,14 +208,12 @@ function eliminar_categoria(id,nombre){
 })
 }
 
-  $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
 $(document).ready(function() {
+    var especialidad =  "{{$especialidad->nombre}}"; 
     var currentdate = new Date(); 
     moment.locale('es');
 var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a'); 
-    var titulo_archivo = "Lista de categorias ("+datetime+")";
+    var titulo_archivo = 'Lista de categorias de "'+especialidad+'" ('+datetime+')';
      $('#dtcategorias').DataTable( {
         dom: 'Bfrtip',
     lengthMenu: [
@@ -217,12 +237,8 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
 		sLast:     'Último',
 		sNext:     'Siguiente',
 		sPrevious: 'Anterior'
-	},
-	oAria: {
-		sSortAscending:  ': Activar para ordenar la columna de manera ascendente',
-		sSortDescending: ': Activar para ordenar la columna de manera descendente'
 	}
-},
+    },
         buttons: [
 
             {
@@ -249,7 +265,7 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
                 buttons: [         
             {
                 extend:    'csvHtml5',
-                text:      '<i class="fa fa-file-csv"></i> Csv',
+                text:      '<i class="fa fa-file-alt"></i> Csv',
                 titleAttr: 'Csv',
                 title: titulo_archivo
             }, 
@@ -296,5 +312,8 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
 
             $('.dataTables_length').addClass('bs-select');
         });
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 </script>
 @endsection

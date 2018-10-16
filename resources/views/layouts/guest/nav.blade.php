@@ -5,7 +5,6 @@
 @section('js_auth')
 <script type="text/javascript">
 function salir(){
-    event.preventDefault();
     swal({
   title: 'Salir',
   text: '¿Desea cerrar la sesion"?',

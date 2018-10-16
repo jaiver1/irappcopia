@@ -45,7 +45,7 @@ class Tipo_medidaSoftDeleteController extends Controller
     {
         Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
         $tipos_medidas = Tipo_medida::onlyTrashed()->get();
-        return View('dato_basico.tipos_medidas.index-deleted', compact('tipos_medidas'));
+        return View('dato_basico.tipos_medidas.index_deleted', compact('tipos_medidas'));
     }
 
 

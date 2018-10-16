@@ -45,7 +45,7 @@ class CategoriaSoftDeleteController extends Controller
     {
         Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
         $categorias = Categoria::onlyTrashed()->get();
-        return View('clasificacion.categorias.index-deleted', compact('categorias'));
+        return View('clasificacion.categorias.index_deleted', compact('categorias'));
     }
 
 

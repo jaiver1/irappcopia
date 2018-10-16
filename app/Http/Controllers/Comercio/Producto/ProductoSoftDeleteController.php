@@ -45,7 +45,7 @@ class ProductoSoftDeleteController extends Controller
     {
         Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
         $productos = Producto::onlyTrashed()->get();
-        return View('comercio.productos.index-deleted', compact('productos'));
+        return View('comercio.productos.index_deleted', compact('productos'));
     }
 
 

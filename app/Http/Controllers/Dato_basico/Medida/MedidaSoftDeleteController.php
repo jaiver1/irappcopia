@@ -45,7 +45,7 @@ class MedidaSoftDeleteController extends Controller
     {
         Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
         $medidas = Medida::onlyTrashed()->get();
-        return View('dato_basico.medidas.index-deleted', compact('medidas'));
+        return View('dato_basico.medidas.index_deleted', compact('medidas'));
     }
 
 

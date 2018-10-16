@@ -9,7 +9,7 @@ Bienvenido | {{ config('app.name', 'Laravel') }}
                         <div class="row pt-5 mt-3">
                             <div class="col-md-12">
                                 <div class="text-center">
-                                    <h1 class="h1-reponsive white-text text-uppercase font-weight-bold mb-3 wow fadeInDown" data-wow-delay="0.3s"><strong><i class="fa fa-wrench mr-2"></i>IRAPP</strong></h1>
+                                    <h1 class="h1-reponsive white-text text-uppercase font-weight-bold mb-3 wow fadeInDown" data-wow-delay="0.3s"><strong><i class="fa fa-hammer mr-2"></i>IRAPP</strong></h1>
                                     <hr class="hr-light mt-4 wow fadeInDown" data-wow-delay="0.4s">
                                     <h5 class="text-uppercase mb-5 white-text wow fadeInDown" data-wow-delay="0.4s"><strong>Instalaciones, Remodelaciones y Acabados</strong></h5>
                                     @if (Auth::guest())                     

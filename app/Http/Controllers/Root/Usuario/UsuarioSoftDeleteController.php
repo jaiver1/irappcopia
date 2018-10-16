@@ -45,7 +45,7 @@ class UsuarioSoftDeleteController extends Controller
     {
     Auth::user()->authorizeRoles(['ROLE_ROOT']);
         $usuarios = User::onlyTrashed()->get();
-        return View('root.usuarios.index-deleted', compact('usuarios'));
+        return View('root.usuarios.index_deleted', compact('usuarios'));
     }
 
 

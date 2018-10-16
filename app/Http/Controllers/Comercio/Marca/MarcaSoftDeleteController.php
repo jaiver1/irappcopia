@@ -45,7 +45,7 @@ class MarcaSoftDeleteController extends Controller
     {
         Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
         $marcas = Marca::onlyTrashed()->get();
-        return View('comercio.marcas.index-deleted', compact('marcas'));
+        return View('comercio.marcas.index_deleted', compact('marcas'));
     }
 
 

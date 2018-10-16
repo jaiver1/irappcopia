@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Clasificacion\Especialidad;
+namespace App\Http\Controllers\Actividad\Orden;
 use App\Http\Controllers\Controller;
-use App\Models\Clasificacion\Especialidad;
+use App\Models\Actividad\Orden;
 Use Alert;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class EspecialidadSoftDeleteController extends Controller
+class OrdenSoftDeleteController extends Controller
 {
     protected $redirectTo = '/login';
     
@@ -24,16 +24,16 @@ class EspecialidadSoftDeleteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    private static function getDeletedEspecialidad($id)
+    private static function getDeletedOrden($id)
     {
-        $especialidad = Especialidad::onlyTrashed()->where('id', $id)->get();
+        $orden = Orden::onlyTrashed()->where('id', $id)->get();
         
-        if (count($especialidad) != 1) {
-            Alert::error('Error','La especialidad no existe.');
-            return redirect('/especialidades/deleted');
+        if (count($orden) != 1) {
+            Alert::error('Error','La orden no existe.');
+            return redirect('/ordenes/deleted');
         }
 
-        return $especialidad[0];
+        return $orden[0];
     }
 
     /**
@@ -44,8 +44,8 @@ class EspecialidadSoftDeleteController extends Controller
     public function index()
     {
         Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
-        $especialidades = Especialidad::onlyTrashed()->get();
-        return View('clasificacion.especialidades.index_deleted', compact('especialidades'));
+        $ordenes = Orden::onlyTrashed()->get();
+        return View('actividad.ordenes.index_deleted', compact('ordenes'));
     }
 
 
@@ -60,10 +60,10 @@ class EspecialidadSoftDeleteController extends Controller
     public function update($id)
     {
         Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
-        $especialidad = self::getDeletedEspecialidad($id);
-        $especialidad->restore();
-        Alert::success('Exito','La especialidad "'.$especialidad->nombre.'" ha sido restaurada.');
-        return Redirect::to('especialidades/deleted');
+        $orden = self::getDeletedOrden($id);
+        $orden->restore();
+        Alert::success('Exito','La orden "'.$orden->nombre.'" ha sido restaurada.');
+        return Redirect::to('ordenes/deleted');
     }
 
     /**
@@ -76,9 +76,9 @@ class EspecialidadSoftDeleteController extends Controller
     public function destroy($id)
     {
         Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
-        $especialidad = self::getDeletedEspecialidad($id);
-        $especialidad->forceDelete();
-        Alert::success('Exito','La especialidad "'.$especialidad->nombre.'" ha sido eliminada permanentemente.');
-        return Redirect::to('especialidades/deleted');
+        $orden = self::getDeletedOrden($id);
+        $orden->forceDelete();
+        Alert::success('Exito','La orden "'.$orden->nombre.'" ha sido eliminada permanentemente.');
+        return Redirect::to('ordenes/deleted');
     }
 }
