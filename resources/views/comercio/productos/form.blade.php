@@ -98,9 +98,9 @@
         @endforeach
         @endforeach
     </select>
-</div> @if ($errors->has('marca_id'))
+</div> @if ($errors->has('tipo_referencia_id'))
                           <div class="hoverable waves-light alert alert-danger alert-dismissible fade show" role="alert">
-                         {{ $errors->first('marca_id') }}
+                         {{ $errors->first('tipo_referencia_id') }}
 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 <span aria-hidden="true">&times;</span>
 </button>
@@ -169,6 +169,30 @@
 </div>
 <!-- Grid column -->
        
+        </div>
+    <!-- Grid row -->
+
+    <!-- Grid row -->
+  <div class="form-row">
+        <!-- Grid column -->
+        <div class="col-md-12">
+            <!-- Material input -->
+            <div class="md-form">
+    <i class="fa fa-comment-dots prefix"></i>
+    <textarea type="text" required id="descripcion" value="{{ $producto->descripcion}}" name="descripcion" class="md-textarea form-control validate" maxlength="50"></textarea>
+    <label for="descripcion" data-error="Error" data-success="Correcto">Descripción</label>
+</div> @if ($errors->has('descripcion'))
+                          <div class="hoverable waves-light alert alert-danger alert-dismissible fade show" role="alert">
+                         {{ $errors->first('descripcion') }}
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+              
+              @endif
+         
+</div>
+<!-- Grid column -->
         </div>
     <!-- Grid row -->
 
