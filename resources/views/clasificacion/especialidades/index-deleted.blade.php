@@ -136,7 +136,7 @@ Especialidades eliminadas | {{ config('app.name', 'Laravel') }}
 
 function eliminar_especialidad(id,nombre){
     swal({
-  title: 'Eliminar especialidad',
+  title: 'Eliminar la especialidad',
   text: '¿Desea eliminar definitivamente la especialidad "'+nombre+'"?',
   type: 'warning',
   confirmButtonText: '<i class="fa fa-trash"></i> Eliminar',
@@ -168,7 +168,7 @@ function eliminar_especialidad(id,nombre){
 
 function restaurar_especialidad(id,nombre){
     swal({
-  title: 'Restaurar especialidad',
+  title: 'Restaurar la especialidad',
   text: '¿Desea restaurar la especialidad "'+nombre+'"?',
   type: 'question',
   confirmButtonText: '<i class="fa fa-undo"></i> Restaurar',
@@ -260,7 +260,7 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
                 buttons: [         
             {
                 extend:    'csvHtml5',
-                text:      '<i class="fa fa-file-alt"></i> Csv',
+                text:      '<i class="fa fa-file-csv"></i> Csv',
                 titleAttr: 'Csv',
                 title: titulo_archivo
             }, 

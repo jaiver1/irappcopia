@@ -269,7 +269,7 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
                 buttons: [         
             {
                 extend:    'csvHtml5',
-                text:      '<i class="fa fa-file-alt"></i> Csv',
+                text:      '<i class="fa fa-file-csv"></i> Csv',
                 titleAttr: 'Csv',
                 title: titulo_archivo
             }, 

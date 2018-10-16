@@ -15,7 +15,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', 'WelcomeController@index')->name('welcome');
+Route::get('/', 'StoreController@index')->name('welcome');
+Route::get('/store/productos', 'StoreController@lista_Productos')->name('store.productos');
+Route::get('/store/servicios', 'StoreController@lista_Servicios')->name('store.servicios');
 
 Route::resource('usuarios/deleted', 'Root\Usuario\UsuarioSoftDeleteController',
 [
@@ -83,7 +85,56 @@ Route::resource('marcas/deleted', 'Comercio\Marca\MarcaSoftDeleteController',
 
 Route::resource('marcas', 'Comercio\Marca\MarcaController');
 
-Route::resource('clientes/deleted', 'Contacto\Cliente\ClienteSoftDeleteController');
+Route::resource('productos/deleted', 'Comercio\ProductoMarca\ProductoSoftDeleteController',
+[
+    'names' => [
+        'index' => 'productos.deleted.index',
+        'update' => 'productos.deleted.update',
+        'destroy' => 'productos.deleted.destroy'
+    ]
+]);
+
+Route::resource('productos', 'Comercio\Producto\ProductoController');
+
+Route::resource('clientes/deleted', 'Contacto\Cliente\ClienteSoftDeleteController',
+[
+    'names' => [
+        'index' => 'clientes.deleted.index',
+        'update' => 'clientes.deleted.update',
+        'destroy' => 'clientes.deleted.destroy'
+    ]
+]);
 Route::resource('clientes', 'Contacto\Cliente\ClienteController');
-Route::resource('colaboradores/deleted', 'Contacto\Colaborador\ColaboradorSoftDeleteController');
+
+Route::resource('colaboradores/deleted', 'Contacto\Colaborador\ColaboradorSoftDeleteController',
+[
+    'names' => [
+        'index' => 'colaboradores.deleted.index',
+        'update' => 'colaboradores.deleted.update',
+        'destroy' => 'colaboradores.deleted.destroy'
+    ]
+]);
+
 Route::resource('colaboradores', 'Contacto\Colaborador\ColaboradorController');
+
+Route::resource('servicios/deleted', 'Actividad\Servicio\ServicioSoftDeleteController',
+[
+    'names' => [
+        'index' => 'servicios.deleted.index',
+        'update' => 'servicios.deleted.update',
+        'destroy' => 'servicios.deleted.destroy'
+    ]
+]);
+
+Route::resource('servicios', 'Actividad\Servicio\ServicioController');
+
+Route::resource('ordenes/deleted', 'Actividad\Orden\OrdenSoftDeleteController',
+[
+    'names' => [
+        'index' => 'ordenes.deleted.index',
+        'update' => 'ordenes.deleted.update',
+        'destroy' => 'ordenes.deleted.destroy'
+    ]
+]);
+
+Route::resource('ordenes', 'Actividad\Orden\OrdenController');

@@ -39,7 +39,7 @@ class UsuarioController extends Controller
     public function create()
     {
         Auth::user()->authorizeRoles(['ROLE_ROOT']);
-        $usuario = new User();
+        $usuario = new User;
         $roles = Role::all();
         $editar = false;
         return View::make('root.usuarios.create')->with(compact('usuario','roles','editar'));
@@ -70,7 +70,7 @@ class UsuarioController extends Controller
                 ->withErrors($validator);
         } else {
             $role = Role::findOrFail($request->rol);
-            $usuario = new User();
+            $usuario = new User;
             $usuario->name = $request->name;
             $usuario->email = $request->email;
             $usuario->password =  bcrypt($request->password);         

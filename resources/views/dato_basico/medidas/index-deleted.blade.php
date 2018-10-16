@@ -136,7 +136,7 @@ Medidas eliminadas | {{ config('app.name', 'Laravel') }}
 
 function eliminar_medida(id,nombre){
     swal({
-  title: 'Eliminar medida',
+  title: 'Eliminar la medida',
   text: '¿Desea eliminar definitivamente la medida "'+nombre+'"?',
   type: 'warning',
   confirmButtonText: '<i class="fa fa-trash"></i> Eliminar',
@@ -168,7 +168,7 @@ function eliminar_medida(id,nombre){
 
 function restaurar_medida(id,nombre){
     swal({
-  title: 'Restaurar medida',
+  title: 'Restaurar la medida',
   text: '¿Desea restaurar la medida "'+nombre+'"?',
   type: 'question',
   confirmButtonText: '<i class="fa fa-undo"></i> Restaurar',
@@ -260,7 +260,7 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
                 buttons: [         
             {
                 extend:    'csvHtml5',
-                text:      '<i class="fa fa-file-alt"></i> Csv',
+                text:      '<i class="fa fa-file-csv"></i> Csv',
                 titleAttr: 'Csv',
                 title: titulo_archivo
             }, 

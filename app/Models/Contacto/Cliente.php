@@ -30,13 +30,7 @@ class Cliente extends Model
      * @var array
      */
     protected $fillable = [
-        'cedula',
-        'nombre',
-        'apellido',
-        'telefono',
-        'municipio',
-        'barrio',
-        'direccion',
+        'persona_id'
     ];
 
     /**

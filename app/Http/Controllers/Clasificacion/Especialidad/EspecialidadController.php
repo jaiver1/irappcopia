@@ -37,7 +37,7 @@ class EspecialidadController extends Controller
     public function create()
     {
         Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
-        $especialidad = new Especialidad();
+        $especialidad = new Especialidad;
         $editar = false;
         return View::make('clasificacion.especialidades.create')->with(compact('especialidad','editar'));
     }
@@ -62,7 +62,7 @@ class EspecialidadController extends Controller
             return Redirect::to('especialidades/create')
                 ->withErrors($validator);
         } else {
-            $especialidad = new Especialidad();
+            $especialidad = new Especialidad;
             $especialidad->nombre = $request->nombre; 
             $especialidad->save();        
 

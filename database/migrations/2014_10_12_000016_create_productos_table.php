@@ -18,14 +18,16 @@ class CreateProductosTable extends Migration
             $table->string('referencia', 50);
             $table->string('nombre', 50);
             $table->double('valor', 12, 2);
-            $table->string('image', 100)->default("")->nullable();
+            $table->text('descripcion');
             $table->unsignedBigInteger('medida_id')->default(1);
+            $table->unsignedBigInteger('categoria_id')->default(1);
             $table->unsignedBigInteger('marca_id')->default(1);
             $table->unsignedBigInteger('tipo_referencia_id')->default(1);         
             $table->softDeletes();
             $table->timestamps();
             $table->foreign('medida_id')->references('id')->on('medidas')->onUpdate('cascade')->onDelete('cascade');                         
             $table->foreign('marca_id')->references('id')->on('marcas')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('categoria_id')->references('id')->on('categorias')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('tipo_referencia_id')->references('id')->on('tipos_referencias')->onUpdate('cascade')->onDelete('cascade');
         });
     }

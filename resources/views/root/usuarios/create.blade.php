@@ -1,10 +1,7 @@
 @extends('layouts.dashboard.main')
 @include('root.usuarios.form')
 @section('template_title')
-Registrar usuario | {{ config('app.name', 'Laravel') }}
-@endsection
-@section('footer_title')
-Registrar usuario | {{ config('app.name', 'Laravel') }}
+Registrar un usuario | {{ config('app.name', 'Laravel') }}
 @endsection
 @section('content')
 

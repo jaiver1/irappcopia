@@ -89,13 +89,15 @@
 @endsection
 @section('js_links')
 <script type="text/javascript" src="{{ asset('js/addons/select2.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/addons/i18n/es.js')}}"></script>
 <script type="text/javascript">
   $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 $('#tipo_medida_id').select2({
         placeholder: "Tipos de medidas",
-        theme: "material"
+        theme: "material",
+        language: "es"
     });
     $(".select2-selection__arrow")
         .addClass("fa fa-chevron-down");

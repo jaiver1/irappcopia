@@ -12,7 +12,7 @@ class Marca extends Model
      *
      * @var string
      */
-    protected $table = 'medidas';
+    protected $table = 'marcas';
 
     /**
      * The attributes that are not mass assignable.
@@ -27,9 +27,7 @@ class Marca extends Model
      * @var array
      */
   protected $fillable = [
-    'nombre',
-    'etiqueta',
-    'tipo_medida_id'
+    'nombre'
   ];
 
    /**
@@ -49,9 +47,8 @@ class Marca extends Model
       'deleted_at',
   ];
 
-
-public function tipo_medida()
-{
-    return $this->belongsTo('App\Models\Comercio\Tipo_medida');
-}
+  public function productos(){
+    return $this->hasMany('App\Models\Comercio\Producto');
+  }
+  
 }

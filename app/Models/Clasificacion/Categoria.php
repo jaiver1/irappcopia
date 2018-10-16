@@ -64,4 +64,12 @@ public function categoria()
   return $this->belongsTo('App\Models\Clasificacion\Categoria');
 }
 
+public function productos(){
+  return $this->hasMany('App\Models\Comercio\Producto');
+}
+
+public function servicios(){
+  return $this->hasMany('App\Models\Actividad\Servicio');
+}
+
 }

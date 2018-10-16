@@ -136,7 +136,7 @@ Marcas eliminadas | {{ config('app.name', 'Laravel') }}
 
 function eliminar_marca(id,nombre){
     swal({
-  title: 'Eliminar marca',
+  title: 'Eliminar la marca',
   text: '¿Desea eliminar definitivamente la marca "'+nombre+'"?',
   type: 'warning',
   confirmButtonText: '<i class="fa fa-trash"></i> Eliminar',
@@ -168,7 +168,7 @@ function eliminar_marca(id,nombre){
 
 function restaurar_marca(id,nombre){
     swal({
-  title: 'Restaurar marca',
+  title: 'Restaurar la marca',
   text: '¿Desea restaurar la marca "'+nombre+'"?',
   type: 'question',
   confirmButtonText: '<i class="fa fa-undo"></i> Restaurar',
@@ -260,7 +260,7 @@ var datetime =  moment().format('DD MMMM YYYY, h-mm-ss a');
                 buttons: [         
             {
                 extend:    'csvHtml5',
-                text:      '<i class="fa fa-file-alt"></i> Csv',
+                text:      '<i class="fa fa-file-csv"></i> Csv',
                 titleAttr: 'Csv',
                 title: titulo_archivo
             }, 

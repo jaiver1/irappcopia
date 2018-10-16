@@ -42,16 +42,9 @@
 </form>
 @endsection
 @section('js_links')
-<script type="text/javascript" src="{{ asset('js/addons/select2.min.js') }}"></script>
 <script type="text/javascript">
   $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
-$('#tipo_especialidad_id').select2({
-        placeholder: "Tipos de especialidades",
-        theme: "material"
-    });
-    $(".select2-selection__arrow")
-        .addClass("fa fa-chevron-down");
 </script>
 @endsection

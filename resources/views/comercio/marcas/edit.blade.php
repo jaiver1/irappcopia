@@ -17,7 +17,7 @@ Editar una marca "{{ $marca->nombre }}" | {{ config('app.name', 'Laravel') }}
                     <span><i class="fa fa-trademark mr-1"></i></span> 
                         <a href="{{ route('marcas.index') }}">Lista de marcas</a>
                         <span>/</span>
-                        <span>Editar marca "{{ $marca->nombre }}"</span>
+                        <span>Editar una marca "{{ $marca->nombre }}"</span>
                     </h4>
 
                     <div class="d-flex justify-content-center">

@@ -15,7 +15,7 @@ Bienvenido | {{ config('app.name', 'Laravel') }}
                                     @if (Auth::guest())                     
 
             <a href="{{ route('login') }}" class="btn btn-outline-white hoverable waves-light wow fadeInDown" data-wow-delay="0.4s" role="button" >
-            <i class="fa fa-sign-in-alt mr-2"></i>Iniciar sesión
+            <i class="fa fa-door-closed mr-2"></i>Iniciar sesión
             </a>
 
             <a href="{{ route('register') }}" class="btn btn-outline-white hoverable waves-light wow fadeInDown" data-wow-delay="0.4s" role="button" >
@@ -32,7 +32,7 @@ Bienvenido | {{ config('app.name', 'Laravel') }}
                            <form id="logout-form2" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
-                                        <i class="fa fa-power-off mr-2"></i> Cerrar sesión
+                                        <i class="fa fa-door-open mr-2"></i> Cerrar sesión
                                       </a>     
             </a>
 

@@ -38,7 +38,7 @@ class MarcaController extends Controller
     public function create()
     {
         Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
-        $marca = new Marca();
+        $marca = new Marca;
         $editar = false;
         return View::make('comercio.marcas.create')->with(compact('marca','editar'));
     }
@@ -63,7 +63,7 @@ class MarcaController extends Controller
             return Redirect::to('marcas/create')
                 ->withErrors($validator);
         } else {
-            $marca = new Marca();
+            $marca = new Marca;
             $marca->nombre = $request->nombre; 
            $marca->save();        
 

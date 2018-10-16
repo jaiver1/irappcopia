@@ -17,7 +17,7 @@ Editar una categoria "{{ $categoria->nombre }}" | {{ config('app.name', 'Laravel
                     <span><i class="fa fa-sitemap mr-1"></i></span> 
                         <a href="{{ route('categorias.index') }}">Lista de categorias</a>
                         <span>/</span>
-                        <span>Editar categoria "{{ $categoria->nombre }}"</span>
+                        <span>Editar una categoria "{{ $categoria->nombre }}"</span>
                     </h4>
 
                     <div class="d-flex justify-content-center">

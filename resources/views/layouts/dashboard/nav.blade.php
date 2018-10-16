@@ -57,7 +57,7 @@ function salir(){
 <nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-content">
         <div class="sidebar-brand waves-light">
-            <a href="#">IRAPP</a>
+            <a href="#"><i class="fa fa-hammer mr-2"></i> IRAPP</a>
             <div id="close-sidebar">
                 <i class="fas fa-times-circle"></i>
             </div>
@@ -94,7 +94,7 @@ function salir(){
         <div class="sidebar-menu">
             <ul>
             <li class="header-menu">
-                    <span>Menu</span>
+                    <span>Inicio</span>
                 </li>
                 <li class="hoverable waves-light {{ \Request::is('home') ? 'default' : 'simple' }}">
                     <a href="{{route('home')}}">
@@ -153,7 +153,7 @@ function salir(){
           
                 <li class="sidebar-dropdown {{ (\Request::is('marcas') || \Request::is('marcas/*') || \Request::is('productos') || \Request::is('productos/*')) ? 'active default' : 'simple' }}">
                     <a href="#">
-                        <i class="fa fa-store-alt"></i>
+                        <i class="fa fa-handshake"></i>
                         <span>Comercio</span>
                     </a>
                     <div class="sidebar-submenu" style="{{ (\Request::is('marcas') || \Request::is('marcas/*') || \Request::is('productos') || \Request::is('productos/*')) ? 'display: block;' : '' }} ">
@@ -162,7 +162,45 @@ function salir(){
                             <a href="{{route('marcas.index')}}"> <i class="fa fa-trademark "></i><span>Marcas</span></a>
                             </li>
                             <li class="hoverable waves-light {{ (\Request::is('productos') || \Request::is('productos/*')) ? 'default' : 'simple' }}">
-                                <a href="{{route('marcas.index')}}"><i class="fa fa-boxes"></i><span>Productos</span></a>
+                                <a href="{{route('productos.index')}}"><i class="fa fa-boxes"></i><span>Productos</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="header-menu">
+                    <span>Negocios</span>
+                </li>
+
+                <li class="sidebar-dropdown {{ (\Request::is('clientes') || \Request::is('clientes/*') || \Request::is('colaboradores') || \Request::is('colaboradores/*')) ? 'active default' : 'simple' }}">
+                    <a href="#">
+                        <i class="fa fa-address-book"></i>
+                        <span>Contactos</span>
+                    </a>
+                    <div class="sidebar-submenu" style="{{ (\Request::is('clientes') || \Request::is('clientes/*') || \Request::is('colaboradores') || \Request::is('colaboradores/*')) ? 'display: block;' : '' }} ">
+                        <ul>
+                            <li class="hoverable waves-light {{ (\Request::is('clientes') || \Request::is('clientes/*')) ? 'default' : 'simple' }}">
+                            <a href="{{route('clientes.index')}}"> <i class="fa fa-user-tie "></i><span>Clientes</span></a>
+                            </li>
+                            <li class="hoverable waves-light {{ (\Request::is('colaboradores') || \Request::is('colaboradores/*')) ? 'default' : 'simple' }}">
+                                <a href="{{route('colaboradores.index')}}"><i class="fa fa-user-cog"></i><span>Colaboradores</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="sidebar-dropdown {{ (\Request::is('servicios') || \Request::is('servicios/*') || \Request::is('ordenes') || \Request::is('ordenes/*')) ? 'active default' : 'simple' }}">
+                    <a href="#">
+                        <i class="fa fa-people-carry"></i>
+                        <span>Actividades</span>
+                    </a>
+                    <div class="sidebar-submenu" style="{{ (\Request::is('servicios') || \Request::is('servicios/*') || \Request::is('ordenes') || \Request::is('ordenes/*')) ? 'display: block;' : '' }} ">
+                        <ul>
+                            <li class="hoverable waves-light {{ (\Request::is('servicios') || \Request::is('servicios/*')) ? 'default' : 'simple' }}">
+                            <a href="{{route('servicios.index')}}"> <i class="fa fa-cogs "></i><span>Servicios</span></a>
+                            </li>
+                            <li class="hoverable waves-light {{ (\Request::is('ordenes') || \Request::is('ordenes/*')) ? 'default' : 'simple' }}">
+                                <a href="{{route('ordenes.index')}}"><i class="fa fa-business-time"></i><span>Ordenes</span></a>
                             </li>
                         </ul>
                     </div>
@@ -174,11 +212,54 @@ function salir(){
     </div>
     <!-- sidebar-content  -->
     <div class="sidebar-footer">
+            <div class="dropdown">
+                    <a href="#" class="" id="dropdownMenuMessage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-store"></i>
+                    </a>
+                    <div class="dropdown-menu messages" aria-labelledby="dropdownMenuMessage">
+                        <div class="messages-header">
+                            <i class="fa fa-store"></i>
+                            Tienda
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">
+                            <div class="message-content">
+                                <div class="pic">
+                                        <i class="fa fa-boxes"></i>
+                                </div>
+                                <div class="content">
+                                    <div class="message-title">
+                                        <strong> Productos</strong>
+                                    </div>
+                                    <div class="message-detail">Lista de productos en venta</div>
+                                </div>
+                            </div>
+        
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <div class="message-content">
+                                <div class="pic">
+                                        <i class="fa fa-cogs"></i>
+                                </div>
+                                <div class="content">
+                                    <div class="message-title">
+                                        <strong> Servicios</strong>
+                                    </div>
+                                    <div class="message-detail">Lista de servicios ofrecidos</div>
+                                </div>
+                            </div>
+        
+                        </a>
+                     
+                        <div class="dropdown-divider"></div>
+                   
+                    </div>
+                </div>
         <div class="dropdown">
 
             <a href="#" class="" id="dropdownMenuNotification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-bell"></i>
-                <span class="badge badge-pill badge-warning notification">3</span>
+                <span class="badge badge-pill teal darken-1 notification">3</span>
             </a>
             <div class="dropdown-menu notifications" aria-labelledby="dropdownMenuMessage">
                 <div class="notifications-header">
@@ -229,63 +310,7 @@ function salir(){
                 <a class="dropdown-item text-center" href="#">View all notifications</a>
             </div>
         </div>
-        <div class="dropdown">
-            <a href="#" class="" id="dropdownMenuMessage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-envelope"></i>
-                <span class="badge badge-pill badge-success notification">7</span>
-            </a>
-            <div class="dropdown-menu messages" aria-labelledby="dropdownMenuMessage">
-                <div class="messages-header">
-                    <i class="fa fa-envelope"></i>
-                    Messages
-                </div>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
-                    <div class="message-content">
-                        <div class="pic">
-                            <img src="assets/img/user.jpg" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="message-title">
-                                <strong> Jhon doe</strong>
-                            </div>
-                            <div class="message-detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. In totam explicabo</div>
-                        </div>
-                    </div>
-
-                </a>
-                <a class="dropdown-item" href="#">
-                    <div class="message-content">
-                        <div class="pic">
-                            <img src="assets/img/user.jpg" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="message-title">
-                                <strong> Jhon doe</strong>
-                            </div>
-                            <div class="message-detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. In totam explicabo</div>
-                        </div>
-                    </div>
-
-                </a>
-                <a class="dropdown-item" href="#">
-                    <div class="message-content">
-                        <div class="pic">
-                            <img src="assets/img/user.jpg" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="message-title">
-                                <strong> Jhon doe</strong>
-                            </div>
-                            <div class="message-detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. In totam explicabo</div>
-                        </div>
-                    </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-center" href="#">View all messages</a>
-
-            </div>
-        </div>
+     
         <div class="dropdown">
             <a href="#" class="" id="dropdownMenuMessage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-cog"></i>
@@ -302,7 +327,7 @@ function salir(){
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
-                <i class="fa fa-power-off"></i>
+                <i class="fa fa-door-open"></i>
             </a>
         </div>
     </div>

@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.main')
 @include('dato_basico.medidas.form')
 @section('template_title')
-Registrar medida | {{ config('app.name', 'Laravel') }}
+Registrar una medida | {{ config('app.name', 'Laravel') }}
 @endsection
 @section('content')
 

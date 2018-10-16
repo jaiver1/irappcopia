@@ -84,17 +84,7 @@
                 <div class="md-form">
                 <i class="fa fa-sitemap"></i>
                 <small for="categoria_id">Categorias</small>   
-        <select class="form-control" required id="categoria_id" name="categoria_id">
-        <option value="" disabled selected>Selecciona una opción</option>
-        @foreach($especialidades as $key => $especialidad)
-        <optgroup label="{{ $especialidad->nombre }}">
-        @foreach($especialidad->categorias as $sub)
-        @if($sub->categoria == NULL)
-        @include('clasificacion.categorias.sub_categorias_options', array('sub'=> $sub,'niv'=> 0))
-        @endif
-        @endforeach
-        @endforeach
-    </select>
+                @include('clasificacion.categorias.sub_categorias_select', array('categoria_selected'=>$categoria))
     </div> @if ($errors->has('categoria_id'))
                                                 <div class="hoverable waves-light alert alert-danger alert-dismissible fade show" role="alert">
                                                {{ $errors->first('categoria_id') }}
@@ -117,18 +107,21 @@
 @endsection
 @section('js_links')
 <script type="text/javascript" src="{{ asset('js/addons/select2.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/addons/i18n/es.js')}}"></script>
 <script type="text/javascript">
   $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 $('#especialidad_id').select2({
         placeholder: "Especialidades",
-        theme: "material"
+        theme: "material",
+        language: "es"
     });
 
     $('#categoria_id').select2({
         placeholder: "Categorias",
-        theme: "material"
+        theme: "material",
+        language: "es"
     });
     $(".select2-selection__arrow")
         .addClass("fa fa-chevron-down");

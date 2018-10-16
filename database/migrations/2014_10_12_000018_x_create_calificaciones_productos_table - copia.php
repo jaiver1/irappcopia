@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class XCreateTiposReferenciasTable extends Migration
+class X_CreateImagenesProductosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class XCreateTiposReferenciasTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipos_referencias', function (Blueprint $table) {
+        Schema::create('calificaciones_productos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre', 10);
-            $table->string('dimension', 2);
+            $table->text('descripcion')->default("")->nullable();
+            $table->unsignedTinyInteger('calificacion')->default(5);
             $table->softDeletes();
             $table->timestamps();
+            $table->foreign('producto_id')->references('id')->on('productos')->onUpdate('cascade')->onDelete('cascade');                         
         });
     }
 
@@ -30,6 +31,6 @@ class XCreateTiposReferenciasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipos_referencias');
+        Schema::dropIfExists('calificaciones_productos');
     }
 }

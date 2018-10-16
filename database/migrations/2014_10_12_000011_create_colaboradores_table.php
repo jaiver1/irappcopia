@@ -17,8 +17,8 @@ class CreateColaboradoresTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('persona_id');
             $table->unsignedBigInteger('categoria_id');
-            $table->foreign('persona_id')->references('id')->on('personas');
-            $table->foreign('categoria_id')->references('id')->on('categorias');
+            $table->foreign('persona_id')->references('id')->on('personas')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('categoria_id')->references('id')->on('categorias')->onUpdate('cascade')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

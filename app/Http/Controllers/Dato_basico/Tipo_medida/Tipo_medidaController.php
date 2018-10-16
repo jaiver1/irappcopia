@@ -38,7 +38,7 @@ class Tipo_medidaController extends Controller
     public function create()
     {
         Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
-        $tipo_medida = new Tipo_medida();
+        $tipo_medida = new Tipo_medida;
         $editar = false;
         return View::make('dato_basico.tipos_medidas.create')->with(compact('tipo_medida','editar'));
     }
@@ -63,7 +63,7 @@ class Tipo_medidaController extends Controller
             return Redirect::to('tipos_medidas/create')
                 ->withErrors($validator);
         } else {
-            $tipo_medida = new Tipo_medida();
+            $tipo_medida = new Tipo_medida;
             $tipo_medida->nombre = $request->nombre;      
             $tipo_medida->save();        
 

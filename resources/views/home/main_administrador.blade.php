@@ -1,10 +1,3 @@
-@extends('layouts.dashboard.main')
-@section('template_title')
-Página principal | {{ config('app.name', 'Laravel') }}
-@endsection
-@section('footer_title')
-Página principal | {{ config('app.name', 'Laravel') }}
-@endsection
 @section('content')
 
         <div class="container-fluid">

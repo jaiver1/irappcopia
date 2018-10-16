@@ -1,7 +1,7 @@
-@if($categoria->id != $sub->id)
-<option value="{{ $sub->id }}" {{($categoria->categoria->id == $sub->id ) ? 'selected' : '' }}>
+@if($categoria_selected->id != $sub->id)
+<option value="{{ $sub->id }}" {{($categoria_selected->categoria && $categoria_selected->categoria->id == $sub->id ) ? 'selected' : '' }}>
 @for($i=0; $i < 2*$niv; $i++)
-&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;
 @endfor
 
 {{ $sub->nombre }}

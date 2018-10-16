@@ -54,4 +54,12 @@ public function tipo_medida()
 {
     return $this->belongsTo('App\Models\Dato_basico\Tipo_medida');
 }
+
+public function productos(){
+  return $this->hasMany('App\Models\Comercio\Producto');
+}
+
+public function servicios(){
+  return $this->hasMany('App\Models\Actividad\Servicio');
+}
 }

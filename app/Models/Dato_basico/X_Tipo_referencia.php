@@ -3,7 +3,7 @@
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Tipo_referencia extends Model
+class X_Tipo_referencia extends Model
 {
   use SoftDeletes;
 
@@ -48,5 +48,9 @@ class Tipo_referencia extends Model
       'updated_at',
       'deleted_at',
   ];
+
+  public function productos(){
+    return $this->hasMany('App\Models\Comercio\Producto');
+  }
 
 }

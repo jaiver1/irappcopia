@@ -39,7 +39,7 @@ class CategoriaController extends Controller
     public function create()
     {
         Auth::user()->authorizeRoles(['ROLE_ROOT','ROLE_ADMINISTRADOR']);
-        $categoria = new Categoria();
+        $categoria = new Categoria;
         $categoria->especialidad()->associate(new Especialidad);
         $categoria->categoria()->associate(new Categoria);
         $especialidades = Especialidad::all(); 
@@ -73,7 +73,7 @@ class CategoriaController extends Controller
             return Redirect::to('categorias/create')
                 ->withErrors($validator);
         } else {
-            $categoria = new Categoria();
+            $categoria = new Categoria;
             $categoria->nombre = $request->nombre; 
             $categoria->etiqueta = $request->etiqueta; 
             $categoria->tipo_categoria()->associate(Tipo_categoria::findOrFail($request->tipo_categoria_id));      

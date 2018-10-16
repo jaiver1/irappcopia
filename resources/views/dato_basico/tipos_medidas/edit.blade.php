@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.main')
 @include('dato_basico.tipos_medidas.form')
 @section('template_title')
-Editar tipo de medida "{{ $tipo_medida->nombre }}" | {{ config('app.name', 'Laravel') }}
+Editar un tipo de medida "{{ $tipo_medida->nombre }}" | {{ config('app.name', 'Laravel') }}
 @endsection
 @section('content')
 
@@ -17,7 +17,7 @@ Editar tipo de medida "{{ $tipo_medida->nombre }}" | {{ config('app.name', 'Lara
                     <span><i class="fa fa-balance-scale mr-1"></i></span>
                         <a href="{{ route('tipos_medidas.index') }}">Lista de tipos de medidas</a>
                         <span>/</span>
-                        <span>Editar tipo de medida "{{ $tipo_medida->nombre }}"</span>
+                        <span>Editar un tipo de medida "{{ $tipo_medida->nombre }}"</span>
                     </h4>
 
                     <div class="d-flex justify-content-center">

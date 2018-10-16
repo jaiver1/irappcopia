@@ -17,7 +17,7 @@ Editar una especialidad "{{ $especialidad->nombre }}" | {{ config('app.name', 'L
                     <span><i class="fa fa-object-group mr-1"></i></span> 
                         <a href="{{ route('especialidades.index') }}">Lista de especialidades</a>
                         <span>/</span>
-                        <span>Editar especialidad "{{ $especialidad->nombre }}"</span>
+                        <span>Editar una especialidad "{{ $especialidad->nombre }}"</span>
                     </h4>
 
                     <div class="d-flex justify-content-center">

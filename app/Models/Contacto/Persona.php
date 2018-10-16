@@ -31,12 +31,18 @@ class Persona extends Model
      */
     protected $fillable = [
         'cedula',
-        'nombre',
-        'apellido',
-        'telefono',
-        'municipio',
+        'primer_nombre',
+        'segundo_nombre',
+        'primer_apellido',
+        'segundo_apellido',
+        'telefono_fijo',
+        'telefono_movil',
+        'ciudad_id',
+        'ubicacion_id',
         'barrio',
         'direccion',
+        'cuenta_banco',
+        'usuario_id',
     ];
 
     /**
@@ -56,5 +62,14 @@ class Persona extends Model
         'deleted_at',
     ];
 
-   
+    public function ubicacion()
+    {
+        return $this->belongsTo('App\Models\Dato_basico\X_Ubicacion');
+    }
+
+    public function ciudad()
+    {
+        return $this->belongsTo('App\Models\Dato_basico\X_Ciudad');
+    }
+    
 }
